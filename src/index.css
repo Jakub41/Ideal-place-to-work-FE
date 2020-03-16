@@ -13,10 +13,10 @@ code {
 }
 
 /* Landing Page */
-.image {
+/* .image {
   position: relative;
   width: 100%; /* for IE 6 */
-  background-blend-mode: darken;
+  /* background-blend-mode: darken;
 }
 
 h1 {
@@ -28,4 +28,4 @@ h1 {
   font: bold 24px/45px Helvetica, Sans-Serif;
   font-size: 50px;
   text-align: left;
-}
+} */ 
