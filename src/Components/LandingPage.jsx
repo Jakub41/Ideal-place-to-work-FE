@@ -6,18 +6,16 @@ import {Col, Row, Container} from "reactstrap";
 class LandingPage extends Component {
     render() {
         return (
-            <>
-                <Container fluid>
+            
+                <Container fluid style={{height: "100vh"}} >
                     <Row className={"image"}>
-                        <Col>
-                            <img src={Background} style={{width: "100%", height: "700px"}} alt={""}/>
+                        <Col xs="6">
+                            <img src={Background}  alt={""}/>
                             <h1> Your next <br/> perfect perfect <br/> place to work</h1>
                         </Col>
                     </Row>
                 </Container>
-
-
-            </>
+  
         );
     }
 }
