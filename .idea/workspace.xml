@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="074a74bf-8fe1-4bec-b8bd-a95fcc741661" name="Default Changelist" comment="git commit -m &quot;first commit&quot;">
-      <change afterPath="$PROJECT_DIR$/src/images/ban-ghe-cafe-42.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/shutterstock_610938071.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/shutterstock_640286518.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="074a74bf-8fe1-4bec-b8bd-a95fcc741661" name="Default Changelist" comment=".idea removed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/Main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landing.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/landing.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/landingAPI.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/LandingAPI.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/landingStickyBottom.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/LandingStickyBottom.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landingIndex.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/landingIndex.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/Betahaus-Cafe-Berlin.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/people-sitting-on-chairs-beside-their-desks-in-an-office-1170412.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/photo-of-laptops-on-top-of-wooden-table-3183151.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landing.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/Landing.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/LandingStickyBottom.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/LandingStickyBottom.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/landingSearch.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/LandingSearch.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landingIndex.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/LandingIndex.jsx" afterDir="false" />
+    </list>
+    <list id="d1e0b774-e5d2-4c77-a945-6a6ddb3bd44e" name="PascalCasing" comment="PascalCasing&#10;&#10;(cherry picked from commit 90b39f68420a588855d7e9735966f87f37089bca)">
+      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/LandingAPI.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/landingComponents/LandingAPI.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +23,11 @@
     </execution>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="henlovelybird &lt;voxylophone@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="details-page" />
@@ -91,7 +91,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584353897143</updated>
-      <workItem from="1584353899971" duration="25430000" />
+      <workItem from="1584353899971" duration="27116000" />
+      <workItem from="1584461504061" duration="3301000" />
     </task>
     <task id="LOCAL-00001" summary="git commit -m &quot;first commit&quot;">
       <created>1584354542610</created>
@@ -121,16 +122,36 @@
       <option name="project" value="LOCAL" />
       <updated>1584364353158</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="PascalCasing&#10;&#10;(cherry picked from commit 90b39f68420a588855d7e9735966f87f37089bca)">
+      <created>1584463185680</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1584463185680</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git commit -m &quot;first commit&quot;" />
     <MESSAGE value="landing page test" />
-    <option name="LAST_COMMIT_MESSAGE" value="landing page test" />
+    <MESSAGE value="PascalCasing&#10;&#10;(cherry picked from commit 90b39f68420a588855d7e9735966f87f37089bca)" />
+    <MESSAGE value=".idea removed" />
+    <option name="LAST_COMMIT_MESSAGE" value=".idea removed" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -138,22 +159,30 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584457306489" />
-    <state x="323" y="0" key="CommitChangelistDialog2" timestamp="1584364351928">
+    <state x="323" y="0" key="CommitChangelistDialog2" timestamp="1584468151798">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584364351928" />
+    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584468151798" />
     <state x="147" y="69" key="DiffContextDialog" timestamp="1584354624503">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="147" y="69" key="DiffContextDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584354624503" />
-    <state x="464" y="139" key="MultipleFileMergeDialog" timestamp="1584372107894">
+    <state x="349" y="167" key="IDE.errors.dialog" timestamp="1584461643592">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="464" y="139" key="MultipleFileMergeDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584372107894" />
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1584364358560">
+    <state x="349" y="167" key="IDE.errors.dialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584461643592" />
+    <state x="23" y="69" width="1490" height="726" key="MergeDialog" timestamp="1584463157972">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584364358560" />
+    <state x="23" y="69" width="1490" height="726" key="MergeDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584463157972" />
+    <state x="464" y="139" key="MultipleFileMergeDialog" timestamp="1584463157981">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="464" y="139" key="MultipleFileMergeDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584463157981" />
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1584461567439">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="361" y="147" key="Vcs.Push.Dialog.v2/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584461567439" />
     <state x="422" y="157" width="691" height="550" key="find.popup" timestamp="1584354323875">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -162,9 +191,9 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="479" y="63" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584372096636" />
-    <state x="421" y="206" key="git4idea.merge.GitPullDialog" timestamp="1584372132241">
+    <state x="421" y="206" key="git4idea.merge.GitPullDialog" timestamp="1584463283504">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="421" y="206" key="git4idea.merge.GitPullDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584372132241" />
+    <state x="421" y="206" key="git4idea.merge.GitPullDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584463283504" />
   </component>
 </project>

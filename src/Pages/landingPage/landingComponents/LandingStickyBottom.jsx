@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import  "../landing.css";
+import "../Landing.css";
 import {
     Collapse,
     Navbar,

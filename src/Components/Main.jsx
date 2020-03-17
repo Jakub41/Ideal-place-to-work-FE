@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import LandingPage from "../Pages/LandingPage/LandingIndex";
+import LandingPage from "../Pages/landingPage/LandingIndex";
 
 class Main extends Component {
     render() {
