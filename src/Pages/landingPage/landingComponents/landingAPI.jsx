@@ -1,5 +1,5 @@
-import React, { Component } from "./node_modules/react";
-import {Container, Row, Col} from "./node_modules/reactstrap"
+import React, { Component } from "react";
+import {Container, Row, Col} from "reactstrap"
 
 class LandingAPI extends Component {
     state = {

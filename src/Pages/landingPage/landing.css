@@ -1,14 +1,16 @@
 /* landingIndex Page */
 .image {
+    object-fit: cover;
     position: relative;
+    margin-top: 1em;
     width: 100%; /* for IE 6 */
-    background-blend-mode: darken;
+    background-color: antiquewhite;
   }
   
   h1 {
     position: absolute;
     top: 90px;
-    left: 100px;
+    left: 315px;
     width: 100%;
     color: white;
     font: bold 24px/45px Helvetica, Sans-Serif;
@@ -17,6 +19,11 @@
   }
 
 /* landingSearch Component */
+#SearchDiv {
+  text-align: left;
+  margin-left: 14em;
+  border-radius: 50%;
+}
 
   /* landingAPI Component */
 
