@@ -1,30 +1,33 @@
 import React, { Component } from "react";
-import "./landing.css";
-import Background from "../../images/shutterstock_610938071.jpg";
+import "./Landing.css"
+import Background from "../../images/Betahaus-Cafe-Berlin.jpg";
 import { Col, Row, Container } from "reactstrap";
-import landingSearch from './landingComponents/landingSearch'
-import LandingAPI from "./landingComponents/LandingAPI"
-import LandingStickyBottom from './landingComponents/LandingStickyBottom'
+import LandingSearch from './LandingComponents/LandingSearch'
+import LandingAPI from "./LandingComponents/LandingAPI"
+import LandingStickyBottom from './LandingComponents/LandingStickyBottom'
 
 class LandingPage extends Component {
   render() {
     return (<>
-      <div style={{ height: "100vh" }}>
+      <Container fluid style={{ height: "100vh" }}>
         <Row className={"image"}>
-          <Col xs="12">
-            <img src={Background} alt={"cafebackground"} />
+          
+            <img src={Background} alt="cafebackground" />
+            
             <h1>
-              Your next <br /> perfect perfect <br /> place to work
+              Your next <br /> perfect place <br /> to work
             </h1>
-          </Col>
-
+            <LandingSearch />
         </Row>
-      </div>
+
+       
+
+      </Container>
 
 
            
-      {/*<LandingAPI />*/}
-      <LandingStickyBottom/>
+      <landingAPI />
+        
     </>);
   }
 }

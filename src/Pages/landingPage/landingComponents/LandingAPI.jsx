@@ -3,16 +3,16 @@ import {Container, Row, Col} from "reactstrap"
 
 class LandingAPI extends Component {
     state = {
-        cafes: []
+        places: []
     }
   render() {
       
     return (
       <Container>
         <Row>
-          {this.state.cafes.map(cafe => (
+          {this.state.places.map(place => (
             <Col lg-2 md-4 xs-12>
-              <p>{cafe.name}</p> <img src={cafe.img} />
+              <p>{place.name}</p> <img src={place.img} />
             </Col>
           ))}
         </Row>
@@ -21,9 +21,9 @@ class LandingAPI extends Component {
   }
 
   // componentDidMount = async () => {
-  //   const cafes = await fetch ("") 
-  //   const cafesJson = await cafes.json();
-  //   this.setState( {cafes: cafesJson.Search} )
+  //   const plaaces = await fetch ("") 
+  //   const placesJson = await places.json();
+  //   this.setState( {places: placesJson.Search} )
   // }
 
 }
