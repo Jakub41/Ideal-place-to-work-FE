@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import style from "../landingPage/landing.css"
+import React, { Component } from "./node_modules/react";
+import "./landing.css"
 import Background from "../../images/Betahaus-Cafe-Berlin.jpg";
-import { Col, Row, Container } from "reactstrap";
-import landingSearch from './landingComponents/landingSearch'
-import landingAPI from "./landingComponents/landingAPI"
-import landingStickyBottom from './landingComponents/landingStickyBottom'
+import { Col, Row, Container } from "./node_modules/reactstrap";
+import LandingSearch from './LandingComponents/LandingSearch'
+import LandingAPI from "./LandingComponents/LandingAPI"
+import LandingStickyBottom from './LandingComponents/LandingStickyBottom'
 
 class LandingPage extends Component {
   render() {
@@ -14,7 +14,7 @@ class LandingPage extends Component {
           <Col xs="12">
             <img src={Background} alt={"cafebackground"} />
             <h1>
-              Your next <br /> perfect perfect <br /> place to work
+              Your next <br /> perfect place <br /> to work
             </h1>
           </Col>
         </Row>
