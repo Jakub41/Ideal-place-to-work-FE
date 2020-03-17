@@ -6,6 +6,7 @@ class Main extends Component {
         return (
             <div>
                 <LandingPage/>
+
             </div>
         );
     }
