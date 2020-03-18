@@ -1,4 +1,5 @@
 /* landingIndex Page */
+
 .cover-image {
     background-size: contain;
     background-image: url("../../images/shutterstock_610938071.jpg");
@@ -6,6 +7,7 @@
 }
   
   h1 {
+
     position: absolute;
     top: 90px;
     left: 315px;
@@ -14,7 +16,7 @@
     font: bold 24px/45px Helvetica, Sans-Serif;
     font-size: 50px;
     text-align: left;
-  }
+
 
 /* landingSearch Component */
 .searchInput {
@@ -37,27 +39,52 @@
 
 /* landingAPI Component */
 
-/* landingFooter Component*/
 
-.sticky-buttons:hover {
-    background-color: #dae1d9; /* Green */
-    color: white;
+/* fixed footer Component*/
+
+
+.footer-home {
+    display: flex;
+    -webkit-appearance: button;
+    padding: 3px 8px 3px 8px;
+    font-size: 13px;
+    position: relative;
+    cursor: context-menu;
+    align-items: center;
 }
 
-.sticky-buttons {
-    margin-left: 5px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition-duration: 0.4s;
+.footer-icons-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4a8121;
 }
 
-.footer-home-div {
-    margin-left: 500px;
+.footer-icon img {
+    width: 50px;
+    padding: 5px;
 }
 
 .footer-home {
+    background-color: #a59d63;
     border-radius: 50px;
-    background-color: white;
-    font-weight: bold;
-    padding: 5px 20px;
+    margin-right: 5px;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white;
+}
 
+.home-icon {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.footer-heart {
+    margin-left: 25px;
+}
+
+.footer-user {
+    margin-left: 90px;
 }
