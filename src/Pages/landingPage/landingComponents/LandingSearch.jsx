@@ -1,19 +1,45 @@
 
 import React, { Component } from 'react';
-import { Form, Input, Button } from 'reactstrap'
+import { Form, Input } from 'reactstrap'
+import closeIcon from "../../../icons/close.png";
+import searchIcon from "../../../icons/Search.png"
 
 class LandingSearch extends Component {
+    state = {
+        filteredPlaces: [],
+        places: []
+    }
+
+    filterSearch = (event) => {
+        let places = this.state.filteredPlaces;
+        places = places.filter((place) => {
+            return place.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({places: places});
+    }
+
+    componentWillMount = () => {
+        this.setState({
+            filteredPlaces: this.props.searchContent,
+            places: this.props.searchContent
+        })
+    }
+
+    
+
     render() {
         return (
-            <div id="SearchDiv">
+            <Form fluid>
+                <img src={searchIcon} id="searchIcon" alt="searchIcon"/>
 
-                <Form>
-                    <Input className="searchInput" type="search" placeholder="wifi cafe near me" aria-label="Search"/>
-                    <Button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</Button>
-                </Form>
-
-
-            </div>
+                    <Input id="searchInput" 
+                    type="search" 
+                    placeholder="ex. wifi cafe near me" 
+                    aria-label="Search"
+                    onChange={this.filterSearch}/>
+               
+                <img src={closeIcon} id="closeIcon" alt="closeIcon"/>
+            </Form>   
         );
     }
 }

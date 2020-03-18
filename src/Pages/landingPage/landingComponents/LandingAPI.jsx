@@ -8,15 +8,15 @@ class LandingAPI extends Component {
   render() {
       
     return (
-      <Container>
+      
         <Row>
           {this.state.places.map(place => (
             <Col lg-2 md-4 xs-12>
-              <p>{place.name}</p> <img src={place.img} />
+              <p>{place.name}</p> <img src={place.img} alt="place-image" />
             </Col>
           ))}
         </Row>
-      </Container>
+      
     );
   }
 
