@@ -1,12 +1,13 @@
 /* landingIndex Page */
-.image {
-    object-fit: cover;
-    position: relative;
-    width: 100%; /* for IE 6 */
-    background-color: antiquewhite;
-}
 
-h1 {
+.cover-image {
+    background-size: contain;
+    background-image: url("../../images/shutterstock_610938071.jpg");
+    background-repeat: no-repeat;
+}
+  
+  h1 {
+
     position: absolute;
     top: 90px;
     left: 315px;
@@ -15,24 +16,32 @@ h1 {
     font: bold 24px/45px Helvetica, Sans-Serif;
     font-size: 50px;
     text-align: left;
-}
+
 
 /* landingSearch Component */
-#SearchDiv {
+.searchInput {
     text-align: left;
-    margin-left: 14em;
-    border-radius: 50%;
+    border-radius: 50%;  
 }
 
-.cover-image {
-    background-size: cover;
-    background-image: url("../../images/shutterstock_610938071.jpg");
-    background-repeat: no-repeat;
+#searchIcon {
+    position: absolute;
+    color: green;
+    max-width: 100%;
+    height: 10%;
+    
+}
+
+#closeIcon{   
+    color: green;
+   
 }
 
 /* landingAPI Component */
 
+
 /* fixed footer Component*/
+
 
 .footer-home {
     display: flex;
