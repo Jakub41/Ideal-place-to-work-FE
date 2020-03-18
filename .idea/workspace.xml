@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="074a74bf-8fe1-4bec-b8bd-a95fcc741661" name="Default Changelist" comment="git commit -m &quot;first commit&quot;">
+    <list default="true" id="074a74bf-8fe1-4bec-b8bd-a95fcc741661" name="Default Changelist" comment="detailsPage">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/Landing.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/Landing.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/LandingIndex.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pages/landingPage/LandingIndex.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pages/landingPage/landing.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,10 +19,24 @@
     </execution>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="navigation" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/abybabu5/Alpha-Nomad-Map.git" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1ZCrQA9k8SMHCKRg9RDm4w1UDc6" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -30,7 +48,9 @@
     <property name="last_opened_file_path" value="E:/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -68,7 +88,28 @@
       <option name="project" value="LOCAL" />
       <updated>1584354542610</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="detailsPage">
+      <created>1584569690232</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1584569690232</updated>
+    </task>
+    <task id="LOCAL-00003" summary="detailsPage">
+      <created>1584569793827</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1584569793827</updated>
+    </task>
+    <task id="LOCAL-00004" summary="detailsPage">
+      <created>1584569813459</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1584569813459</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,18 +117,32 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="git commit -m &quot;first commit&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="git commit -m &quot;first commit&quot;" />
+    <MESSAGE value="detailsPage" />
+    <option name="LAST_COMMIT_MESSAGE" value="detailsPage" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="323" y="0" key="CommitChangelistDialog2" timestamp="1584354643098">
+    <state x="323" y="0" key="CommitChangelistDialog2" timestamp="1584570000111">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584354643098" />
+    <state x="323" y="0" key="CommitChangelistDialog2/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584570000111" />
     <state x="147" y="69" key="DiffContextDialog" timestamp="1584354624503">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="147" y="69" key="DiffContextDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584354624503" />
+    <state x="168" y="69" key="MergeDialog" timestamp="1584569381641">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="168" y="69" key="MergeDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584569381641" />
+    <state x="464" y="139" width="672" height="585" key="MultipleFileMergeDialog" timestamp="1584570051211">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="464" y="139" width="672" height="585" key="MultipleFileMergeDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584570051211" />
+    <state x="594" y="58" key="RollbackChangesDialog" timestamp="1584569443638">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="594" y="58" key="RollbackChangesDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584569443638" />
     <state x="361" y="147" key="Vcs.Push.Dialog.v2" timestamp="1584354558991">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -96,5 +151,13 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="422" y="157" width="691" height="550" key="find.popup/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584354323875" />
+    <state x="479" y="63" key="git4idea.branch.GitSmartOperationDialog" timestamp="1584570272205">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="479" y="63" key="git4idea.branch.GitSmartOperationDialog/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584570272205" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1584569894890">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864/1920.0.1366.768@0.0.1536.864" timestamp="1584569894890" />
   </component>
 </project>
