@@ -3,6 +3,7 @@ import "./Landing.css"
 import Background from "../../images/shutterstock_610938071.jpg";
 import {Col, Row, Container} from "reactstrap";
 import LandingSearch from './landingComponents/LandingSearch'
+import StickyButtons from "./landingComponents/StickyButtons";
 
 
 class LandingPage extends Component {
@@ -21,7 +22,7 @@ class LandingPage extends Component {
 
             </Container>
 
-
+            <StickyButtons/>
             {/*<landingAPI />*/}
 
 
