@@ -1,41 +1,27 @@
-/* landingIndex Page */
-
-.cover-image-landing {
-    background-size: cover;
-    background-image: url("../../images/shutterstock_610938071.jpg");
-    background-repeat: no-repeat;
-    min-width: 1024px;
-}
-  
-  h1 {
-      position: absolute;
-      top: 90px;
-      left: 315px;
-      width: 100%;
-      color: white;
-      font: bold 24px/45px Helvetica, Sans-Serif;
-      font-size: 50px;
-      text-align: left;
-  }
 
 
 /* landingSearch Component */
-.searchInput {
-    text-align: left;
-    border-radius: 50%;  
-}
+/* .col{
+    align-items: left;
+} */
+
+/* #searchInput {
+    align-items: flex-start;
+      
+} */
 
 #searchIcon {
-    position: absolute;
-    color: green;
     max-width: 100%;
-    height: 10%;
-    
+    height: 5%;
+    margin-top: .5em;
+    margin-left: 40em;
 }
 
 #closeIcon{   
+    max-width: 100%;
+    height: 10%;
     color: green;
-   
+    margin-right: 40em;
 }
 
 /* landingAPI Component */

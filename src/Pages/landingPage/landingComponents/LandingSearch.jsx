@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react';
-import { Form, Input } from 'reactstrap'
+import { Input, Row, Col } from 'reactstrap'
 import closeIcon from "../../../icons/close.png";
 import searchIcon from "../../../icons/Search.png"
 
@@ -25,21 +25,19 @@ class LandingSearch extends Component {
         })
     }
 
-    
-
     render() {
         return (
-            <Form fluid>
-                <img src={searchIcon} id="searchIcon" alt="searchIcon"/>
-
-                    <Input id="searchInput" 
+            <Row flex>    
+                <Col><img src={searchIcon} id="searchIcon" alt="searchIcon"/></Col>
+                    <Col>
+                    <Input id="searchInput"
                     type="search" 
                     placeholder="ex. wifi cafe near me" 
                     aria-label="Search"
-                    onChange={this.filterSearch}/>
-               
-                <img src={closeIcon} id="closeIcon" alt="closeIcon"/>
-            </Form>   
+                    onChange={this.filterSearch} />
+                    </Col>
+                <Col><img src={closeIcon} id="closeIcon" alt="closeIcon"/></Col>
+            </Row>   
         );
     }
 }

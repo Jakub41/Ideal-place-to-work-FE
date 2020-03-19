@@ -3,6 +3,7 @@ import LandingPage from "../Pages/landingPage/LandingIndex";
 import Footer from "../Pages/landingPage/landingComponents/Footer";
 import DetailsPageIndex from "../Pages/detailsPage/DetailsPageIndex"
 
+
 class Main extends Component {
     render() {
         return (
