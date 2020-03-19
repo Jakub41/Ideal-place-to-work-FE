@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Home from "../../../icons/Home.png"
 import Heart from "../../../icons/Faves.png"
 import User from "../../../icons/User.png"
-import StickyButtons from "./StickyButtons";
+
 
 const Example = (props) => {
     const [isOpen, setIsOpen] = useState(false);

@@ -1,21 +1,22 @@
 /* landingIndex Page */
 
-.cover-image {
-    background-size: contain;
+.cover-image-landing {
+    background-size: cover;
     background-image: url("../../images/shutterstock_610938071.jpg");
     background-repeat: no-repeat;
+    min-width: 1024px;
 }
   
   h1 {
-
-    position: absolute;
-    top: 90px;
-    left: 315px;
-    width: 100%;
-    color: white;
-    font: bold 24px/45px Helvetica, Sans-Serif;
-    font-size: 50px;
-    text-align: left;
+      position: absolute;
+      top: 90px;
+      left: 315px;
+      width: 100%;
+      color: white;
+      font: bold 24px/45px Helvetica, Sans-Serif;
+      font-size: 50px;
+      text-align: left;
+  }
 
 
 /* landingSearch Component */
@@ -70,10 +71,15 @@
     background-color: #a59d63;
     border-radius: 50px;
     margin-right: 5px;
-    padding: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
     color: white;
+}
+h3 {
+    padding-right: 10px;
+    margin-left: 5px;
 }
 
 .home-icon {
