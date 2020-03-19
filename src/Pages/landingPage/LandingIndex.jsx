@@ -10,8 +10,6 @@ import LandingAPI from './landingComponents/LandingAPI'
 class LandingPage extends Component {
     render() {
         return (<>
-            <Container fluid>  
-                <Row className='cover-image' src={image}>
                     <Col>
                     <h1>
                         Your next 
@@ -26,7 +24,7 @@ class LandingPage extends Component {
 
                 <LandingAPI />
             
-            </Container> 
+            </Container>
 
         </>);
   }
