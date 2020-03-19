@@ -6,8 +6,8 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <LandingPage/>
-
+                {/*<LandingPage/>*/}
+                <DetailsPageIndex/>
                 <Footer/>
             </div>
         );
