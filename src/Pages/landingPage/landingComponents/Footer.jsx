@@ -1,18 +1,8 @@
 import React, {useState} from 'react';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText, ButtonGroup, Button
-} from 'reactstrap';
+import Home from "../../../icons/Home.png"
+import Heart from "../../../icons/Faves.png"
+import User from "../../../icons/User.png"
+
 
 const Example = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,18 +11,21 @@ const Example = (props) => {
 
     return (
         <div>
-            <Navbar style={{backgroundColor: '#4a8121'}} light expand="md">
-                <NavbarToggler onClick={toggle}/>
-                <Nav className="mr-auto" navbar>
-                    <NavItem>
-                        <ButtonGroup className="footer-home-div">
-                            <button className="footer-home"> 🏠 Home</button>
-                        </ButtonGroup>
-                    </NavItem>
-                </Nav>
-            </Navbar>
+
+            <div className="footer-icons-container">
+                <div className="footer-icon footer-home">
+                    <img src={Home} alt="Home" className="home-icon"/>
+                    <h3>Home</h3>
+                </div>
+                <div className="footer-icon footer-heart">
+                    <img src={Heart} alt="Home"/>
+                </div>
+                <div className="footer-icon footer-user">
+                    <img src={User} alt="Home"/>
+                </div>
+            </div>
         </div>
     );
-}
+};
 
 export default Example;

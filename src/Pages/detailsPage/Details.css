@@ -1,0 +1,79 @@
+.cover-image {
+    background-size: cover;
+    background-image: url("../../images/ban-ghe-cafe-42.jpg");
+    background-repeat: no-repeat;
+}
+
+.location-pin-icon {
+    width: 40px;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+h4 {
+    padding-top: 5px;
+    color: darkgrey;
+}
+h2 {
+    font-size: large;
+}
+
+
+.rating-star-icon {
+    width: 50px;
+    float: left;
+    position: relative;
+    margin-left: 5px;
+}
+
+.rate-place {
+    color: purple;
+    align-self: flex-end;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rating-container {
+    flex: 1 1 auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+
+.row-details {
+    display: flex;
+}
+
+.coffee-point {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    flex: 1 1 auto;
+}
+
+.details-para {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+.row-details-rate-place {
+    display: flex;
+    flex: 1 1 auto;
+    border-top: 2px solid #b7adb4;
+    border-bottom: 2px solid #b7adb4;
+    margin: 5px;
+    padding: 10px;
+}
+
+.location-close-icon {
+    position: absolute;
+    width: 70px;
+    right: 0;
+    margin: 70px;
+
+}

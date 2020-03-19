@@ -1,3 +1,4 @@
+
 /* landingIndex Page */
 
 .cover-image {
@@ -20,6 +21,7 @@
     font-size: 4.5rem;
     text-align: left;
   }
+
 
 /* landingSearch Component */
 .searchRow {
@@ -89,11 +91,11 @@
     background-color: #a59d63;
     border-radius: 50px;
     margin-right: 5px;
-    padding: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
     color: white;
 }
+
 
 .home-icon {
     margin-right: 10px;
