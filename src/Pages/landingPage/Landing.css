@@ -38,6 +38,7 @@
     height: 80px;
     border-radius: 50px;
     border: black 1px solid;
+    
 }
 
 .searchIcon {
@@ -51,8 +52,13 @@
     width: 430px;
     margin-left: 10px;
     padding-right: 20px;
-    outline: none;
+     
 }
+#searchInput:focus {
+    outline: none !important;
+    border: none;
+}
+
 .search-input-text {
     flex-grow: 1;
     
