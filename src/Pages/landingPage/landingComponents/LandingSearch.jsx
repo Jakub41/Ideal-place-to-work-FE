@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Row, Col, InputGroup, InputGroupAddon } from "reactstrap";
+import { Input } from "reactstrap";
 import closeIcon from "../../../icons/close.png";
 import searchIcon from "../../../icons/Search.png";
 

@@ -11,7 +11,7 @@ class LandingAPI extends Component {
     }
 
    modalOpen = () => {
-     if(this.state.modalOpen == true) {
+     if(this.state.modalOpen === true) {
        this.setState({modalOpen: false})
      } else if (this.state.modalOpen === false){
         this.setState({modalOpen: true})

@@ -9,9 +9,9 @@ class Main extends Component {
         return (
             <>
                 <div>
-                {/*<LandingPage/>*/}
+                <LandingPage/>
                 </div>
-                <DetailsPageIndex/>
+                {/* <DetailsPageIndex/> */}
                 <div>
                 <Footer/>
                 </div>
