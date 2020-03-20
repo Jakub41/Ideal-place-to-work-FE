@@ -182,12 +182,12 @@ class LoginModal extends React.Component {
                         loginInputs: [
                             {
                                 containerClass: 'RML-form-group',
-                                label: 'Email',
-                                type: 'email',
+                                label: 'Username',
+                                type: 'username',
                                 inputClass: 'RML-form-control',
-                                id: 'email',
-                                name: 'email',
-                                placeholder: 'Email',
+                                id: 'username',
+                                name: 'username',
+                                placeholder: 'Username',
                             },
                             {
                                 containerClass: 'RML-form-group',
