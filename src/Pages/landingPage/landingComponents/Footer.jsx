@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import Home from "../../../icons/Home.png"
 import Heart from "../../../icons/Faves.png"
 import User from "../../../icons/User.png"
+import LoginModal from "../../login/LoginModal";
 
 
-const Example = (props) => {
+const Footer = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
@@ -21,11 +22,11 @@ const Example = (props) => {
                     <img src={Heart} alt="Home"/>
                 </div>
                 <div className="footer-icon footer-user">
-                    <img src={User} alt="Home"/>
+                     <LoginModal />
                 </div>
             </div>
         </div>
     );
 };
 
-export default Example;
+export default Footer;
