@@ -1,38 +1,47 @@
 import React, { Component } from "react";
 import {Row, Col} from "reactstrap"
+import { Link } from 'react-router-dom'
 import mockData from '../../../Components/data/MOCK_DATA.json'
+import DetailsPageIndex from "../../detailsPage/DetailsPageIndex";
+import LandingFilterModal from '../landingComponents/LandingFilterModal'
+import '../Landing.css'
 
 
 class LandingAPI extends Component {
     state = {
         // places: [],
-        mockData: [],
         modalOpen: false
     }
 
    modalOpen = () => {
-     if(this.state.modalOpen == true) {
+     if(this.state.modalOpen === true) {
        this.setState({modalOpen: false})
      } else if (this.state.modalOpen === false){
         this.setState({modalOpen: true})
      }
    } 
 
+
   render() {
+      console.log(this.state.modalOpen)
+    return (<>
       
-    return (
-      
-        <Row fluid="md">
-          <Col><h3>Near You</h3></Col><Col><h3 style={{color: "green"}} onClick={this.modalOpen}>Filter By</h3></Col> 
-          {this.state.mockData.map(mockData => (
-            <Col lg-2 md-4 xs-12>
-              <p>{mockData.name}</p> <img src={mockData.img} alt="place"/>
+        <Row flex="md-4">
+          <Col className="landingAPIHeaders"><h3>Near You</h3></Col><Col><h3 id="filterBy" onClick={this.modalOpen}>Filter By</h3></Col> 
+          </Row>
+          <Row>
+          {mockData.map((mockData, index) => (
+            <Col key={index} flex="lg-3 md-4 xs-12">
+              <h4 className="placeNames">{mockData.name}</h4> 
+              <img className="placeImgs" src={mockData.img} /> 
+              {/* <Link to={DetailsPageIndex} /> */}
             </Col>
           ))}
-          <Col><h3>{mockData.rate}</h3></Col>
+           <Col><h3>{mockData.rate}</h3></Col>
+         {this.state.modalOpen && <LandingFilterModal modal={this.state.modalOpen} handleModal={this.modalOpen}/>}
         </Row>
       
-    );
+    </>);
   }
 
   // componentDidMount = async () => {
