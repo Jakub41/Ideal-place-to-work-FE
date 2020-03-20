@@ -4,13 +4,11 @@
 
 /* landingIndex Page */
 .cover-image {
-    background-size: cover;
+    background-size: contain;
     background-image: url("../../images/shutterstock_610938071.jpg");
-    background-position: top;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;   
     width: 100vw;
-    height: 50vh;   
-    
+    height: 51vh;
 }
   
   h1 {
