@@ -10,20 +10,21 @@ class LandingPage extends Component {
   render() {
     return (
       <>
-        <div fluid>
-          <div>
-            <div>
-              <img className="cover-image" src={image} alt="cover-image" fluid style={{height: "150vh"}}/>
+        <Container fluid>
+          <Row>
+   
+              <img className="cover-image" src={image} alt="cover-image" fluid/>
               <h1>
                 Your next
                 <br /> perfect place <br />
                 to work
               </h1>
-            </div>
-          </div>
+          </Row>
+
           <LandingSearch />
           <LandingAPI />
-        </div>
+          
+        </Container>
       </>
     );
   }
