@@ -4,7 +4,7 @@ import closeIcon from "../../../icons/close.png";
 import cupIcon from "../../../icons/bars01.png";
 import workIcon from "../../../icons/cowos01.png"
 import wifiIcon from "../../../icons/wifi01.png"
-import 'react-toggle/style.css';
+// import 'react-toggle/style.css';
 
 class LandingFilterModal extends React.Component {
   state = {
