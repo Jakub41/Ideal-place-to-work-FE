@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Row, Col} from "reactstrap"
+import {Row, Col, Container} from "reactstrap"
 import { Link } from 'react-router-dom'
 import mockData from '../../../Components/data/MOCK_DATA.json'
 import DetailsPageIndex from "../../detailsPage/DetailsPageIndex";
@@ -25,10 +25,11 @@ class LandingAPI extends Component {
   render() {
       console.log(this.state.modalOpen)
     return (<>
-      
+      <Container flex>
         <Row flex="md-4">
           <Col className="landingAPIHeaders"><h3>Near You</h3></Col><Col><h3 id="filterBy" onClick={this.modalOpen}>Filter By</h3></Col> 
           </Row>
+          
           <Row>
           {mockData.map((mockData, index) => (
             <Col key={index} flex="lg-3 md-4 xs-12">
@@ -40,7 +41,7 @@ class LandingAPI extends Component {
            <Col><h3>{mockData.rate}</h3></Col>
          {this.state.modalOpen && <LandingFilterModal modal={this.state.modalOpen} handleModal={this.modalOpen}/>}
         </Row>
-      
+      </Container>
     </>);
   }
 
