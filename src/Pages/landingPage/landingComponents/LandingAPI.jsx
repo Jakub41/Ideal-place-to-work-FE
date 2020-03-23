@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {Row, Col, Container} from "reactstrap"
 import { Link } from 'react-router-dom'
 import mockData from '../../../Components/data/MOCK_DATA.json'
-import DetailsPageIndex from "../../detailsPage/DetailsPageIndex";
 import LandingFilterModal from './LandingFilterModal'
 import '../Landing.css'
 
@@ -34,8 +33,8 @@ class LandingAPI extends Component {
           {mockData.map((mockData, index) => (
             <Col key={index} flex="lg-3 md-4 xs-12">
               <h4 className="placeNames">{mockData.name}</h4> 
-              <img className="placeImgs" src={mockData.img}/> 
-              {/* <Link to={DetailsPageIndex} /> */}
+              <Link to="/details"><img className="placeImgs" src={mockData.img}/></Link> 
+              
             </Col>
           ))}
            <Col><h3>{mockData.rate}</h3></Col>
