@@ -17,24 +17,24 @@ class LandingSearch extends Component {
     } else if (this.state.modalOpen === false){
        this.setState({modalOpen: true})
     }
-  } 
+  }
 
-  filterSearch = event => {
-    let places = this.state.filteredPlaces;
-    places = places.filter(place => {
-      return (
-        place.toLowerCase().search(event.target.value.toLowerCase()) !== -1
-      );
-    });
-    this.setState({ places: places });
-  };
+  // filterSearch = event => {
+  //   let places = this.state.filteredPlaces;
+  //   places = places.filter(place => {
+  //     return (
+  //       place.toLowerCase().search(event.target.value.toLowerCase()) !== -1
+  //     );
+  //   });
+  //   this.setState({ places: places });
+  // };
 
-  componentWillMount = () => {
-    this.setState({
-      filteredPlaces: this.props.searchContent,
-      places: this.props.searchContent
-    });
-  };
+  // componentWillMount = () => {
+  //   this.setState({
+  //     filteredPlaces: this.props.searchContent,
+  //     places: this.props.searchContent
+  //   });
+  // };
 
   render() {
     return (

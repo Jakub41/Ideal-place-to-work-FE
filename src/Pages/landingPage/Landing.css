@@ -6,11 +6,11 @@
 .cover-image {
     background-size: contain;
     background-image: url("../../images/shutterstock_610938071.jpg");
-    background-repeat: no-repeat;   
+    background-repeat: no-repeat;
     width: 100vw;
 }
-  
-  h1 {
+
+h1 {
     position: absolute;
     top: 150px;
     left: 350px;
@@ -19,7 +19,7 @@
     font: bold 24px/45px Helvetica, Sans-Serif;
     font-size: 4.5rem;
     text-align: left;
-  }
+}
 
 
 /* landingSearch Component */
@@ -37,7 +37,7 @@
     height: 80px;
     border-radius: 50px;
     border: black 1.5px solid;
-    
+
 }
 
 .searchIcon {
@@ -58,11 +58,11 @@
     border-color: inherit;
     -webkit-box-shadow: none;
     box-shadow: none;
-  }
+}
 
 .search-input-text {
     flex-grow: 1;
-    
+
 }
 #closeIcon {
     height: 45px;
@@ -74,11 +74,11 @@
 /* LandingSearchModal */
 #closeBtnImg {
     height: 25px;
-    width: 25px; 
+    width: 25px;
     position: absolute;
     margin-right: 15px;
     right: 0;
-    
+
 }
 #geoLinkImg {
     max-width: 100%;
@@ -88,6 +88,7 @@
 }
 
 /* landingAPI Component */
+
 .landingAPIHeaders {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -171,4 +172,17 @@ h4.placeNames {
 
 .footer-user {
     margin-left: 90px;
+}
+
+.footer-icons-container a:hover {
+    text-decoration: none;
+
+}
+
+.footer-icon {
+    cursor: pointer;
+}
+
+.home-text   {
+    padding-right: 5px;
 }
