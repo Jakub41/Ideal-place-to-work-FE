@@ -14,15 +14,17 @@ const Footer = (props) => {
     return (
         <div>
             <div className="footer-icons-container">
-                <Link to="/"> <div className="footer-icon footer-home">
-                    <img src={Home} alt="Home" className="home-icon"/>
-                    <h3 className="home-text">Home</h3>
-                </div></Link>
+                <Link to="/">
+                    <div className="footer-icon footer-home">
+                        <img src={Home} alt="Home" className="home-icon"/>
+                        <h3 className="home-text">Home</h3>
+                    </div>
+                </Link>
                 <div className="footer-icon footer-heart">
                     <img src={Heart} alt="Home"/>
                 </div>
                 <div className="footer-icon footer-user">
-                    <LoginModal />
+                    <LoginModal/>
                 </div>
             </div>
         </div>

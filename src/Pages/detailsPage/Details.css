@@ -33,6 +33,7 @@ h2 {
     margin-top: 10px;
     padding: 5px;
     font-weight: bold;
+    text-decoration: none;
 
 }
 
@@ -79,5 +80,11 @@ h2 {
     width: 125px;
     right: 0;
     margin: 70px;
+
+}
+.rate-place a:hover {
+
+
+
 
 }
