@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 import closeBtn from '../../../icons/close.png'
 import geoLink from '../../../icons/Pin02.png'
 
@@ -16,9 +16,9 @@ class LandingSearchModal extends Component {
           size="sm"
           aria-labelledby="example-modal-sizes-title-sm">
           <ModalHeader>
-          <img src={closeBtn} id="closeBtnImg" onClick={this.props.handleModal}/>
+          <img src={closeBtn} id="closeBtnImg" alt="closeBtn" onClick={this.props.handleModal}/>
             <p>Map It</p>
-          <img src={geoLink} id="geoLinkImg" />
+          <img src={geoLink} id="geoLinkImg" alt="closeBtn"/>
           </ModalHeader>
           <ModalBody>Recent Searches...</ModalBody>
         </Modal>
