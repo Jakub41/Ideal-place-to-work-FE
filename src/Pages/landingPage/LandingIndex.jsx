@@ -22,6 +22,7 @@ class LandingPage extends Component {
           </Row>
 
           <LandingSearch />
+          
           <LandingAPI />
           
         </Container>
