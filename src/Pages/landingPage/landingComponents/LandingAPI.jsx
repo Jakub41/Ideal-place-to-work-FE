@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Row, Col, Container} from "reactstrap"
 import { Link } from 'react-router-dom'
 import mockData from '../../../Components/data/MOCK_DATA.json'
-import LandingFilterModal from './landingFilterModal'
+import LandingFilterModal from './LandingFilterModal'
 import '../Landing.css'
 
 
