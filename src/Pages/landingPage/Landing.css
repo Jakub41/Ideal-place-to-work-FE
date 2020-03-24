@@ -110,6 +110,22 @@ h4.placeNames {
     overflow: hidden;
 }
 
+/* landingFilterModal */
+.modal-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.filterIcons {
+    max-width: 100%;
+    width: 30%;   
+}
+
+.filterIcons:after, .filterIcons:before {
+    color: rgb(0, 0, 139);
+}
+
 
 /* fixed footer Component*/
 .footer-home {
