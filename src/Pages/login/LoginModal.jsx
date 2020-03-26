@@ -5,6 +5,7 @@ import Api from "../../Api"
 import {connect} from "react-redux";
 import User from "../../icons/User.png";
 import ReactTooltip from "react-tooltip";
+import "./Login.css"
 
 const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
@@ -75,7 +76,7 @@ class LoginModal extends React.Component {
         const email = document.querySelector('#username').value;
         const password = document.querySelector('#password').value;
 
-        if (!firstname ||!lastname || !email || !password) {
+        if (!firstname || !lastname || !email || !password) {
             this.setState({
                 error: true
             })
@@ -98,7 +99,7 @@ class LoginModal extends React.Component {
                 console.log(res);
                 this.setState({
                     error: true,
-                    errorText: res.response.errors.message
+                    errorText: res.response?res.response.errors.message:null
                 })
 
             })
@@ -108,9 +109,9 @@ class LoginModal extends React.Component {
 
     onRecoverPassword() {
         console.log('__onFotgottenPassword__');
-        console.log('email: ' + document.querySelector('#email').value);
+        console.log('email: ' + document.querySelector('#username').value);
 
-        const email = document.querySelector('#email').value;
+        const email = document.querySelector('username').value;
 
 
         if (!email) {
@@ -185,8 +186,9 @@ class LoginModal extends React.Component {
 
         return (
             <div>
-                <ReactTooltip />
-                <img data-tip={this.state.loggedIn?"You are signed in":"You are signed out"} src={User} alt="Home" onClick={() => this.openModal('login')}/>
+                <ReactTooltip/>
+                <img data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"} src={User} alt="Home"
+                     onClick={() => this.openModal('login')}/>
 
                 <ReactModalLogin
                     visible={this.state.showModal}
@@ -320,3 +322,4 @@ class LoginModal extends React.Component {
 }
 
 export default (connect(mapStateToProps, mapDispatchToProps)(LoginModal));
+

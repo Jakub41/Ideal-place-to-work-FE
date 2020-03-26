@@ -5,7 +5,9 @@ import Star from "../../../icons/Star.png";
 import searchIcon from "../../../icons/Search.png";
 import closeIcon from "../../../icons/close.png";
 import {Link} from "react-router-dom";
-import CommentForm from "../../rating& review/Rating";
+import CommentForm from "../../rating& review/reviewComponents/RatingStars";
+import ReviewModal from "../../rating& review/reviewComponents/ReviewModal";
+import UserReview from "../../rating& review/reviewComponents/UserReview";
 
 
 class DetailsPageLanding extends Component {
@@ -13,7 +15,8 @@ class DetailsPageLanding extends Component {
         return (
             <>
                 <Container fluid>
-                    <img className="location-close-icon" src={closeIcon} alt="Close"/>
+                    <Link to="/">
+                        <img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
                     <Row className='cover-image' src={'image'} fluid style={{height: "150vh"}}>
                     </Row>
                 </Container>
@@ -26,13 +29,6 @@ class DetailsPageLanding extends Component {
                     <div className="row-details">
                         <img className="location-pin-icon" src={Pin} alt="Home"/>
                         <h4>Location</h4>
-                    </div>
-                    <div className="row-details-rate-place">
-                        <div className="rating-container"><img className="rating-star-icon" src={Star} alt="rating"/>
-                        </div>
-                        <Link to="/review/rating">
-                            <div><h2 className='rate-place'> Rate Place</h2></div>
-                        </Link>
                     </div>
                     <div>
                         <p className="details-para">Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -49,6 +45,17 @@ class DetailsPageLanding extends Component {
                             including
                             versions of Lorem Ipsum.</p>
                     </div>
+                    <div className="row-details-rate-place">
+                        <div className="rating-container"><img className="rating-star-icon" src={Star} alt="rating"/>
+                        </div>
+                        <div>
+                            <ReviewModal/>
+                        </div>
+                        <div>
+                            <UserReview/>
+                        </div>
+                    </div>
+
                 </div>
             </>
         );

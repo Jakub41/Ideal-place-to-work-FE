@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
 
@@ -8,10 +7,9 @@
     background-image: url("../../images/shutterstock_610938071.jpg");
     background-repeat: no-repeat;
     width: 100vw;
-   
 }
 
-  h1 {
+h1 {
     position: absolute;
     top: 150px;
     left: 350px;
@@ -20,7 +18,7 @@
     font: bold 24px/45px Helvetica, Sans-Serif;
     font-size: 4.5rem;
     text-align: left;
-  }
+}
 
 
 /* landingSearch Component */
@@ -59,7 +57,7 @@
     border-color: inherit;
     -webkit-box-shadow: none;
     box-shadow: none;
-  }
+}
 
 .search-input-text {
     flex-grow: 1;
@@ -89,6 +87,7 @@
 }
 
 /* landingAPI Component */
+
 .landingAPIHeaders {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -110,9 +109,22 @@ h4.placeNames {
     overflow: hidden;
 }
 
-.placeImgs {
-    max-width: 100%;
+/* landingFilterModal */
+.modal-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
+
+.filterIcons {
+    max-width: 100%;
+    width: 30%;
+}
+
+.filterIcons:after, .filterIcons:before {
+    color: rgb(0, 0, 139);
+}
+
 
 /* fixed footer Component*/
 .footer-home {
@@ -159,4 +171,17 @@ h4.placeNames {
 
 .footer-user {
     margin-left: 90px;
+}
+
+.footer-icons-container a:hover {
+    text-decoration: none;
+
+}
+
+.footer-icon {
+    cursor: pointer;
+}
+
+.home-text   {
+    padding-right: 5px;
 }

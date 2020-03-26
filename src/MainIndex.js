@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LandingPage from "./Pages/landingPage/LandingIndex";
 import Footer from "./Pages/landingPage/landingComponents/Footer";
 import DetailsPageLanding from './Pages/detailsPage/DetailsPageIndex';
-import Rating from "./Pages/rating& review/Rating";
+import Rating from "./Pages/rating& review/reviewComponents/RatingStars";
 
 
 class Main extends Component {

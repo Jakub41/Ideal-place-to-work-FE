@@ -4,7 +4,7 @@ import StarRatingComponent from "react-star-rating-component";
 import moment from "moment";
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import CRUD from "../rating& review/CRUD";
+import CRUD from "../CRUD";
 
 export default class CommentForm extends Component {
     constructor(props) {
@@ -158,7 +158,6 @@ export default class CommentForm extends Component {
                     />
                 </div>
                 <div>
-                    <h4>Write a comment:</h4>
                     <StarRatingComponent
                         name="rate1"
                         starCount={5}
@@ -166,28 +165,8 @@ export default class CommentForm extends Component {
                         onStarClick={this.onStarClick.bind(this)}
                     />
                     <form method="post" onSubmit={this.onSubmit}>
-                        <div className="form-group">
-              <textarea
-                  onChange={this.handleFieldChange}
-                  value={this.state.comment.message}
-                  className="form-control"
-                  placeholder="🤬 Your Comment"
-                  name="message"
-                  rows="5"
-              />
-                        </div>
 
                         {this.renderError()}
-
-                        <div className="form-group">
-                            <button
-                                onClick={this.onSubmit}
-                                disabled={this.state.loading}
-                                className="btn btn-primary"
-                            >
-                                Comment ➤
-                            </button>
-                        </div>
                     </form>
                 </div>
             </React.Fragment>
