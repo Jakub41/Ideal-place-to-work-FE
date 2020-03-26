@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import DetailsPageLanding from "./detailsComponents/DetailsPageLanding"
+import DetailsPageLanding from "./detailsComponents/DetailsPageLanding";
 import "./Details.css";
 
 

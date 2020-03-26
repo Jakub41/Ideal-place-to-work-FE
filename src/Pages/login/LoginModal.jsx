@@ -5,6 +5,7 @@ import Api from "../../Api"
 import {connect} from "react-redux";
 import User from "../../icons/User.png";
 import ReactTooltip from "react-tooltip";
+import "./Login.css"
 
 const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
@@ -25,6 +26,7 @@ class LoginModal extends React.Component {
             loading: false,
             error: null,
             initialTab: null,
+            errorText: "",
             recoverPasswordSuccess: null,
         };
 
@@ -44,7 +46,7 @@ class LoginModal extends React.Component {
             })
         } else {
             const base64usernameAndPassword = btoa(username + ":" + password);
-            Api.fetch("/api/v1/login", 'POST', "", {
+            Api.fetch("/api/v1/user/login", 'POST', "", {
                 "Authorization": "Basic " + base64usernameAndPassword
             })
                 .then(res => {
@@ -71,37 +73,45 @@ class LoginModal extends React.Component {
 
         const firstname = document.querySelector('#name').value;
         const lastname = document.querySelector('#surname').value;
-        const username = document.querySelector('#username').value;
+        const email = document.querySelector('#username').value;
         const password = document.querySelector('#password').value;
 
-        if (!firstname ||!lastname || !username || !password) {
+        if (!firstname || !lastname || !email || !password) {
             this.setState({
                 error: true
             })
         } else {
-            const base64usernameAndPassword = btoa(username + ":" + password);
-            Api.fetch("/api/v1/register", 'POST', JSON.stringify({
-                firstname, lastname, username,
+            const base64usernameAndPassword = btoa(email + ":" + password);
+            Api.fetch("/api/v1/user/register", 'POST', JSON.stringify({
+                firstname, lastname, username: email,
                 password
             }))
 
                 .then(res => {
                     console.log(res);
-                    if (res.accessToken) {
+                    if (res.user) {
                         this.onLoginSuccess('form');
                         localStorage.setItem("userBase64", base64usernameAndPassword);
                         this.props.setUserToken(base64usernameAndPassword);
                     }
+
+                }).catch((res) => {
+                console.log(res);
+                this.setState({
+                    error: true,
+                    errorText: res.response?res.response.errors.message:null
                 })
+
+            })
         }
     }
 
 
     onRecoverPassword() {
         console.log('__onFotgottenPassword__');
-        console.log('email: ' + document.querySelector('#email').value);
+        console.log('email: ' + document.querySelector('#username').value);
 
-        const email = document.querySelector('#email').value;
+        const email = document.querySelector('username').value;
 
 
         if (!email) {
@@ -176,8 +186,9 @@ class LoginModal extends React.Component {
 
         return (
             <div>
-                <ReactTooltip />
-                <img data-tip={this.state.loggedIn?"You are signed in":"You are signed out"} src={User} alt="Home" onClick={() => this.openModal('login')}/>
+                <ReactTooltip/>
+                <img data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"} src={User} alt="Home"
+                     onClick={() => this.openModal('login')}/>
 
                 <ReactModalLogin
                     visible={this.state.showModal}
@@ -190,6 +201,7 @@ class LoginModal extends React.Component {
                     }}
                     startLoading={this.startLoading.bind(this)}
                     finishLoading={this.finishLoading.bind(this)}
+                    registerError={{label: this.state.errorText}}
                     form={{
                         onLogin: this.onLogin.bind(this),
                         onRegister: this.onRegister.bind(this),
@@ -253,8 +265,8 @@ class LoginModal extends React.Component {
                             },
                             {
                                 containerClass: 'RML-form-group',
-                                label: 'Username',
-                                type: 'username',
+                                label: 'Email',
+                                type: 'email',
                                 inputClass: 'RML-form-control',
                                 id: 'username',
                                 name: 'username',
@@ -310,3 +322,4 @@ class LoginModal extends React.Component {
 }
 
 export default (connect(mapStateToProps, mapDispatchToProps)(LoginModal));
+

@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
 /* LandingIndex Page */
@@ -143,7 +142,7 @@ img.placeImgs:hover{
 
 .filterIcons {
     max-width: 100%;
-    width: 30%;   
+    width: 30%;
 }
 
 .filterIcons:after, .filterIcons:before {
