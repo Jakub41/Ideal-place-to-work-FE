@@ -25,7 +25,7 @@ function LandingSearch() {
   }
 
     return (
-      <div>
+      <div className="search-container">
         <div className="searchRow">
           <div>
             <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() => 
