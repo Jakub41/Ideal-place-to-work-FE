@@ -10,7 +10,7 @@ function LandingSearchModal(props){
   const [placeList, setPlaceList] = useState(localStorage.getItem("places"))
 
     return (
-      <div>
+      
         <Modal isOpen={props.modal}
           size="sm"
           aria-labelledby="example-modal-sizes-title-sm">
@@ -19,11 +19,19 @@ function LandingSearchModal(props){
             <p>Map It</p>
           <img src={geoLink} id="geoLinkImg" alt="closeBtn"/>
           </ModalHeader>
+
           <ModalBody>
-            <Row><Col><h5>Recent Searches...</h5><br />{placeList}</Col></Row>
+            <Row>
+              <Col>
+                <h5>Recent Searches...</h5> 
+                <br></br>
+                {placeList}
+              </Col>
+            </Row>
           </ModalBody>
+
         </Modal>
-      </div>
+      
     );
 
 }

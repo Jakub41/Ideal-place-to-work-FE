@@ -8,7 +8,6 @@ import LandingSearchModal from "../landingComponents/LandingSearchModal"
 function LandingSearch() {
   const [searchPlace, setSearchPlace] = useState("")
   const [placeList, setPlaceList] = useState(localStorage.getItem("places".split + ","))
-    // rewrite this later: useState(localStorage.getItem("locations").split + ",") OR {JSON.stringify (this.props.places)} ??
   const [modalOpen, setModalOpen] = useState(false)
   
   const modalToggle = () => {
@@ -21,14 +20,10 @@ function LandingSearch() {
 
   const addToLocalStorage = () => {
     const currentLocalStorage = [...placeList, searchPlace]
-    setPlaceList(currentLocalStorage(localStorage.getItem("placelist".split + ",")));
-    setPlaceList("")
+    setPlaceList(currentLocalStorage(localStorage.getItem("placelist").split(",")));
+    console.log(placeList)
     localStorage.setItem("placeList", JSON.stringify(currentLocalStorage))
   }
-    //get previous value of local storage
-    //create an array and split it into an array
-    //update the array with new value
-    //update local storage
 
     return (
       <div>
@@ -42,7 +37,7 @@ function LandingSearch() {
               type="text"
               placeholder="ex. wifi cafe near me"
               value={searchPlace}
-              onChange={(e) => setSearchPlace(e.target.value)} />
+              onChange={(e) => {setSearchPlace(e.target.value); addToLocalStorage(searchPlace)}} />
           </div>
           {/* <div>
             <img src={closeIcon} id="closeIcon" alt="closeIcon" />
