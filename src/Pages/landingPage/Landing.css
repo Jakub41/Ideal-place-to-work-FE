@@ -1,28 +1,28 @@
 
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
-
-/* landingIndex Page */
+/* LandingIndex Page */
 .cover-image {
     background-size: contain;
     background-image: url("../../images/shutterstock_610938071.jpg");
     background-repeat: no-repeat;
     width: 100vw;
+    background-position: 0% 50%;
 }
 
 h1 {
+    padding-top: 10%;
+    padding-left: 25%;
     position: absolute;
-    top: 150px;
-    left: 350px;
     width: 100%;
     color: white;
     font: bold 24px/45px Helvetica, Sans-Serif;
-    font-size: 4.5rem;
-    text-align: left;
+    font-size: 3rem !important;
+    display: inline-flex
 }
+/* End LandingIndex Page */
 
-
-/* landingSearch Component */
+/* LandingSearch Component */
 .searchRow {
     background-color: white;
     position: initial;
@@ -53,7 +53,6 @@ h1 {
     padding-right: 20px;
 }
 
-
 .form-control:focus {
     border-color: inherit;
     -webkit-box-shadow: none;
@@ -70,6 +69,7 @@ h1 {
     position: absolute;
     margin-right: 20px;
 }
+/* End LandingSearch Component */
 
 /* LandingSearchModal */
 #closeBtnImg {
@@ -86,14 +86,15 @@ h1 {
     margin-left: 15px;
 
 }
+/* End LandingSearchModal */
 
 /* landingAPI Component */
-
 .landingAPIHeaders {
     margin-top: 1em;
     margin-bottom: 1em;
     font-family: 'Anton', sans-serif;
 }
+
 #filterBy {
     font-family: 'Anton', sans-serif;
 }
@@ -102,13 +103,36 @@ h3#filterBy:hover {
     color: green;
 }
 
+.places-Col{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    padding-right: 15px;
+    display: inline-flex
+    
+}
 h4.placeNames {
-    font-weight: 300;
+    font-weight: 250;
+    width: 301px;
     color: black;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+     
 }
+
+.placeImgs{
+    border: 1px solid black;
+    max-width: 100%;
+    height: 65%;
+}
+
+img.placeImgs:hover{
+    opacity: 0.3;
+    background-clip: padding-box;
+}
+
+/* End landingAPI Component */
 
 /* landingFilterModal */
 .modal-body{
@@ -125,7 +149,7 @@ h4.placeNames {
 .filterIcons:after, .filterIcons:before {
     color: rgb(0, 0, 139);
 }
-
+/* End landingFilterModal */
 
 /* fixed footer Component*/
 .footer-home {
@@ -186,3 +210,4 @@ h4.placeNames {
 .home-text   {
     padding-right: 5px;
 }
+/* End fixed footer Component*/

@@ -21,7 +21,6 @@ function LandingSearch() {
   const addToLocalStorage = () => {
     const currentLocalStorage = [...placeList, searchPlace]
     setPlaceList(currentLocalStorage(localStorage.getItem("placelist").split(",")));
-    console.log(placeList)
     localStorage.setItem("placeList", JSON.stringify(currentLocalStorage))
   }
 
@@ -29,7 +28,8 @@ function LandingSearch() {
       <div>
         <div className="searchRow">
           <div>
-            <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() => {modalToggle(); addToLocalStorage()}} />
+            <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() => 
+              {modalToggle(); addToLocalStorage()}} />
           </div>
           <div className={"search-input-text"}>
             <Input
