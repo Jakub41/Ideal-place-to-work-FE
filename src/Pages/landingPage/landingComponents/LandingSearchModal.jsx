@@ -1,30 +1,31 @@
-import React, { Component } from "react";
-import { Modal, ModalHeader, ModalBody } from 'reactstrap'
+import React, { useState } from "react";
+import { Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap'
 import closeBtn from '../../../icons/close.png'
 import geoLink from '../../../icons/Pin02.png'
 
-class LandingSearchModal extends Component {
-    state = {
-        modalOpen: true
-    }
 
-  render() {
+function LandingSearchModal(props){
+  console.log(props)
+  const [searchPlace, setSearchPlace] = useState("")
+  const [placeList, setPlaceList] = useState(localStorage.getItem("places"))
 
     return (
       <div>
-        <Modal isOpen={this.props.modal}
+        <Modal isOpen={props.modal}
           size="sm"
           aria-labelledby="example-modal-sizes-title-sm">
           <ModalHeader>
-          <img src={closeBtn} id="closeBtnImg" alt="closeBtn" onClick={this.props.handleModal}/>
+          <img src={closeBtn} id="closeBtnImg" alt="closeBtn" onClick={props.modalToggle}/>
             <p>Map It</p>
           <img src={geoLink} id="geoLinkImg" alt="closeBtn"/>
           </ModalHeader>
-          <ModalBody>Recent Searches...</ModalBody>
+          <ModalBody>
+            <Row><Col><h5>Recent Searches...</h5><br />{placeList}</Col></Row>
+          </ModalBody>
         </Modal>
       </div>
     );
-  }
+
 }
 
 export default LandingSearchModal;
