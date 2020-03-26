@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Input, Container, Row, Col} from "reactstrap";
+import { Container, Row } from "reactstrap";
 import Pin from "../../../icons/Pin.png";
 import Star from "../../../icons/Star.png";
 import searchIcon from "../../../icons/Search.png";
