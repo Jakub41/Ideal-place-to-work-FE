@@ -1,0 +1,31 @@
+.comment-icon-container {
+    display: flex;
+    flex: 1 1 auto;
+    width: 30px;
+}
+.coffee-icon {
+    width: 70px;
+    margin-left: 5px;
+    margin-right: 18px;
+}
+
+.comfyPlace-icon {
+    width: 70px;
+}
+.wifi-icon {
+    width: 70px;
+}
+
+.modal-content {
+    border-radius: 30px !important;
+    background: #b7adb4 !important;
+}
+.star-rating-div {
+    border: #dae1d9 2px solid;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.wifi-text {
+    margin-left: 15px;
+
+}

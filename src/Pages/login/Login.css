@@ -1,0 +1,10 @@
+.RML-login-modal-box  {
+    border-radius: 30px;
+
+}
+.RML-login-modal-close {
+    border-radius: 50%;
+    margin: 8px ;
+    padding-bottom: 3px;
+    padding-right: 2px;
+}
