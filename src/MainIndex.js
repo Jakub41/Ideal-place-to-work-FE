@@ -12,7 +12,7 @@ class Main extends Component {
             <Router >
                 <Switch>
                 <Route exact path="/"><LandingPage/></Route>
-                <Route path="/details"><DetailsPageLanding /></Route>
+                <Route path="/details/:id"><DetailsPageLanding /></Route>
                 <Route path="/favs"><FavoritesPageIndex/></Route>
                 </Switch>
                 <Footer/>

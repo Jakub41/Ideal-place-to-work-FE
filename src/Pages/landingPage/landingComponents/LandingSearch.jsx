@@ -7,37 +7,45 @@ import LandingSearchModal from "../landingComponents/LandingSearchModal"
 
 function LandingSearch() {
   const [searchPlace, setSearchPlace] = useState("")
-  const [placeList, setPlaceList] = useState(localStorage.getItem("places".split + ","))
+  const [placeList, setPlaceList] = useState([])
+  // localStorage.getItem("places".split + ",")
   const [modalOpen, setModalOpen] = useState(false)
-  
+
   const modalToggle = () => {
     if(modalOpen === true) {
       setModalOpen(false)
     } else if (modalOpen === false){
-       setModalOpen(true)
+      setModalOpen(true)
     }
   };
 
   const addToLocalStorage = () => {
-    const currentLocalStorage = [...placeList, searchPlace]
-    setPlaceList(currentLocalStorage(localStorage.getItem("placelist").split(",")));
-    localStorage.setItem("placeList", JSON.stringify(currentLocalStorage))
+    const toLocalStorage = [...placeList, searchPlace]
+    setPlaceList([localStorage.getItem("placeList").split(",")]);
+    localStorage.setItem("placeList", toLocalStorage);
+    console.log(localStorage)
   }
 
-    return (
-      <div>
+  const displayLocalStorage = () => {
+    const currentLocalStorage = [...placeList, searchPlace]
+    setPlaceList(JSON.parse(localStorage.getItem("placeList") || "[]"));
+    alert(localStorage.getItem("placeList", currentLocalStorage));
+  }
+
+  return (
+      <div className="search-container">
         <div className="searchRow">
           <div>
-            <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() => 
-              {modalToggle(); addToLocalStorage()}} />
+            <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() =>
+            {modalToggle(); addToLocalStorage(); displayLocalStorage()}} />
           </div>
           <div className={"search-input-text"}>
             <Input
-              id="searchInput"
-              type="text"
-              placeholder="ex. wifi cafe near me"
-              value={searchPlace}
-              onChange={(e) => {setSearchPlace(e.target.value); addToLocalStorage(searchPlace)}} />
+                id="searchInput"
+                type="text"
+                placeholder="ex. wifi cafe near me"
+                value={searchPlace}
+                onChange={(e) => {setSearchPlace(e.target.value)}} />
           </div>
           {/* <div>
             <img src={closeIcon} id="closeIcon" alt="closeIcon" />
@@ -45,7 +53,7 @@ function LandingSearch() {
         </div>
         {modalOpen && <LandingSearchModal modal={modalOpen} modalToggle={modalToggle}/>}
       </div>
-    );
+  );
 
   // filterSearch = event => {
   //   let places = this.state.filteredPlaces;
@@ -63,11 +71,6 @@ function LandingSearch() {
   //     places: this.props.searchContent
   //   });
   // };
-  }
+}
 
 export default LandingSearch;
-
-
-
-
-

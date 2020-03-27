@@ -46,7 +46,7 @@ class LoginModal extends React.Component {
             })
         } else {
             const base64usernameAndPassword = btoa(username + ":" + password);
-            Api.fetch("/api/v1/user/login", 'POST', "", {
+            Api.fetch("/api/v1/auth/login", 'POST', "", {
                 "Authorization": "Basic " + base64usernameAndPassword
             })
                 .then(res => {
@@ -82,7 +82,7 @@ class LoginModal extends React.Component {
             })
         } else {
             const base64usernameAndPassword = btoa(email + ":" + password);
-            Api.fetch("/api/v1/user/register", 'POST', JSON.stringify({
+            Api.fetch("/api/v1/auth/register", 'POST', JSON.stringify({
                 firstname, lastname, username: email,
                 password
             }))
