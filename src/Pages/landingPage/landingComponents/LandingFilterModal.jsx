@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal, ModalHeader, ModalBody, ModalFooter, Row } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import closeIcon from "../../../icons/close.png";
 import cupIcon from "../../../icons/bars01.png";
 import workIcon from "../../../icons/cowos01.png"

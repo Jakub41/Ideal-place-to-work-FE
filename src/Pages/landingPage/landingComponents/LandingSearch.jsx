@@ -21,15 +21,15 @@ function LandingSearch() {
 
   const addToLocalStorage = () => {
     const toLocalStorage = [...placeList, searchPlace]
-    setPlaceList([localStorage.getItem("placelist").split(",")]);
-    localStorage.setItem("placeList", JSON.stringify(toLocalStorage));
-    
+    setPlaceList([localStorage.getItem("placeList").split(",")]);
+    localStorage.setItem("placeList", toLocalStorage);
+    console.log(localStorage)
   }
 
   const displayLocalStorage = () => {
     const currentLocalStorage = [...placeList, searchPlace]
     setPlaceList(JSON.parse(localStorage.getItem("placeList") || "[]"));
-    alert(localStorage.getItem("placelist", JSON.stringify(currentLocalStorage)));
+    alert(localStorage.getItem("placeList", currentLocalStorage));
   }
 
     return (
@@ -37,7 +37,7 @@ function LandingSearch() {
         <div className="searchRow">
           <div>
             <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() => 
-              {modalToggle(); displayLocalStorage()}} />
+              {modalToggle(); addToLocalStorage(); displayLocalStorage()}} />
           </div>
           <div className={"search-input-text"}>
             <Input
@@ -45,7 +45,7 @@ function LandingSearch() {
               type="text"
               placeholder="ex. wifi cafe near me"
               value={searchPlace}
-              onChange={(e) => {setSearchPlace(e.target.value); addToLocalStorage(searchPlace)}} />
+              onChange={(e) => {setSearchPlace(e.target.value)}} />
           </div>
           {/* <div>
             <img src={closeIcon} id="closeIcon" alt="closeIcon" />
