@@ -7,7 +7,8 @@ import LandingSearchModal from "../landingComponents/LandingSearchModal"
 
 function LandingSearch() {
   const [searchPlace, setSearchPlace] = useState("")
-  const [placeList, setPlaceList] = useState(localStorage.getItem("places".split + ","))
+  const [placeList, setPlaceList] = useState([])
+  // localStorage.getItem("places".split + ",")
   const [modalOpen, setModalOpen] = useState(false)
   
   const modalToggle = () => {
@@ -19,9 +20,16 @@ function LandingSearch() {
   };
 
   const addToLocalStorage = () => {
+    const toLocalStorage = [...placeList, searchPlace]
+    setPlaceList([localStorage.getItem("placelist").split(",")]);
+    localStorage.setItem("placeList", JSON.stringify(toLocalStorage));
+    
+  }
+
+  const displayLocalStorage = () => {
     const currentLocalStorage = [...placeList, searchPlace]
-    setPlaceList(currentLocalStorage(localStorage.getItem("placelist").split(",")));
-    localStorage.setItem("placeList", JSON.stringify(currentLocalStorage))
+    setPlaceList(JSON.parse(localStorage.getItem("placeList") || "[]"));
+    alert(localStorage.getItem("placelist", JSON.stringify(currentLocalStorage)));
   }
 
     return (
@@ -29,7 +37,7 @@ function LandingSearch() {
         <div className="searchRow">
           <div>
             <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() => 
-              {modalToggle(); addToLocalStorage()}} />
+              {modalToggle(); displayLocalStorage()}} />
           </div>
           <div className={"search-input-text"}>
             <Input

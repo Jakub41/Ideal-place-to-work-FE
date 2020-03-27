@@ -6,8 +6,7 @@ import geoLink from '../../../icons/Pin02.png'
 
 function LandingSearchModal(props){
   console.log(props)
-  const [searchPlace, setSearchPlace] = useState("")
-  const [placeList, setPlaceList] = useState(localStorage.getItem("places"))
+  const [placeList] = useState(localStorage.getItem("places"))
 
     return (
       

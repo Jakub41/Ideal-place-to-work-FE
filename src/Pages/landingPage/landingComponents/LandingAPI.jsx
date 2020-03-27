@@ -51,7 +51,7 @@ class LandingAPI extends Component {
           {mockData.map((mockData, index) => (
             <Col key={index} flex="lg-3 md-4 xs-12" className="places-Col">
               <h4 className="placeNames">{mockData.name}</h4>
-              <Link to="/details"><img className="placeImgs" src={mockData.img} alt="places"/></Link> 
+              <Link to={"/details/" + mockData.id}><img className="placeImgs" src={mockData.img} alt="places"/></Link> 
               <Col><h5>{mockData.rate}</h5></Col>
             </Col>
             
