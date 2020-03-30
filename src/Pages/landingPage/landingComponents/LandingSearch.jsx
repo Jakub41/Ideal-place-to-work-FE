@@ -32,20 +32,20 @@ function LandingSearch() {
     alert(localStorage.getItem("placeList", currentLocalStorage));
   }
 
-  return (
+    return (
       <div className="search-container">
         <div className="searchRow">
           <div>
-            <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() =>
-            {modalToggle(); addToLocalStorage(); displayLocalStorage()}} />
+            <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() => 
+              {modalToggle(); addToLocalStorage(); displayLocalStorage()}} />
           </div>
           <div className={"search-input-text"}>
             <Input
-                id="searchInput"
-                type="text"
-                placeholder="ex. wifi cafe near me"
-                value={searchPlace}
-                onChange={(e) => {setSearchPlace(e.target.value)}} />
+              id="searchInput"
+              type="text"
+              placeholder="ex. wifi cafe near me"
+              value={searchPlace}
+              onChange={(e) => {setSearchPlace(e.target.value)}} />
           </div>
           {/* <div>
             <img src={closeIcon} id="closeIcon" alt="closeIcon" />

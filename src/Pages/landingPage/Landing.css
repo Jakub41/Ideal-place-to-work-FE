@@ -32,6 +32,10 @@
 /* End LandingIndex Page */
 
 /* LandingSearch Component */
+.search-container{
+    display: flex;
+    flex: 1 0 230px;
+}
 .searchRow {
     background-color: white;
     position: initial;
@@ -109,7 +113,6 @@
 #filterBy {
     margin-top: .5em;
     font-family: 'Anton', sans-serif;
-
 }
 
 h3#filterBy:hover {
@@ -124,8 +127,6 @@ h3#filterBy:hover {
     padding-right: 15px;
     flex-wrap: wrap;
     flex: 1 0 90px;
-
-
 }
 h4.placeNames {
     font-weight: 250;
@@ -140,7 +141,6 @@ h4.placeNames {
 .placeImgs{
     border: 1px solid black;
     max-width: 100%;
-
 }
 
 img.placeImgs:hover{
