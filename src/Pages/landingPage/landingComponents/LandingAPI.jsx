@@ -43,14 +43,13 @@ class LandingAPI extends Component {
     this.setState( {places: placesJson} )
   }
 
-  render() {
-      // console.log(this.state.modalOpen)
-    return (<>
-      <Container >
-        <Row flex="md-4">
-          <Col className="landingAPIHeaders"><h3>Near You</h3></Col><Col><h3 id="filterBy" onClick={this.modalOpen}>Filter By</h3></Col>
-          </Row>
-
+    render() {
+        // console.log(this.state.modalOpen)
+        return (<>
+            <Container >
+                <Row flex="md-4">
+                    <Col className="landingAPIHeaders"><h3>Near You</h3></Col><Col><h3 id="filterBy" onClick={this.modalOpen}>Filter By</h3></Col>
+                </Row>
           <Row>
           {this.state.places && this.state.places.map((places, index) => (
             <Col key={index} className="col-4 places-Col">
@@ -77,7 +76,5 @@ class LandingAPI extends Component {
       </Container>
     </>);
   }
-
 }
-
 export default LandingAPI;

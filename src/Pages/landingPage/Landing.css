@@ -1,22 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 
-/* LandingIndex Page */
-.cover-image {
-    background-size: contain;
-    background-image: url("../../images/shutterstock_610938071.jpg");
-    background-repeat: no-repeat;
-    width: 100vw;
-    background-position: 0% 50%;
+.flex-box {
+    display: flex;
+    width: 100%;
 }
 
-h1 {
-    padding-top: 10%;
-    padding-left: 25%;
+.flex-row {
+    flex: 1 1 100%;
+    position: relative;
+}
+
+/* LandingIndex Page */
+.cover-image-bg {
+    background-size: cover;
+    background-image: url("../../images/shutterstock_610938071.jpg");
+    background-repeat: no-repeat;
+    height: 100vh;
+    /*width: 100vw;*/
+
+}
+
+.landing-page-title {
+    text-shadow: 1px 1px black;
     position: absolute;
-    width: 100%;
+    top: 177px;
+    left: 370px;
     color: white;
-    font: bold 24px/45px Helvetica, Sans-Serif;
-    font-size: 3rem !important;
+    font: bold 3rem Helvetica, Sans-Serif;
     display: inline-flex
 }
 /* End LandingIndex Page */
@@ -53,7 +63,7 @@ h1 {
     margin-left: 25px;
     text-align: left;
     width: 430px;
-    border: 0px transparent; 
+    border: 0px transparent;
 }
 
 .form-control:focus {
@@ -103,7 +113,6 @@ h1 {
 #filterBy {
     margin-top: .5em;
     font-family: 'Anton', sans-serif;
-    
 }
 
 h3#filterBy:hover {
@@ -118,8 +127,6 @@ h3#filterBy:hover {
     padding-right: 15px;
     flex-wrap: wrap;
     flex: 1 0 90px;
-    
-    
 }
 h4.placeNames {
     font-weight: 250;
@@ -128,13 +135,12 @@ h4.placeNames {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-     
+
 }
 
 .placeImgs{
     border: 1px solid black;
     max-width: 100%;
-   
 }
 
 img.placeImgs:hover{

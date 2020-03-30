@@ -1,9 +1,16 @@
-.cover-image {
-    background-size: contain;
+.cover-image-details {
+    background-size: cover;
     background-image: url("../../images/ban-ghe-cafe-42.jpg");
     background-repeat: no-repeat;
+    height: 100vh;
 }
 
+.location-close-icon {
+    position: absolute;
+    width: 125px;
+    right: 0;
+    margin: 70px;
+}
 .location-pin-icon {
     width: 40px;
     padding-bottom: 5px;
@@ -67,7 +74,6 @@ h2 {
     margin-bottom: 25px;
     text-align: justify;
 }
-
 .row-details-rate-place {
     display: flex;
     flex: 1 1 auto;
@@ -77,16 +83,5 @@ h2 {
     padding: 10px;
 }
 
-.location-close-icon {
-    position: absolute;
-    width: 125px;
-    right: 0;
-    margin: 70px;
-
-}
-.rate-place a:hover {
 
 
-
-
-}

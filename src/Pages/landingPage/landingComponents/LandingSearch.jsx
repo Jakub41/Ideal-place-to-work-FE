@@ -10,12 +10,12 @@ function LandingSearch() {
   const [placeList, setPlaceList] = useState([])
   // localStorage.getItem("places".split + ",")
   const [modalOpen, setModalOpen] = useState(false)
-  
+
   const modalToggle = () => {
     if(modalOpen === true) {
       setModalOpen(false)
     } else if (modalOpen === false){
-       setModalOpen(true)
+      setModalOpen(true)
     }
   };
 
@@ -53,7 +53,7 @@ function LandingSearch() {
         </div>
         {modalOpen && <LandingSearchModal modal={modalOpen} modalToggle={modalToggle}/>}
       </div>
-    );
+  );
 
   // filterSearch = event => {
   //   let places = this.state.filteredPlaces;
@@ -71,11 +71,6 @@ function LandingSearch() {
   //     places: this.props.searchContent
   //   });
   // };
-  }
+}
 
 export default LandingSearch;
-
-
-
-
-

@@ -8,18 +8,41 @@ import {Link} from "react-router-dom";
 import CommentForm from "../../rating& review/reviewComponents/RatingStars";
 import ReviewModal from "../../rating& review/reviewComponents/ReviewModal";
 import UserReview from "../../rating& review/reviewComponents/UserReview";
+import { withRouter } from "react-router";
+import {connect} from "react-redux";
+import Api from "../../../Api"
+import "../Details.css";
+const mapStateToProps = state => state;
+const mapDispatchToProps = dispatch => ({
+    // loadProfiles: (user) => dispatch(loadProfile(user))
+});
 
 
 class DetailsPageLanding extends Component {
+    state = {
+        place : null
+    };
+
+    componentDidMount() {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+           const id = this.props.match.params.id;
+            Api.fetch("/api/v1/places/" + id)
+                .then(res => {
+                    console.log(res);
+                })
+        }
+    }
+
+
+
     render() {
         return (
             <>
-                <Container fluid>
+                <div className={'flex-box cover-image-details'}>
                     <Link to="/">
                         <img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
-                    <Row className='cover-image' src={'image'} fluid style={{height: "150vh"}}>
-                    </Row>
-                </Container>
+
+                </div>
                 <div className="container">
                     <div className="coffee-point">
                         <div className="row-details">
@@ -62,4 +85,4 @@ class DetailsPageLanding extends Component {
     }
 }
 
-export default DetailsPageLanding;
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(DetailsPageLanding));

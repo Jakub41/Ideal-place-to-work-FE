@@ -1,23 +1,18 @@
+import Api from "../../Api";
+
 export default class CRUD {
-    username = "user13";
-    password = "6c#k#ANpA&k^s3t2";
-    auth = btoa(this.username + ":" + this.password);
-    headers = {
-        Authorization: "Basic " + this.auth,
-        "Content-Type": "application/json"
-    };
 
     get(id) {
-        return fetch(
-            "https://strive-school-testing-apis.herokuapp.com/api/comments/" + id,
+        return Api.fetch(
+            "/api/v1/reviewForPlace/" + id,
             {
                 headers: this.headers
             }
         ).then(response => response.json());
     }
-    post(data) {
-        return fetch(
-            "https://strive-school-testing-apis.herokuapp.com/api/comments",
+    post(data,id) {
+        return Api.fetch(
+            "/api/v1/reviews/" + id,
             {
                 headers: this.headers,
                 method: "POST",
@@ -26,8 +21,8 @@ export default class CRUD {
         ).then(response => response.json());
     }
     put(id, data) {
-        return fetch(
-            "https://strive-school-testing-apis.herokuapp.com/api/comments/" + id,
+        return Api.fetch(
+            "/api/v1/reviews/" + id,
             {
                 headers: this.headers,
                 method: "PUT",
@@ -35,9 +30,9 @@ export default class CRUD {
             }
         ).then(response => response.json());
     }
-    delete(id) {
-        return fetch(
-            "https://strive-school-testing-apis.herokuapp.com/api/comments/" + id,
+    delete(id,placeId) {
+        return Api.fetch(
+            "/api/v1/reviews/" + id + "/" + placeId,
             {
                 method: "DELETE",
                 headers: this.headers
