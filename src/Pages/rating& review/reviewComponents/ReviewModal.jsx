@@ -19,13 +19,13 @@ class CommentModal extends React.Component {
 
     submit = (e) => {
         if (this.state.comment._id) {
-            Api.fetch("/posts/" + this.props.postId, "PUT", JSON.stringify(this.state.comment)).then(res => {
+            Api.fetch("/api/v1/reviews/:reviewId" + this.props.placeId, "PATCH", JSON.stringify(this.state.comment)).then(res => {
                 console.log("edit", res);
                 this.props.refresh();
             });
 
         } else {
-            Api.fetch("/posts/" + this.props.postId + "/comment", "POST", JSON.stringify(this.state.comment)).then(res => {
+            Api.fetch("/api/v1/reviews/:placeId" + this.props.placeId, "POST", JSON.stringify(this.state.comment)).then(res => {
                 console.log("inserted", res);
                 this.props.refresh()
             });
@@ -73,7 +73,7 @@ class CommentModal extends React.Component {
                                         <Label for='startDate'>Write your comment</Label>
                                         <div>
                                             <div className="star-rating-div">
-                                                <RatingStars/>
+                                                <RatingStars placeId={this.props.placeId}/>
                                             </div>
 
                                                 <div className="comment-icon-container">

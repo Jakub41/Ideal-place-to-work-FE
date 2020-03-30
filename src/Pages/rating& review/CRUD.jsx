@@ -5,6 +5,7 @@ export default class CRUD {
     get(id) {
         return Api.fetch(
             "/api/v1/reviewForPlace/" + id,
+            "GET",
             {
                 headers: this.headers
             }

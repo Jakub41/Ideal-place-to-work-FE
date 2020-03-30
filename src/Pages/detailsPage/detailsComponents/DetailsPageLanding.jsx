@@ -10,8 +10,10 @@ import ReviewModal from "../../rating& review/reviewComponents/ReviewModal";
 import UserReview from "../../rating& review/reviewComponents/UserReview";
 import { withRouter } from "react-router";
 import {connect} from "react-redux";
+import { UncontrolledCarousel } from 'reactstrap';
 import Api from "../../../Api"
 import "../Details.css";
+import DetailPageCarousel from "./DetailPageCarousel";
 const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
     // loadProfiles: (user) => dispatch(loadProfile(user))
@@ -23,63 +25,48 @@ class DetailsPageLanding extends Component {
         place : null
     };
 
-    componentDidMount() {
+    componentDidMount = async () => {
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
-           const id = this.props.match.params.id;
-            Api.fetch("/api/v1/places/" + id)
-                .then(res => {
-                    console.log(res);
-                })
+            const id = this.props.match.params.id;
+            const place = await Api.fetch("/places/" + id);
+            console.log(place);
+            this.setState({
+                place: place
+            })
         }
-    }
+    };
 
 
 
     render() {
         return (
             <>
-                <div className={'flex-box cover-image-details'}>
-                    <Link to="/">
-                        <img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
-
+                {this.state.place && <> <div className={'flex-box cover-image-details'}>
+                    <DetailPageCarousel place={this.state.place}/>
+                    <Link to="/"><img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
                 </div>
                 <div className="container">
                     <div className="coffee-point">
-                        <div className="row-details">
-                            <h2>Coffee Point</h2>
-                        </div>
+                    <div className="row-details">
+                    <h2>Coffee Point</h2>
+                    </div>
                     </div>
                     <div className="row-details">
-                        <img className="location-pin-icon" src={Pin} alt="Home"/>
-                        <h4>Location</h4>
-                    </div>
-                    <div>
-                        <p className="details-para">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer
-                            took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only
-                            five
-                            centuries, but also the leap into electronic typesetting, <br/> remaining essentially
-                            unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem
-                            Ipsum
-                            passages,<br/> and more recently with desktop publishing software like Aldus PageMaker
-                            including
-                            versions of Lorem Ipsum.</p>
+                    <img className="location-pin-icon" src={Pin} alt="Home"/>
+                    <h4>{this.state.place.Location}</h4>
                     </div>
                     <div className="row-details-rate-place">
-                        <div className="rating-container"><img className="rating-star-icon" src={Star} alt="rating"/>
-                        </div>
-                        <div>
-                            <ReviewModal/>
-                        </div>
-                        <div>
-                            <UserReview/>
-                        </div>
+                    <div className="rating-container"><img className="rating-star-icon" src={Star} alt="rating"/>
+                    </div>
+                    <div>
+                    <ReviewModal placeId={this.props.match.params.id}/>
+                    </div>
+                    <div>
+                    <UserReview placeId={this.props.match.params.id} />
+                    </div>
                     </div>
 
-                </div>
+                    </div> </>}
             </>
         );
     }

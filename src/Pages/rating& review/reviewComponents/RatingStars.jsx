@@ -47,7 +47,8 @@ export default class CommentForm extends Component {
     };
 
     refreshData() {
-        this.crud.get(this.props.movie).then(res => {
+        console.log(this.props.placeId);
+        this.crud.get(this.props.placeId).then(res => {
             let avgRate = 0;
             if (res) {
                 res.forEach(c => (avgRate += c.rate));

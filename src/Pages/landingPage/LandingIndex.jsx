@@ -21,7 +21,7 @@ class LandingPage extends Component {
                         <h1 className={'landing-page-title'}>
                             Your next
                             <br/> perfect place <br/>
-                            to work
+                            to work.
                         </h1>
                     </div>
                 </div>

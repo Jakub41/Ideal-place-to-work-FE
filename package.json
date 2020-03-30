@@ -20,7 +20,8 @@
     "react-tooltip": "^4.1.2",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
-    "rxjs": "latest"
+    "rxjs": "latest",
+    "react-router": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
