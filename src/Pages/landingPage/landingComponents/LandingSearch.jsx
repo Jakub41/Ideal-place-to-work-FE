@@ -32,6 +32,27 @@ function LandingSearch() {
     alert(localStorage.getItem("placeList", currentLocalStorage));
   }
 
+  // filterSearch = (event) => {
+  //   let searchPlace = this.state.filteredPlaces;
+  //   searchPlace = searchPlace.filter(place => {
+  //     return (
+  //       searchPlace.toLowerCase().search(event.target.value.toLowerCase()) !== -1
+  //     );
+  //   });
+  //   setSearchPlace({ filteredPlaces });
+  // };
+
+  // componentWillMount = () => {
+  //   this.setState({
+  //     filteredPlaces: this.props.searchContent,
+  //     places: this.props.searchContent
+  //   });
+  // };
+
+  // clearSearchItems = () => {
+
+  // }
+
     return (
       <div className="search-container">
         <div className="searchRow">
@@ -48,29 +69,13 @@ function LandingSearch() {
               onChange={(e) => {setSearchPlace(e.target.value)}} />
           </div>
           {/* <div>
-            <img src={closeIcon} id="closeIcon" alt="closeIcon" />
+            <img src={closeIcon} id="closeIcon" alt="closeIcon" onClick={clearSearchItems}/>
           </div> */}
         </div>
         {modalOpen && <LandingSearchModal modal={modalOpen} modalToggle={modalToggle}/>}
       </div>
   );
-
-  // filterSearch = event => {
-  //   let places = this.state.filteredPlaces;
-  //   places = places.filter(place => {
-  //     return (
-  //       place.toLowerCase().search(event.target.value.toLowerCase()) !== -1
-  //     );
-  //   });
-  //   this.setState({ places: places });
-  // };
-
-  // componentWillMount = () => {
-  //   this.setState({
-  //     filteredPlaces: this.props.searchContent,
-  //     places: this.props.searchContent
-  //   });
-  // };
+  
 }
 
 export default LandingSearch;
