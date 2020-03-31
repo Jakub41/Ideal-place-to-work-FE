@@ -11,18 +11,19 @@
     /* justify-content: space-between;
     align-items: center; */
     margin-bottom: 25px;
-    flex-wrap: wrap;
     flex-direction: column;
 }
 .card-body{
     flex: 1;
     order: 1;
+    flex-wrap: wrap;
 }
 
 .card-title{
     flex: 1;
 }
 
-.click-to-unlike{
+#like-dislike-btn{
     flex: 1;
+    align-self: end;
 }

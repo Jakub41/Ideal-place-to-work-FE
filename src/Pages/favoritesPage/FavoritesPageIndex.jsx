@@ -58,7 +58,7 @@ class FavoritesPageIndex extends Component {
         <Row>
           {this.state.favedPlaces.length >= 1 &&
             this.state.favedPlaces.map((favedPlaces, i) => (
-              <Col md="4">
+              <Col xs="12" md="6" lg="4">
                 <Card className="divCard" style={{ marginBottom: "20px" }}>
                   <CardImg
                     id="cardImg"
