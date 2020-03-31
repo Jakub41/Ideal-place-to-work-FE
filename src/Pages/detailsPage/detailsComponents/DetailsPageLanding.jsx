@@ -3,7 +3,7 @@ import { Container, Row } from "reactstrap";
 import Pin from "../../../icons/Pin.png";
 import Star from "../../../icons/Star.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons"
+import { faHeart, faHeartBroken} from "@fortawesome/free-solid-svg-icons"
 import searchIcon from "../../../icons/Search.png";
 import closeIcon from "../../../icons/close.png";
 import {Link} from "react-router-dom";
@@ -41,7 +41,7 @@ class DetailsPageLanding extends Component {
         }
         await Api.fetch(`/places/handlefavourites/${this.props.match.params.id}`, "POST", '', 
         {"Authorization": "Bearer " + localStorage.getItem("token")})
-    }
+    };
 
     componentDidMount = async () => {
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
@@ -71,7 +71,9 @@ class DetailsPageLanding extends Component {
                     <div className="row-details">
                     <img className="location-pin-icon" src={Pin} alt="Home"/>
                     <h4>{this.state.place.Location}</h4>
-                    <div><FontAwesomeIcon icon={this.state.liked ? faThumbsUp : faThumbsDown} onClick={this.toggleLike}/></div>
+                    <div className="click-to-like"><FontAwesomeIcon id="like-disklike-btn" 
+                    icon={this.state.liked ? faHeart : faHeartBroken} 
+                    onClick={this.toggleLike}/><h5>Click to Like</h5></div>
                     </div>
                     <div className="row-details-rate-place">
                     <div className="rating-container">
