@@ -8,8 +8,11 @@ class FavoritesPageIndex extends Component {
     }
 
     componentDidMount = async () => {
-        const user = await Api.fetch("/api/v1/places/users/me", "GET", '', 
-        {"Authorization": "Bearer " + localStorage.getItem("userBase64")})
+        const token = localStorage.getItem("token")
+        console.log(token)
+        const user = await Api.fetch("/api/v1/users/me", "GET", '', 
+        {"Authorization": "Bearer " + localStorage.getItem("token")})
+        console.log(user)
         this.setState({favedPlaces: user.favouritePlaces})
     }
 

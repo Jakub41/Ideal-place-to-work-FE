@@ -54,6 +54,7 @@ class LoginModal extends React.Component {
                     if (res.accessToken) {
                         this.onLoginSuccess('form');
                         localStorage.setItem("userBase64", base64usernameAndPassword);
+                        localStorage.setItem("token", res.accessToken);
                         this.props.setUserToken(base64usernameAndPassword);
                         // TODO: redirect to home
                     }
