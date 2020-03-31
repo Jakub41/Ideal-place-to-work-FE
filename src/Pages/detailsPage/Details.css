@@ -25,6 +25,20 @@ h4 {
     padding-top: 5px;
     color: darkgrey;
 }
+
+.click-to-like{
+    display: flex;
+}
+
+#like-disklike-btn{
+    width: 167px;
+    height: 40px; 
+}
+
+h5{
+    padding-left: 25px;
+}
+
 h2 {
     font-size: xx-large;
     padding-bottom: 15px;

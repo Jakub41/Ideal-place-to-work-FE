@@ -59,7 +59,6 @@ class LandingAPI extends Component {
               alt="places"/></Link> 
               <Col><h5>{places.RateAverage}</h5></Col>
             </Col>
-            
           ))}
           
            </Row>

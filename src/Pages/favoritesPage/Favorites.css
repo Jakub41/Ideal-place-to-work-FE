@@ -1,0 +1,28 @@
+
+#cardImg{
+    height: 300px;
+    object-fit: cover;
+}
+
+#cardbod{
+    display: flex;
+    min-height: 1px;
+    padding: 1.25rem;
+    /* justify-content: space-between;
+    align-items: center; */
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.card-body{
+    flex: 1;
+    order: 1;
+}
+
+.card-title{
+    flex: 1;
+}
+
+.click-to-unlike{
+    flex: 1;
+}
