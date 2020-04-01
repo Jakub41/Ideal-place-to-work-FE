@@ -3,7 +3,7 @@ import { Container, Row } from "reactstrap";
 import Pin from "../../../icons/Pin.png";
 import Star from "../../../icons/Star.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faHeartBroken} from "@fortawesome/free-solid-svg-icons"
+import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import searchIcon from "../../../icons/Search.png";
 import closeIcon from "../../../icons/close.png";
 import {Link} from "react-router-dom";
@@ -26,7 +26,20 @@ const mapDispatchToProps = dispatch => ({
 class DetailsPageLanding extends Component {
     state = {
         place : null,
-        liked: false
+        liked: false,
+        rotate180: false
+    };
+
+    toggleRotation = async () => {
+        if(this.state.rotate180 === false) {
+            this.setState({
+                rotate180: true
+            })
+        } else if(this.state.rotate180 === true){
+            this.setState({
+                rotate180: false
+            })
+        }
     };
 
     toggleLike = async () => {
@@ -71,9 +84,15 @@ class DetailsPageLanding extends Component {
                     <div className="row-details">
                     <img className="location-pin-icon" src={Pin} alt="Home"/>
                     <h4>{this.state.place.Location}</h4>
-                    <div className="click-to-like"><FontAwesomeIcon id="like-disklike-btn" 
-                    icon={this.state.liked ? faHeart : faHeartBroken} 
-                    onClick={this.toggleLike}/><h5>Click to Like</h5></div>
+
+                    <div className="click-to-like" style={{fontSize: "40px"}}>
+                        <FontAwesomeIcon 
+                        className={this.state.rotate180 ? "dislike-btn" : "like-btn"}
+                        icon={ faHeart } 
+                        onClick={() => {this.toggleLike(); this.toggleRotation()}}/>
+                    </div>
+                    
+
                     </div>
                     <div className="row-details-rate-place">
                     <div className="rating-container">

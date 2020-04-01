@@ -24,16 +24,32 @@
 h4 {
     padding-top: 5px;
     color: darkgrey;
+    flex: 1;
+}
+
+.row-details{
+    display: flex;
+    justify-content: space-between;
 }
 
 .click-to-like{
     display: flex;
+    align-self: end;
+    
 }
 
-#like-disklike-btn{
-    width: 167px;
-    height: 40px; 
+.like-btn{
+    
+    cursor: pointer;
+    transform: rotate(180deg);
+    transition: all 0.75s 0.25s  
 }
+
+.dislike-btn{ 
+    cursor: pointer;
+   
+}
+
 
 h5{
     padding-left: 25px;
