@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container, Row } from "reactstrap";
+import {Container, Row} from "reactstrap";
 import Pin from "../../../icons/Pin.png";
 import Star from "../../../icons/Star.png";
 import searchIcon from "../../../icons/Search.png";
@@ -8,12 +8,13 @@ import {Link} from "react-router-dom";
 import CommentForm from "../../rating& review/reviewComponents/RatingStars";
 import ReviewModal from "../../rating& review/reviewComponents/ReviewModal";
 import UserReview from "../../rating& review/reviewComponents/UserReview";
-import { withRouter } from "react-router";
+import {withRouter} from "react-router";
 import {connect} from "react-redux";
-import { UncontrolledCarousel } from 'reactstrap';
+import {UncontrolledCarousel} from 'reactstrap';
 import Api from "../../../Api"
 import "../Details.css";
 import DetailPageCarousel from "./DetailPageCarousel";
+
 const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => ({
     // loadProfiles: (user) => dispatch(loadProfile(user))
@@ -22,7 +23,7 @@ const mapDispatchToProps = dispatch => ({
 
 class DetailsPageLanding extends Component {
     state = {
-        place : null
+        place: null
     };
 
     componentDidMount = async () => {
@@ -37,36 +38,39 @@ class DetailsPageLanding extends Component {
     };
 
 
-
     render() {
         return (
             <>
-                {this.state.place && <> <div className={'flex-box cover-image-details'}>
-                    <DetailPageCarousel place={this.state.place}/>
-                    <Link to="/"><img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
-                </div>
-                <div className="container">
-                    <div className="coffee-point">
-                    <div className="row-details">
-                    <h2>Coffee Point</h2>
+                {this.state.place && <>
+                    <div className={'flex-box cover-image-details'}>
+                        <DetailPageCarousel place={this.state.place}/>
+                        <Link to="/"><img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
                     </div>
-                    </div>
-                    <div className="row-details">
-                    <img className="location-pin-icon" src={Pin} alt="Home"/>
-                    <h4>{this.state.place.Location}</h4>
-                    </div>
-                    <div className="row-details-rate-place">
-                    <div className="rating-container"><img className="rating-star-icon" src={Star} alt="rating"/>
-                    </div>
-                    <div>
-                    <ReviewModal placeId={this.props.match.params.id}/>
-                    </div>
-                    <div>
-                    <UserReview placeId={this.props.match.params.id} />
-                    </div>
-                    </div>
+                    <div className="container">
+                        <div className="coffee-point">
+                            <div className="row-details">
+                                <h2>Coffee Point</h2>
+                            </div>
+                        </div>
+                        <div className="row-details">
+                            <img className="location-pin-icon" src={Pin} alt="Home"/>
+                            <h4>{this.state.place.Location}</h4>
+                        </div>
+                        <div className="row-details-rate-place">
+                            <div className="rating-container"><img className="rating-star-icon" src={Star}
+                                                                   alt="rating"/>
+                            </div>
+                            <div>
+                                <ReviewModal placeId={this.props.match.params.id}/>
+                            </div>
 
-                    </div> </>}
+                        </div>
+                        <div>
+                            <UserReview placeId={this.props.match.params.id}/>
+                        </div>
+
+                    </div>
+                </>}
             </>
         );
     }

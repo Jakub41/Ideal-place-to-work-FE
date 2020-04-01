@@ -59,7 +59,7 @@ export default class CommentForm extends Component {
     }
 
     componentDidMount = async () => {
-        setInterval(() => this.refreshData(), 10000);
+        // setInterval(() => this.refreshData(), 10000);
         this.refreshData();
     }
 

@@ -19,15 +19,21 @@ class CommentModal extends React.Component {
 
     submit = (e) => {
         if (this.state.comment._id) {
-            Api.fetch("/api/v1/reviews/:reviewId" + this.props.placeId, "PATCH", JSON.stringify(this.state.comment)).then(res => {
+            Api.fetch("/reviews/:reviewId" + this.props.placeId, "PATCH", JSON.stringify(this.state.comment),
+                {"Authorization": "Bearer " + localStorage.getItem("access_token")}
+        ).then(res => {
+
                 console.log("edit", res);
-                this.props.refresh();
+                // this.props.refresh();
             });
 
         } else {
-            Api.fetch("/api/v1/reviews/:placeId" + this.props.placeId, "POST", JSON.stringify(this.state.comment)).then(res => {
+            Api.fetch("/reviews/" + this.props.placeId,
+                "POST",
+                JSON.stringify(this.state.comment),
+                {"Authorization": "Bearer " + localStorage.getItem("access_token")}).then(res => {
                 console.log("inserted", res);
-                this.props.refresh()
+                // this.props.refresh()
             });
         }
         this.setState({_id: undefined});
@@ -91,9 +97,9 @@ class CommentModal extends React.Component {
                                                     </div>
                                                 </div>
                                         </div>
-                                        <Input type="textarea" onChange={this.updateForm} name="comment" id="comment"
+                                        <Input type="textarea" onChange={this.updateForm} name="Text" id="Text"
                                                cols="80"
-                                               rows="10" value={this.state.comment.comment}></Input>
+                                               rows="10" value={this.state.comment.Text}></Input>
                                     </FormGroup>
                                 </Col>
                             </Row>

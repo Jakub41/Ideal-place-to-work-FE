@@ -46,14 +46,14 @@ class LoginModal extends React.Component {
             })
         } else {
             const base64usernameAndPassword = btoa(username + ":" + password);
-            Api.fetch("/api/v1/auth/login", 'POST', "", {
+            Api.fetch("/auth/login", 'POST', "", {
                 "Authorization": "Basic " + base64usernameAndPassword
             })
                 .then(res => {
                     console.log(res);
                     if (res.accessToken) {
                         this.onLoginSuccess('form');
-                        localStorage.setItem("userBase64", base64usernameAndPassword);
+                        localStorage.setItem("access_token", res.accessToken);
                         this.props.setUserToken(base64usernameAndPassword);
                         // TODO: redirect to home
                     }
@@ -82,7 +82,7 @@ class LoginModal extends React.Component {
             })
         } else {
             const base64usernameAndPassword = btoa(email + ":" + password);
-            Api.fetch("/api/v1/auth/register", 'POST', JSON.stringify({
+            Api.fetch("/auth/register", 'POST', JSON.stringify({
                 firstname, lastname, username: email,
                 password
             }))

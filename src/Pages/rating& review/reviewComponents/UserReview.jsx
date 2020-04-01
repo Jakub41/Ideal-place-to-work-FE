@@ -39,10 +39,20 @@ class UserReview extends Component {
         //     avgRate = avgRate / res.length;
         //     this.setState({comments: res, avgRate});
         // });
+        if (this.props.placeId) {
+            Api.fetch(
+                "/reviewsForPlace/" + this.props.placeId,
+                "GET").then(res => this.setState({comments: res}));
+        }
     }
 
     componentDidMount() {
+        this.interval = setInterval(() => this.refreshData(), 10000);
         this.refreshData();
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
     }
 
     onSubmit(e) {
@@ -103,20 +113,26 @@ class UserReview extends Component {
     render() {
         return (
             <div style={{'margin-top': '10px'}}>
+                <div style={{display: 'flex', flexWrap: 'wrap'}}>
                 {this.state.comments &&
                 this.state.comments.map(comment => (
-                    <div key={comment._id} style={{'border': 'solid 1px black', 'border-radius': '5px'}}>
-                        <div>
-                            {comment.author} commented {moment(comment.createdAt).fromNow()}
-                        </div>
 
-                        <div>{comment.comment}</div>
+                    <div style={{'border': 'solid 1px black', 'border-radius': '5px', flex: "0 1 49%", "margin": '5px'}}>
+                    <div key={comment._id} style={{'display': 'flex'}}>
+                        <div><img style={{width: '50px'}} src={comment.UserId?.picture} alt=""/></div>
+                        <div>
+                            {comment.UserId?.firstname} {comment.UserId?.lastname} commented {moment(comment.createdAt).fromNow()}
+                        </div>
+                    </div>
+                    <div>
+                        <div>{comment.Text}</div>
                         <button className={'btn btn-sm'} name={comment._id} onClick={this.editComment}><i
                             className="material-icons">edit</i></button>
                         <button className={'btn btn-sm'} name={comment._id} onClick={this.deleteComment}><i
                             className="material-icons">delete</i></button>
-                    </div>))
+                    </div></div>))
                 }
+                </div>
             </div>)
     }
 }
