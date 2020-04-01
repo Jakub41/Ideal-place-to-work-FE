@@ -52,9 +52,11 @@ class FavoritesPageIndex extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h2>Saved</h2>
-        <h4>Here you can find the favorites you starred</h4>
+      <div className="favs-container" d-flex>
+          <Col className="headings-txt">
+                <h2>Saved</h2>
+                <h4>Here you can find all of your Favorites</h4>
+          </Col>
         <Row>
           {this.state.favedPlaces.length >= 1 &&
             this.state.favedPlaces.map((favedPlaces, i) => (
@@ -69,9 +71,9 @@ class FavoritesPageIndex extends Component {
                   <CardBody className="card-body">
                     <CardTitle key={i}>{favedPlaces.Name}</CardTitle>
                     <CardText>
-                      <div className="click-to-unlike">
+                      {/* <div>{favedPlaces.Location}</div> */}
+                      <div id="like-disklike-btn">
                         <FontAwesomeIcon
-                          id="like-disklike-btn"
                           icon={faHeart}
                           onClick={() => this.toggleLike(favedPlaces._id)}/>
                       </div>
