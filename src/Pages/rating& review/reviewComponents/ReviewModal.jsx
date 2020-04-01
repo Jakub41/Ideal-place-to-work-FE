@@ -76,7 +76,6 @@ class CommentModal extends React.Component {
                             <Row form>
                                 <Col md={12}>
                                     <FormGroup>
-                                        <Label for='startDate'>Write your comment</Label>
                                         <div>
                                             <div className="star-rating-div">
                                                 <RatingStars placeId={this.props.placeId}/>
@@ -97,6 +96,7 @@ class CommentModal extends React.Component {
                                                     </div>
                                                 </div>
                                         </div>
+                                        <Label for='startDate'>Write your comment</Label>
                                         <Input type="textarea" onChange={this.updateForm} name="Text" id="Text"
                                                cols="80"
                                                rows="10" value={this.state.comment.Text}></Input>

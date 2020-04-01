@@ -18,7 +18,7 @@ export default class CRUD {
     put(id, data) {
         return Api.fetch(
             "/reviews/" + id,
-            "PUT",
+            "PATCH",
             JSON.stringify(data),
             {"Authorization": "Bearer " + localStorage.getItem("access_token")},
         ).then(response => response.json());

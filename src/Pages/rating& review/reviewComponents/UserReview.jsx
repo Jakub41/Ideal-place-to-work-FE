@@ -13,10 +13,10 @@ class UserReview extends Component {
             message: ""
         }
     };
-    // deleteComment = this.deleteComment.bind(this);
+    deleteComment = this.deleteComment.bind(this);
     // handleFieldChange = this.handleFieldChange.bind(this);
     // onSubmit = this.onSubmit.bind(this);
-    // editComment = this.editComment.bind(this);
+    editComment = this.editComment.bind(this);
 
     handleFieldChange = event => {
         const {value, name} = event.target;
@@ -126,10 +126,10 @@ class UserReview extends Component {
                     </div>
                     <div>
                         <div>{comment.Text}</div>
-                        <button className={'btn btn-sm'} name={comment._id} onClick={this.editComment}><i
-                            className="material-icons">edit</i></button>
-                        <button className={'btn btn-sm'} name={comment._id} onClick={this.deleteComment}><i
-                            className="material-icons">delete</i></button>
+                        {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.editComment}><i*/}
+                        {/*    className="material-icons">edit</i></button>*/}
+                        {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.deleteComment}><i*/}
+                        {/*    className="material-icons">delete</i></button>*/}
                     </div></div>))
                 }
                 </div>
