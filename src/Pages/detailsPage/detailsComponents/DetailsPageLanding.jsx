@@ -101,11 +101,11 @@ class DetailsPageLanding extends Component {
                     <div>
                     <ReviewModal placeId={this.props.match.params.id}/>
                     </div>
-                    <div>
-                    <UserReview placeId={this.props.match.params.id} />
-                    </div>
-                    </div>
 
+                    </div>
+                    <div>
+                        <UserReview placeId={this.props.match.params.id} />
+                    </div>
                     </div> </>}
             </>
         );
