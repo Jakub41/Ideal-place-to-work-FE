@@ -26,10 +26,10 @@ class FavoritesPageIndex extends Component {
   };
 
   fetchFavPlaces = async () => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("access_token");
     console.log(token);
     const user = await Api.fetch("/users/me", "GET", "", {
-      Authorization: "Bearer " + localStorage.getItem("token")
+      Authorization: "Bearer " + localStorage.getItem("access_token")
     });
     console.log(user);
     this.setState({ favedPlaces: user.favouritePlaces });
@@ -46,7 +46,7 @@ class FavoritesPageIndex extends Component {
       });
     }
     await Api.fetch(`/places/handlefavourites/${id}`, "POST", "", {
-      Authorization: "Bearer " + localStorage.getItem("token")
+      Authorization: "Bearer " + localStorage.getItem("access_token")
     });
     this.fetchFavPlaces();
   };

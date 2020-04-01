@@ -53,7 +53,7 @@ class DetailsPageLanding extends Component {
             })
         }
         await Api.fetch(`/places/handlefavourites/${this.props.match.params.id}`, "POST", '',
-        {"Authorization": "Bearer " + localStorage.getItem("token")})
+        {"Authorization": "Bearer " + localStorage.getItem("access_token")})
     };
 
     componentDidMount = async () => {
