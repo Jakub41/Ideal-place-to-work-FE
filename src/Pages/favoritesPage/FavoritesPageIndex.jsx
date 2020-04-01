@@ -1,4 +1,5 @@
 import React, { Component, useReducer } from "react";
+import { Link } from 'react-router-dom'
 import {
   Card,
   CardBody,
@@ -62,11 +63,10 @@ class FavoritesPageIndex extends Component {
             this.state.favedPlaces.map((favedPlaces, i) => (
               <Col xs="12" md="6" lg="4">
                 <Card className="divCard" style={{ marginBottom: "20px" }}>
-                  <CardImg
+                  <Link to={"/details/" + favedPlaces._id}><CardImg
                     id="cardImg"
                     src={favedPlaces.Pictures[0]}
-                    alt="Card image cap"
-                  />
+                    alt="Card image cap"/></Link>
                   <Container id="CardBod">
                   <CardBody className="card-body">
                     <CardTitle key={i}>{favedPlaces.Name}</CardTitle>

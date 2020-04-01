@@ -30,6 +30,7 @@ h4{
 #cardImg{
     height: 240px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .truncate {
