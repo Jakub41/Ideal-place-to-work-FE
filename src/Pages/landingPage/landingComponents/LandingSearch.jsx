@@ -19,22 +19,27 @@ const LandingSearch = (props) => {
   };
 
   useEffect(() => {
-    const places = localStorage.getItem('places');
-    const placesArr = places.split(',')
-    setRecentSearches(placesArr)
+    if(localStorage.getItem('places')) {
+      const places = localStorage.getItem('places');
+      const placesArr = places.split(',')
+      setRecentSearches(placesArr)
+    }
   }, [])
 
   const handleSearch = (e) => {
     if((e.key === 'Enter')) {
       props.toggleLoading()
       const places = [];
-      const placesFromLocalStorage = localStorage.getItem('places');
-      const arrayFromLS = placesFromLocalStorage.split(',')
-      places.push(searchPlace)
-      for(var i = 0; i < arrayFromLS.length - 1; i++) {
-        places.push(arrayFromLS[i])
+      if(localStorage.getItem('places')) {
+        const placesFromLocalStorage = localStorage.getItem('places');
+        const arrayFromLS = placesFromLocalStorage.split(',')
+        places.push(searchPlace)
+        for(var i = 0; i < arrayFromLS.length - 1; i++) {
+          places.push(arrayFromLS[i])
+        }
+      } else {
+        places.push(searchPlace)
       }
-      console.log(places)
       localStorage.setItem('places', places);
       setTimeout(() => {
         props.fetchResults(searchPlace)

@@ -12,7 +12,7 @@ class Main extends Component {
     componentDidMount = async() => {
         const resp = await Api.fetch('/auth/refresh', "POST", "", {"Authorization": "Bearer " + localStorage.getItem('token')})
         console.log(resp)
-        localStorage.setItem('token', resp.accessToken)
+        localStorage.setItem('access_token', resp.accessToken)
     }
     render() {
         return (

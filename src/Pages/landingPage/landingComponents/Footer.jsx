@@ -15,8 +15,8 @@ const Footer = (props) => {
     const toggle = () => setIsOpen(!isOpen);
 
     const fetchUser = async() => {
-        if(localStorage.getItem('token') !== undefined) {
-            const me = await Api.fetch('/users/me', "GET", "", {"Authorization": "Bearer " + localStorage.getItem('token')})
+        if(localStorage.getItem('access_token') !== undefined) {
+            const me = await Api.fetch('/users/me', "GET", "", {"Authorization": "Bearer " + localStorage.getItem('access_token')})
             console.log(me)
             setProfilePic(me.picture)
         } 
@@ -37,7 +37,7 @@ const Footer = (props) => {
                     <img src={Heart} alt="Home"/>
                 </div></Link>
                 {profilePic ?<div> <img onClick={() => {
-                    localStorage.setItem('token', undefined)
+                    localStorage.setItem('access_token', undefined)
                     setProfilePic(undefined)
                 }} className='user-profile-pic' src={profilePic} alt='profile-pic' /> </div> : <div className="footer-icon footer-user">
                     <LoginModal fetchUser={fetchUser} />
