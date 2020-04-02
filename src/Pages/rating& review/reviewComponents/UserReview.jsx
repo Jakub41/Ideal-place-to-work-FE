@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import moment from "moment";
 import Api from "../../../Api";
+import "../UserReview.css"
 
 
 class UserReview extends Component {
@@ -68,28 +69,32 @@ class UserReview extends Component {
             this.crud.put(this.state.comment._id, data).then(r => {
                 console.log(r);
                 this.refreshData();
-                this.setState({ comment: {
+                this.setState({
+                    comment: {
                         rate: "",
                         message: ""
-                    }});
+                    }
+                });
             });
         } else {
             this.crud.post(data).then(r => {
                 console.log(r);
                 this.refreshData();
-                this.setState({ comment: {
+                this.setState({
+                    comment: {
                         rate: "",
                         message: ""
-                    }});
+                    }
+                });
             });
         }
     }
+
     renderError() {
         return this.state.error ? (
             <div className="alert alert-danger">{this.state.error}</div>
         ) : null;
     }
-
 
 
     deleteComment(id) {
@@ -114,26 +119,35 @@ class UserReview extends Component {
         return (
             <div style={{'margin-top': '10px'}}>
                 <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                {this.state.comments &&
-                this.state.comments.map(comment => (
+                    {this.state.comments &&
+                    this.state.comments.map(comment => (
 
-                    <div style={{'border': 'solid 1px black', 'border-radius': '5px', flex: "0 1 49%", "margin": '5px'}}>
-                    <div key={comment._id} style={{'display': 'flex'}}>
-                        <div><img style={{width: '50px'}} src={comment.UserId?.picture} alt=""/></div>
-                        <div>
-                            {comment.UserId?.firstname} {comment.UserId?.lastname} commented {moment(comment.createdAt).fromNow()}
-                        </div>
-                    </div>
-                    <div>
-                        <div>{comment.Text}</div>
-                        {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.editComment}><i*/}
-                        {/*    className="material-icons">edit</i></button>*/}
-                        {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.deleteComment}><i*/}
-                        {/*    className="material-icons">delete</i></button>*/}
-                    </div></div>))
-                }
+                        <div id="plx-card" className="animated bounce" style={{
+                            'border': 'solid 1px black',
+                            'border-radius': '5px',
+                            flex: "0 1 49%",
+                            "margin": '5px'
+                        }}>
+                            <div key={comment._id} className="user-review-header-container" style={{'display': 'flex'}}>
+                                <div><img className="user-review-image"
+                                          src={comment.UserId?.picture} alt=""/></div>
+                                <div className="user-review-username">
+                                    {comment.UserId?.firstname} {comment.UserId?.lastname}
+                                </div>
+                                <div className="created-at">| commented {moment(comment.createdAt).fromNow()}</div>
+                            </div>
+                            <div>
+                                <div className="user-review-text">{comment.Text}</div>
+                                {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.editComment}><i*/}
+                                {/*    className="material-icons">edit</i></button>*/}
+                                {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.deleteComment}><i*/}
+                                {/*    className="material-icons">delete</i></button>*/}
+                            </div>
+                        </div>))
+                    }
                 </div>
             </div>)
     }
 }
+
 export default UserReview;
