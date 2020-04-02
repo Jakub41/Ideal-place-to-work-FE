@@ -55,6 +55,7 @@ class LoginModal extends React.Component {
                         this.onLoginSuccess('form');
                         localStorage.setItem("access_token", res.accessToken);
                         this.props.setUserToken(base64usernameAndPassword);
+                        this.props.fetchUser()
                         // TODO: redirect to home
                     }
                 }).catch((error) => {
@@ -93,6 +94,7 @@ class LoginModal extends React.Component {
                         this.onLoginSuccess('form');
                         localStorage.setItem("userBase64", base64usernameAndPassword);
                         this.props.setUserToken(base64usernameAndPassword);
+                        this.props.fetchUser()
                     }
 
                 }).catch((res) => {
