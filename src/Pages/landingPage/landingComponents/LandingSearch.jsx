@@ -44,6 +44,27 @@ const LandingSearch = (props) => {
     }
   }
 
+  // filterSearch = (event) => {
+  //   let searchPlace = this.state.filteredPlaces;
+  //   searchPlace = searchPlace.filter(place => {
+  //     return (
+  //       searchPlace.toLowerCase().search(event.target.value.toLowerCase()) !== -1
+  //     );
+  //   });
+  //   setSearchPlace({ filteredPlaces });
+  // };
+
+  // componentWillMount = () => {
+  //   this.setState({
+  //     filteredPlaces: this.props.searchContent,
+  //     places: this.props.searchContent
+  //   });
+  // };
+
+  // clearSearchItems = () => {
+
+  // }
+
     return (
       <div className="search-container">
         <div className={searchOpen ? "searchRow-toggled" : "searchRow"}>

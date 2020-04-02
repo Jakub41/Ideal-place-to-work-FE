@@ -1,13 +1,19 @@
 import React, {Component} from 'react';
 import DetailsPageLanding from "./detailsComponents/DetailsPageLanding";
 import "./Details.css";
+import UserReview from "../rating& review/reviewComponents/UserReview";
 
 
 class DetailsPageIndex extends Component {
     render() {
         return (
             <div>
-                <DetailsPageLanding/>
+                <div>
+                    <DetailsPageLanding/>
+                </div>
+                <div>
+                    <UserReview/>
+                </div>
             </div>
         );
     }

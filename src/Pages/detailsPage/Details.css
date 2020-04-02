@@ -14,6 +14,7 @@
     width: 125px;
     right: 0;
     margin: 70px;
+    z-index: 100;
 }
 .location-pin-icon {
     width: 40px;
@@ -24,7 +25,37 @@
 h4 {
     padding-top: 5px;
     color: darkgrey;
+    flex: 1;
 }
+
+.row-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.click-to-like{
+    display: flex;
+    align-self: end;
+    
+}
+
+.like-btn{
+    
+    cursor: pointer;
+    transform: rotate(180deg);
+    transition: all 0.75s 0.25s  
+}
+
+.dislike-btn{ 
+    cursor: pointer;
+   
+}
+
+
+h5{
+    padding-left: 25px;
+}
+
 h2 {
     font-size: xx-large;
     padding-bottom: 15px;

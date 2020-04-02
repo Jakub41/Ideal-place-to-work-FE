@@ -6,6 +6,8 @@ import Footer from "./Pages/landingPage/landingComponents/Footer";
 import DetailsPageLanding from './Pages/detailsPage/DetailsPageIndex';
 import FavoritesPageIndex from './Pages/favoritesPage/FavoritesPageIndex'
 
+
+
 class Main extends Component {
     componentDidMount = async() => {
         const resp = await Api.fetch('/auth/refresh', "POST", "", {"Authorization": "Bearer " + localStorage.getItem('token')})

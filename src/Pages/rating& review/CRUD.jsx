@@ -1,43 +1,34 @@
 import Api from "../../Api";
 
 export default class CRUD {
+    headers = {};
 
     get(id) {
         return Api.fetch(
-            "/api/v1/reviewForPlace/" + id,
-            "GET",
-            {
-                headers: this.headers
-            }
+            "/reviewForPlace/" + id,
+            "GET"
         ).then(response => response.json());
     }
-    post(data,id) {
-        return Api.fetch(
-            "/api/v1/reviews/" + id,
-            {
-                headers: this.headers,
-                method: "POST",
-                body: JSON.stringify(data)
-            }
+
+    post(data, id) {
+        return Api.fetch("/reviews/" + id, "POST", JSON.stringify(data), {"Authorization": "Bearer " + localStorage.getItem("access_token")}
         ).then(response => response.json());
     }
+
     put(id, data) {
         return Api.fetch(
-            "/api/v1/reviews/" + id,
-            {
-                headers: this.headers,
-                method: "PUT",
-                body: JSON.stringify(data)
-            }
+            "/reviews/" + id,
+            "PATCH",
+            JSON.stringify(data),
+            {"Authorization": "Bearer " + localStorage.getItem("access_token")},
         ).then(response => response.json());
     }
-    delete(id,placeId) {
+
+    delete(id, placeId) {
         return Api.fetch(
-            "/api/v1/reviews/" + id + "/" + placeId,
-            {
-                method: "DELETE",
-                headers: this.headers
-            }
+            "/reviews/" + id + "/" + placeId,
+            "DELETE",
+            null, {"Authorization": "Bearer " + localStorage.getItem("access_token")}
         ).then(response => response.json());
     }
 
