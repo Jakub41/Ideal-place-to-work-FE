@@ -27,6 +27,7 @@ class LandingAPI extends Component {
   
 
   render() {
+    console.log(this.props.places)
     return (
       <>
         <Container fluid style={{ padding: "0px 40px" }}>
@@ -103,8 +104,8 @@ class LandingAPI extends Component {
                 style={{padding: '100px 44%'}}
              /></div>}
           <Row>
-            {this.props.places.places &&
-              this.props.places.places.map((place, index) => (
+            {this.props.places &&
+               this.props.places.map((place, index) => (
                 <SingleCardForPlace place={place} key={index} />
               ))}
           </Row>

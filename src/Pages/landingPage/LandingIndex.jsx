@@ -12,7 +12,7 @@ class LandingPage extends Component {
         goodService: false,
         goodWorkingPlace: false,
         goodWifi: false,
-        places: {},
+        places: [],
         loading: false,
         nothingFound: false
     }
@@ -43,11 +43,13 @@ class LandingPage extends Component {
       };
 
     componentDidMount = async() => {
+        console.log("hey")
         setTimeout(async() => {
             this.setState({
                 loading: true
             })
             let places = await Api.fetch("/placesInSpecificCity");
+            console.log(places)
             this.setState({ places: places });
             this.setState({
                 loading: false
