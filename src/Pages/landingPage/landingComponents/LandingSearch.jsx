@@ -2,75 +2,82 @@ import React, { useState } from "react";
 import { Input } from "reactstrap";
 // import closeIcon from "../../../icons/close.png";
 import searchIcon from "../../../icons/Search.png";
-import LandingSearchModal from "../landingComponents/LandingSearchModal"
+import mapIcon from "../../../icons/Pin02.png";
+import closeIcon from "../../../icons/close.png";
+import { useEffect } from "react";
 
 
-function LandingSearch() {
+const LandingSearch = (props) => {
   const [searchPlace, setSearchPlace] = useState("")
-  const [placeList, setPlaceList] = useState([])
+  const [recentSearches, setRecentSearches] = useState([])
   // localStorage.getItem("places".split + ",")
-  const [modalOpen, setModalOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
 
-  const modalToggle = () => {
-    if(modalOpen === true) {
-      setModalOpen(false)
-    } else if (modalOpen === false){
-      setModalOpen(true)
-    }
+  const openSearch = (e) => {
+    setSearchOpen(true)
+    console.log(e.target.value)
   };
 
-  const addToLocalStorage = () => {
-    const toLocalStorage = [...placeList, searchPlace]
-    setPlaceList([localStorage.getItem("placeList").split(",")]);
-    localStorage.setItem("placeList", toLocalStorage);
-    console.log(localStorage)
-  }
+  useEffect(() => {
+    const places = localStorage.getItem('places');
+    const placesArr = places.split(',')
+    setRecentSearches(placesArr)
+  }, [])
 
-  const displayLocalStorage = () => {
-    const currentLocalStorage = [...placeList, searchPlace]
-    setPlaceList(JSON.parse(localStorage.getItem("placeList") || "[]"));
-    alert(localStorage.getItem("placeList", currentLocalStorage));
+  const handleSearch = (e) => {
+    if((e.key === 'Enter')) {
+      props.toggleLoading()
+      const places = [];
+      const placesFromLocalStorage = localStorage.getItem('places');
+      const arrayFromLS = placesFromLocalStorage.split(',')
+      places.push(searchPlace)
+      for(var i = 0; i < arrayFromLS.length - 1; i++) {
+        places.push(arrayFromLS[i])
+      }
+      console.log(places)
+      localStorage.setItem('places', places);
+      setTimeout(() => {
+        props.fetchResults(searchPlace)
+        setSearchOpen(false)
+        props.toggleLoading()
+      }, 500)
+    }
   }
 
     return (
       <div className="search-container">
-        <div className="searchRow">
+        <div className={searchOpen ? "searchRow-toggled" : "searchRow"}>
           <div>
-            <img src={searchIcon} className="searchIcon" alt="searchIcon" onClick={() => 
-              {modalToggle(); addToLocalStorage(); displayLocalStorage()}} />
+            <img src={searchIcon} className={searchOpen ? "searchIcon-toggled" : "searchIcon"} alt="searchIcon" />
           </div>
-          <div className={"search-input-text"}>
+          <div className="search-input-text">
             <Input
-              id="searchInput"
+              id={searchOpen ? 'searchInput-toggled' : "searchInput"}
               type="text"
-              placeholder="ex. wifi cafe near me"
+              placeholder="example: wifi cafe near me"
               value={searchPlace}
-              onChange={(e) => {setSearchPlace(e.target.value)}} />
+              onClick={(e) => openSearch(e)}
+              onKeyPress={handleSearch}
+              onChange={(e) => setSearchPlace(e.target.value)} />
           </div>
-          {/* <div>
-            <img src={closeIcon} id="closeIcon" alt="closeIcon" />
-          </div> */}
+          <div>
+            <img src={closeIcon} onClick={() => setSearchOpen(false)}className={searchOpen ? "close-icon" : "results-map"} alt="searchIcon" />
+          </div>
+          <div className={searchOpen ? "results-map-toggled" : "results-map"}>
+            <div className='map-div-search'>
+              <img src={mapIcon} className="map-icon" alt="searchIcon" />
+              <h3>Show map</h3>
+            </div>
+          </div>
+          {searchOpen && <div className='recent-searches-div'>
+            <h2>Recent Searches</h2>
+            {recentSearches ? recentSearches.map((search, i) => 
+              <h2 style={{paddingLeft: '10px', fontFamily: 'Roboto', fontWeight: '400'}} key={i}>{search}</h2>
+            ) : <h2 style={{paddingLeft: '10px', fontFamily: 'Roboto', fontWeight: '400'}}>No recent searches</h2>}
+          </div>}
         </div>
-        {modalOpen && <LandingSearchModal modal={modalOpen} modalToggle={modalToggle}/>}
       </div>
   );
-
-  // filterSearch = event => {
-  //   let places = this.state.filteredPlaces;
-  //   places = places.filter(place => {
-  //     return (
-  //       place.toLowerCase().search(event.target.value.toLowerCase()) !== -1
-  //     );
-  //   });
-  //   this.setState({ places: places });
-  // };
-
-  // componentWillMount = () => {
-  //   this.setState({
-  //     filteredPlaces: this.props.searchContent,
-  //     places: this.props.searchContent
-  //   });
-  // };
 }
 
 export default LandingSearch;

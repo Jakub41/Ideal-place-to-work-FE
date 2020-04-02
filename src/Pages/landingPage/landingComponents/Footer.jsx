@@ -2,14 +2,29 @@ import React, {useState} from 'react';
 import Home from "../../../icons/Home.png"
 import Heart from "../../../icons/Faves.png"
 import User from "../../../icons/User.png"
+import Api from '../../../Api';
 import LoginModal from "../../login/LoginModal";
 import {Link} from "react-router-dom";
+import { useEffect } from 'react';
 
 
 const Footer = (props) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [profilePic, setProfilePic] = useState("")
 
     const toggle = () => setIsOpen(!isOpen);
+
+    const fetchUser = async() => {
+        if(localStorage.getItem('token') !== undefined) {
+            const me = await Api.fetch('/users/me', "GET", "", {"Authorization": "Bearer " + localStorage.getItem('token')})
+            console.log(me)
+            setProfilePic(me.picture)
+        } 
+    }
+
+    useEffect(() => {
+        fetchUser()
+    }, [])
 
     return (
         <div>
@@ -21,9 +36,12 @@ const Footer = (props) => {
                 <Link to="/favs"><div className="footer-icon footer-heart">
                     <img src={Heart} alt="Home"/>
                 </div></Link>
-                <div className="footer-icon footer-user">
-                    <LoginModal />
-                </div>
+                {profilePic ?<div> <img onClick={() => {
+                    localStorage.setItem('token', undefined)
+                    setProfilePic(undefined)
+                }} className='user-profile-pic' src={profilePic} alt='profile-pic' /> </div> : <div className="footer-icon footer-user">
+                    <LoginModal fetchUser={fetchUser} />
+                </div>}
             </div>
         </div>
     );

@@ -1,80 +1,131 @@
 import React, { Component } from "react";
-import {Row, Col, Container} from "reactstrap"
-import { Link } from 'react-router-dom'
-// import mockData from '../../../Components/data/MOCK_DATA.json'
-import LandingFilterModal from './LandingFilterModal'
-import '../Landing.css'
-
+import { Row, Col, Container, CardImg, CardBody, CardTitle } from "reactstrap";
+import SingleCardForPlace from './SingleCardForPlace';
+import Loader from 'react-loader-spinner';
+import { Link } from "react-router-dom";
+import Star from "../../../icons/Star.png";
+import ReactPaginate from 'react-paginate';
+import cupIcon from "../../../icons/bars01.png";
+import workIcon from "../../../icons/cowos01.png";
+import wifiIcon from "../../../icons/wifi01.png";
+import cupIcon2 from "../../../icons/bars02.png";
+import workIcon2 from "../../../icons/cowos02.png";
+import wifiIcon2 from "../../../icons/wifi02.png";
+import "../Landing.css";
 
 class LandingAPI extends Component {
-    state = {
-        places: [],
-        modalOpen: false,
-        GoodService: false,
-        GoodWorkingPlace: false,
-        GoodWifi: false
-    }
+  state = {
+    filterBox: false
+  };
 
-   modalOpen = () => {
-     if(this.state.modalOpen === true) {
-       this.setState({modalOpen: false})
-     } else if (this.state.modalOpen === false){
-        this.setState({modalOpen: true})
-     }
-   }
-   toogleFilter = (filterProperty) => {
-     this.setState({
-      [filterProperty]: !this.state[filterProperty]
-     })
-     /*
-     name = "GoogService"
-     this.setState({
-      // GoodService: !GoodService
-     GoodService: !this.state.GoodService
-    })
-    */
-   }
+  filterBlockOpen = () => {
+    this.setState({
+      filterBox: !this.state.filterBox
+    });
+    console.log(this.state.filterBox);
+  };
+  
 
-   componentDidMount = async () => {
-    let places = await fetch("http://localhost:9100/api/v1/placesInSpecificCity")
-    console.log(fetch)
-    let placesJson = await places.json();
-    console.log(placesJson);
-    this.setState( {places: placesJson} )
-  }
-
-    render() {
-        // console.log(this.state.modalOpen)
-        return (<>
-            <Container >
-                <Row flex="md-4">
-                    <Col className="landingAPIHeaders"><h3>Near You</h3></Col><Col><h3 id="filterBy" onClick={this.modalOpen}>Filter By</h3></Col>
-                </Row>
-          <Row>
-          {this.state.places && this.state.places.map((places, index) => (
-            <Col key={index} className="col-4 places-Col">
-              <h4 className="placeNames">{places.Name}</h4>
-              <Link to={"/details/" + places._id}><img className="placeImgs" 
-              src={places.Pictures[0]} 
-              alt="places"/></Link> 
-              <Col><h5>{places.RateAverage}</h5></Col>
+  render() {
+    return (
+      <>
+        <Container fluid style={{ padding: "0px 40px" }}>
+          <Row className='near-your-filter-div'>
+            <Col xs="6">
+              <h3 className="near-you-filter-landing-page">Near You</h3>
             </Col>
-            
-          ))}
-          
-           </Row>
-        
-         {this.state.modalOpen && 
-         <LandingFilterModal 
-         modal={this.state.modalOpen} 
-         toggleFilter={this.toogleFilter} 
-         handleModal={this.modalOpen} 
-         GoodService={this.state.GoodService} 
-         GoodWorkingPlace={this.state.GoodWorkingPlace} 
-         GoodWifi={this.state.GoodWifi}/>}
-        
-      </Container>
-    </>);
+            <Col xs="6">
+              <div
+                className={
+                  this.state.filterBox
+                    ? "div-with-filtering-options-toggled"
+                    : "div-with-filtering-options"
+                }
+              >
+                <h3
+                  className="near-you-filter-landing-page"
+                  id="filterBy"
+                  onClick={this.filterBlockOpen}
+                >
+                  Filter By
+                </h3>
+                <Row>
+                  <Col className="col-4">
+                    <img
+                      className="filterIcons"
+                      src={this.props.goodService ? cupIcon2 : cupIcon}
+                      id="goodService"
+                      onClick={(e) => this.props.togleFilter(e.target.id)}
+                      alt="service-icon"
+                    />
+                    <div className='description-for-filters'>
+                      <h4>Goog Service</h4>
+                    </div>
+                  </Col>
+                  <Col className="col-4">
+                    <img
+                      className="filterIcons"
+                      src={this.props.goodWorkingPlace ? workIcon2 : workIcon}
+                      id="goodWorkingPlace"
+                      onClick={(e) => this.props.togleFilter(e.target.id)}
+                      alt="working-icon"
+                    />
+                    <div className='description-for-filters'>
+                      <h4>Comfortable Place</h4>
+                    </div>
+                  </Col>
+
+                  <Col className="col-4">
+                    <img
+                      className="filterIcons"
+                      src={this.props.goodWifi ? wifiIcon2 : wifiIcon}
+                      id="goodWifi"
+                      onClick={(e) => this.props.togleFilter(e.target.id)}
+                      alt="wifi-icon"
+                    />
+                    <div className='description-for-filters'>
+                      <h4>Goog <br/> WiFi</h4>
+                    </div>
+                  </Col>
+                </Row>
+                <hr/>
+                <div className='filter-descrp-bottom'>
+                  <h3>Choose by filters. <strong>Unselect them for ALL results.</strong></h3>
+                </div>
+              </div>
+            </Col>
+          </Row>
+          {this.props.loading && <div><Loader
+                type="Oval"
+                color="#9200E6"
+                height={70}
+                width={70}
+                style={{padding: '100px 44%'}}
+             /></div>}
+          <Row>
+            {this.props.places.places &&
+              this.props.places.places.map((place, index) => (
+                <SingleCardForPlace place={place} key={index} />
+              ))}
+          </Row>
+          <div>
+                <ReactPaginate
+                  previousLabel={'previous'}
+                  nextLabel={'next'}
+                  breakLabel={'...'}
+                  breakClassName={'break-me'}
+                  pageCount={this.state.pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={this.handlePageClick}
+                  containerClassName={'pagination'}
+                  subContainerClassName={'pages pagination'}
+                  activeClassName={'active'}
+                />
+            </div>
+        </Container>
+      </>
+    );
   }
 }
 export default LandingAPI;

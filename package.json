@@ -11,8 +11,11 @@
     "moment": "^2.24.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-loader-spinner": "^3.1.5",
     "react-modal": "^3.11.2",
     "react-modal-login": "^1.4.5",
+    "react-paginate": "^6.3.2",
+    "react-router": "latest",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-star-rating-component": "^1.4.1",
@@ -20,8 +23,7 @@
     "react-tooltip": "^4.1.2",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
-    "rxjs": "latest",
-    "react-router": "latest"
+    "rxjs": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
