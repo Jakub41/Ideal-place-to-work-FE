@@ -55,7 +55,7 @@ class CommentModal extends React.Component {
         console.log(this.state)
     };
 
-    showAlertMsg = (e) => {
+    toggleShowAlertMsg = (e) => {
         this.setState({alertMsgOpen: true})
       };
 
@@ -80,10 +80,12 @@ class CommentModal extends React.Component {
     render() {
         const props = this.props;
         return (<>
-                <div id="please-login-reg-div" className="cursor" onClick={() => {this.toggleModalOrAlert(); this.showAlertMsg()}} >
-                    <h2 className='rate-place'> Rate Place</h2>
+                <div id="please-login-reg-div" className="cursor" onClick={() => {this.toggleModalOrAlert(); 
+                    this.toggleShowAlertMsg()}} >
+                    <h2 className='rate-place'>Rate Place</h2>
                 </div>
-                {this.state.alertMsgDiv &&  <NotLoggedIn alertMsgOpen={this.alertMsgOpen}/>} 
+                
+                {this.state.alertMsgDiv &&  <NotLoggedIn alertMsgOpen={this.alertMsgOpen} />} 
                 {this.state.modal && 
                 <Modal style={{borderRadius: '30px'}} isOpen={this.state.modal} 
                     toggle={this.toggleModalOrAlert} className={this.props.className}>
