@@ -11,12 +11,16 @@ class NotLoggedInMsgDivBox extends Component {
 
   render(props) {
     return (
-      <div
-        className={ this.props.alertMsgOpen ? "please-login-fake-modal" : "please-login-reg-div" }>
-        <h4 id="please-login-fake-modal">You are Signed Out. Please Login or Signup to Rate Places!</h4>
-      </div>
+        <div
+            className={ this.props.alertMsgOpen ? "please-login-fake-modal" : 
+            "please-login-reg-div" }>
+                <div id="please-login-fake-modal">
+            <h4>Please Login or Signup First!</h4>
+                </div>
+        </div>
     );
   }
+
 }
 
 export default NotLoggedInMsgDivBox;
