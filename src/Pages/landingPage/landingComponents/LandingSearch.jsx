@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Input } from "reactstrap";
-// import closeIcon from "../../../icons/close.png";
+import {Link} from 'react-router-dom';
 import searchIcon from "../../../icons/Search.png";
 import mapIcon from "../../../icons/Pin02.png";
 import closeIcon from "../../../icons/close.png";
@@ -10,7 +10,6 @@ import { useEffect } from "react";
 const LandingSearch = (props) => {
   const [searchPlace, setSearchPlace] = useState("")
   const [recentSearches, setRecentSearches] = useState([])
-  // localStorage.getItem("places".split + ",")
   const [searchOpen, setSearchOpen] = useState(false)
 
   const openSearch = (e) => {
@@ -28,7 +27,6 @@ const LandingSearch = (props) => {
 
   const handleSearch = (e) => {
     if((e.key === 'Enter')) {
-      props.toggleLoading()
       const places = [];
       if(localStorage.getItem('places')) {
         const placesFromLocalStorage = localStorage.getItem('places');
@@ -42,33 +40,12 @@ const LandingSearch = (props) => {
       }
       localStorage.setItem('places', places);
       setTimeout(() => {
+        props.skip()
         props.fetchResults(searchPlace)
         setSearchOpen(false)
-        props.toggleLoading()
       }, 500)
     }
   }
-
-  // filterSearch = (event) => {
-  //   let searchPlace = this.state.filteredPlaces;
-  //   searchPlace = searchPlace.filter(place => {
-  //     return (
-  //       searchPlace.toLowerCase().search(event.target.value.toLowerCase()) !== -1
-  //     );
-  //   });
-  //   setSearchPlace({ filteredPlaces });
-  // };
-
-  // componentWillMount = () => {
-  //   this.setState({
-  //     filteredPlaces: this.props.searchContent,
-  //     places: this.props.searchContent
-  //   });
-  // };
-
-  // clearSearchItems = () => {
-
-  // }
 
     return (
       <div className="search-container">
@@ -90,10 +67,12 @@ const LandingSearch = (props) => {
             <img src={closeIcon} onClick={() => setSearchOpen(false)}className={searchOpen ? "close-icon" : "results-map"} alt="searchIcon" />
           </div>
           <div className={searchOpen ? "results-map-toggled" : "results-map"}>
+            <Link to={"/map/" + searchPlace + "/" + props.location.latitude + "/" + props.location.longitude} style={{color: 'black'}}>
             <div className='map-div-search'>
               <img src={mapIcon} className="map-icon" alt="searchIcon" />
               <h3>Show map</h3>
             </div>
+            </Link>
           </div>
           {searchOpen && <div className='recent-searches-div'>
             <h2>Recent Searches</h2>
