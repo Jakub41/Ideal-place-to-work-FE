@@ -13,6 +13,7 @@ import workIcon2 from "../../../icons/cowos02.png";
 import wifiIcon2 from "../../../icons/wifi02.png";
 import "../Landing.css";
 
+
 class LandingAPI extends Component {
   state = {
     filterBox: false
@@ -24,16 +25,17 @@ class LandingAPI extends Component {
     });
     console.log(this.state.filterBox);
   };
+
   
 
   render() {
-    console.log(this.props.places)
+    console.log(this.props)
     return (
       <>
-        <Container fluid style={{ padding: "0px 40px" }}>
-          <Row className='near-your-filter-div'>
+        <Container fluid style={{ padding: "0px 40px", minHeight:'100vh' }}>
+        {this.props.places && <><Row className='near-your-filter-div'>
             <Col xs="6">
-              <h3 className="near-you-filter-landing-page">Near You</h3>
+              <h3 className="near-you-filter-landing-page">In Your City <span style={{color: "#9200E6"}}>{this.props.city}</span></h3>
             </Col>
             <Col xs="6">
               <div
@@ -54,8 +56,8 @@ class LandingAPI extends Component {
                   <Col className="col-4">
                     <img
                       className="filterIcons"
-                      src={this.props.goodService ? cupIcon2 : cupIcon}
-                      id="goodService"
+                      src={this.props.GoodService ? cupIcon2 : cupIcon}
+                      id="GoodService"
                       onClick={(e) => this.props.togleFilter(e.target.id)}
                       alt="service-icon"
                     />
@@ -66,26 +68,26 @@ class LandingAPI extends Component {
                   <Col className="col-4">
                     <img
                       className="filterIcons"
-                      src={this.props.goodWorkingPlace ? workIcon2 : workIcon}
-                      id="goodWorkingPlace"
+                      src={this.props.QuitePlace ? workIcon2 : workIcon}
+                      id="QuitePlace"
                       onClick={(e) => this.props.togleFilter(e.target.id)}
                       alt="working-icon"
                     />
                     <div className='description-for-filters'>
-                      <h4>Comfortable Place</h4>
+                      <h4>Quite Place</h4>
                     </div>
                   </Col>
 
                   <Col className="col-4">
                     <img
                       className="filterIcons"
-                      src={this.props.goodWifi ? wifiIcon2 : wifiIcon}
-                      id="goodWifi"
+                      src={this.props.WifiRate ? wifiIcon2 : wifiIcon}
+                      id="WifiRate"
                       onClick={(e) => this.props.togleFilter(e.target.id)}
                       alt="wifi-icon"
                     />
                     <div className='description-for-filters'>
-                      <h4>Goog <br/> WiFi</h4>
+                      <h4>Strong <br/> WiFi</h4>
                     </div>
                   </Col>
                 </Row>
@@ -96,6 +98,27 @@ class LandingAPI extends Component {
               </div>
             </Col>
           </Row>
+          <div>
+               <ReactPaginate
+                  previousLabel={'previous'}
+                  nextLabel={'next'}
+                  breakLabel={'...'}
+                  breakClassName={'break-me'}
+                  pageCount={this.props.pageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={this.props.handlePageClick}
+                  containerClassName={'pagination'} 
+                  subContainerClassName={'pages pagination'} 
+                  activeClassName={'active'} 
+                />
+          </div> 
+          <Row>
+               {this.props.places.map((place, index) => (
+                <SingleCardForPlace place={place} key={index} />
+              ))}
+          </Row>
+          </>}
           {this.props.loading && <div><Loader
                 type="Oval"
                 color="#9200E6"
@@ -103,27 +126,6 @@ class LandingAPI extends Component {
                 width={70}
                 style={{padding: '100px 44%'}}
              /></div>}
-          <Row>
-            {this.props.places &&
-               this.props.places.map((place, index) => (
-                <SingleCardForPlace place={place} key={index} />
-              ))}
-          </Row>
-          <div>
-                <ReactPaginate
-                  previousLabel={'previous'}
-                  nextLabel={'next'}
-                  breakLabel={'...'}
-                  breakClassName={'break-me'}
-                  pageCount={this.state.pageCount}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={5}
-                  onPageChange={this.handlePageClick}
-                  containerClassName={'pagination'}
-                  subContainerClassName={'pages pagination'}
-                  activeClassName={'active'}
-                />
-            </div>
         </Container>
       </>
     );
