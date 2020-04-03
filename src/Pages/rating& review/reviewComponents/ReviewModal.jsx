@@ -6,6 +6,8 @@ import Coffee from "../../../icons/bars01.png";
 import ComfyPlace from "../../../icons/cowos01.png";
 import WiFi from "../../../icons/wifi01.png";
 import "../Rating.css"
+import NotLoggedIn from "../../detailsPage/detailsComponents/NotLoggedInMsgDivBox"
+import "../../detailsPage/detailsComponents/NotLoggedIn.css"
 
 
 class CommentModal extends React.Component {
@@ -14,7 +16,7 @@ class CommentModal extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {modal: false, selectedFile: null, comment: {comment: ""}};
+        this.state = {modal: false, alertMsgDiv: false, showAlertMsg: false, selectedFile: null, comment: {comment: ""}};
     }
 
     submit = (e) => {
@@ -39,11 +41,25 @@ class CommentModal extends React.Component {
         this.setState({_id: undefined});
         this.toggle();
     };
-    toggle = () => {
-        this.setState({modal: !this.state.modal});
+
+    toggleModalOrAlert = async () => {
+        const token = localStorage.getItem("access_token")
+        console.log("hey", token)
+        if(token !== "undefined") {
+            console.log("hey im here and i have a token!")
+            this.setState({modal: !this.state.modal})
+        } else if(token === "undefined" ){
+            console.log("hey im here and i don't have a token!")
+            this.setState({alertMsgDiv: !this.state.alertMsgDiv})
+        }
+        console.log(this.state)
     };
 
-    onChangeHandler = event => {
+    toggleShowAlertMsg = (e) => {
+        this.setState({alertMsgOpen: true})
+      };
+
+     onChangeHandler = event => {
         console.log(event.target.files[0]);
         this.setState({
             selectedFile: event.target.files[0],
@@ -63,14 +79,17 @@ class CommentModal extends React.Component {
 
     render() {
         const props = this.props;
-        return (
-            <>
-                <div className="cursor" onClick={this.toggle.bind(this)}>
-                    <h2 className='rate-place' onClick={() => this.toggle.bind(this)}> Rate Place</h2>
+        return (<>
+                <div id="please-login-reg-div" className="cursor" onClick={() => {this.toggleModalOrAlert(); 
+                    this.toggleShowAlertMsg()}} >
+                    <h2 className='rate-place'>Rate Place</h2>
                 </div>
-                <Modal style={{borderRadius: '30px'}} isOpen={this.state.modal} toggle={this.toggle.bind(this)}
-                       className={this.props.className}>
-                    <ModalHeader toggle={this.toggle.bind(this)}>Rate this Place</ModalHeader>
+                
+                {this.state.alertMsgDiv &&  <NotLoggedIn alertMsgOpen={this.alertMsgOpen} />} 
+                {this.state.modal && 
+                <Modal style={{borderRadius: '30px'}} isOpen={this.state.modal} 
+                    toggle={this.toggleModalOrAlert} className={this.props.className}>
+                    <ModalHeader toggle={this.toggleModalOrAlert}>Rate this Place</ModalHeader>
                     <ModalBody>
                         <Form>
                             <Row form>
@@ -120,7 +139,7 @@ class CommentModal extends React.Component {
                             Submit
                         </Button>
                     </ModalFooter>
-                </Modal>
+                </Modal>} 
             </>
         );
     }

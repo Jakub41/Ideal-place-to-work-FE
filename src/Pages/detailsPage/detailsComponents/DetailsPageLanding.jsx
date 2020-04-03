@@ -27,7 +27,7 @@ class DetailsPageLanding extends Component {
     state = {
         place : null,
         liked: false,
-        rotate180: false
+        rotate180: false 
     };
 
     toggleRotation = async () => {
@@ -66,7 +66,6 @@ class DetailsPageLanding extends Component {
             })
         }
     };
-
 
     render() {
         return (
