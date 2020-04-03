@@ -27,7 +27,7 @@ class DetailsPageLanding extends Component {
     state = {
         place : null,
         liked: false,
-        rotate180: false
+        rotate180: false 
     };
 
     toggleRotation = async () => {
@@ -67,7 +67,6 @@ class DetailsPageLanding extends Component {
         }
     };
 
-
     render() {
         return (
             <>
@@ -78,7 +77,7 @@ class DetailsPageLanding extends Component {
                 <div className="container">
                     <div className="coffee-point">
                     <div className="row-details">
-                    <h2>Coffee Point</h2>
+                    <h2>{this.state.place.Name}</h2>
                     </div>
                     </div>
                     <div className="row-details">

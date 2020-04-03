@@ -116,6 +116,7 @@ h2 {
     border-bottom: 2px solid #b7adb4;
     margin: 5px;
     padding: 10px;
+    z-index: 1;
 }
 
 

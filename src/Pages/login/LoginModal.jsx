@@ -76,15 +76,15 @@ class LoginModal extends React.Component {
         const lastname = document.querySelector('#surname').value;
         const email = document.querySelector('#username').value;
         const password = document.querySelector('#password').value;
-
-        if (!firstname || !lastname || !email || !password) {
+        const picture = document.querySelector('#imageUrl').value;
+        if (!firstname || !lastname || !email || !password || !picture) {
             this.setState({
                 error: true
             })
         } else {
             const base64usernameAndPassword = btoa(email + ":" + password);
             Api.fetch("/auth/register", 'POST', JSON.stringify({
-                firstname, lastname, username: email,
+                firstname, lastname, picture , username: email,
                 password
             }))
 
@@ -264,6 +264,15 @@ class LoginModal extends React.Component {
                                 id: 'surname',
                                 name: 'surname',
                                 placeholder: 'Surname',
+                            },
+                            {
+                                containerClass: 'RML-form-group',
+                                label: 'Picture',
+                                type: 'text',
+                                inputClass: 'RML-form-control',
+                                id: 'imageUrl',
+                                name: 'imageUrl',
+                                placeholder: 'https://',
                             },
                             {
                                 containerClass: 'RML-form-group',

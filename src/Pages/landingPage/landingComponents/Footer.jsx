@@ -39,7 +39,8 @@ const Footer = (props) => {
                 {profilePic ?<div> <img onClick={() => {
                     localStorage.setItem('access_token', undefined)
                     setProfilePic(undefined)
-                }} className='user-profile-pic' src={profilePic} alt='profile-pic' /> </div> : <div className="footer-icon footer-user">
+                }} className='user-profile-pic' src={profilePic} alt='profile-pic' /> </div> : 
+                    <div className="footer-icon footer-user">
                     <LoginModal fetchUser={fetchUser} />
                 </div>}
             </div>
