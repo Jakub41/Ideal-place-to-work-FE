@@ -123,9 +123,9 @@ class UserReview extends Component {
                     this.state.comments.map(comment => (
 
                         <div id="plx-card" className="animated bounce" style={{
-                            'border': 'solid 1px black',
+                            'border': 'solid 2px black',
                             'border-radius': '5px',
-                            flex: "0 1 49%",
+                            flex: "0 1 100%",
                             "margin": '5px'
                         }}>
                             <div key={comment._id} className="user-review-header-container" style={{'display': 'flex'}}>

@@ -1,5 +1,6 @@
 .RML-login-modal-box  {
     border-radius: 30px;
+    overflow: hidden;
 
 }
 .RML-login-modal-close {

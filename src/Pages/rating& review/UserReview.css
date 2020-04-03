@@ -1,7 +1,7 @@
 #plx-card {
     padding: 10px;
-    background-color: #9f1ef1;
-    box-shadow: 5px 5px 5px #f165eb;
+    background-color: #fcfff6;
+    box-shadow: 5px 5px 5px #9200E6;;
     /*position: relative;*/
 }
 
@@ -43,23 +43,22 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
-
     margin-right: 5px;
-    box-shadow: 2px 2px;
+    box-shadow: 1px 1px;
 }
 
 .user-review-username {
     padding-top: 2px;
-    color: #EFEFEF;
+    color: #262441;
     font-weight: bold;
 }
 
 .user-review-text {
-    color: #dae1d9;
+    color: #262441;
 }
 
 .created-at {
-    color: #EFEFEF;
+    color: #262441;
     margin-left: 5px;
     padding-top: 2px;
 }

@@ -78,7 +78,7 @@ class DetailsPageLanding extends Component {
                 <div className="container">
                     <div className="coffee-point">
                     <div className="row-details">
-                    <h2>Coffee Point</h2>
+                    <h2>{this.state.place.Name}</h2>
                     </div>
                     </div>
                     <div className="row-details">
