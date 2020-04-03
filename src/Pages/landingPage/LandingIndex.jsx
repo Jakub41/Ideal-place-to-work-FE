@@ -72,7 +72,9 @@ class LandingPage extends Component {
                 </div>
                     <LandingSearch toggleLoading={this.toggleLoading} fetchResults={this.fetchResults}/>
 
-                    <LandingAPI loading={this.state.loading} togleFilter={this.togleFilter} goodWifi={this.state.goodWifi} goodWorkingPlace={this.state.goodWorkingPlace} goodWifi={this.state.goodWifi} places={this.state.places}/>
+                    <LandingAPI loading={this.state.loading} togleFilter={this.togleFilter} 
+                    goodWifi={this.state.goodWifi} goodWorkingPlace={this.state.goodWorkingPlace} 
+                    goodWifi={this.state.goodWifi} places={this.state.places}/>
 
                 </Container>
             </>
