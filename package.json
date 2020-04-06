@@ -27,6 +27,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-star-rating-component": "^1.4.1",
+    "react-star-ratings": "^2.3.0",
     "react-toggle": "^4.1.1",
     "react-tooltip": "^4.1.2",
     "reactstrap": "^8.4.1",
