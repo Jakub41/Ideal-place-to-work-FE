@@ -27,7 +27,8 @@ class UserReview extends Component {
             comment: {
                 ...this.state.comment,
                 [name]: value
-            }
+            },
+            comments:[]
         });
     };
 
@@ -43,14 +44,14 @@ class UserReview extends Component {
         if (this.props.placeId) {
             Api.fetch(
                 "/reviewsForPlace/" + this.props.placeId,
-                "GET").then(res => this.setState({comments: res}));
+                "GET").then(res => this.setState({comments: res.reviews}));
         }
     }
 
-    // componentDidMount() {
-    //     this.interval = setInterval(() => this.refreshData(), 10000);
-    //     this.refreshData();
-    // }
+    componentDidMount() {
+        // this.interval = setInterval(() => this.refreshData(), 10000);
+        this.refreshData();
+    }
 
     componentWillUnmount() {
         clearInterval(this.interval);

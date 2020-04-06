@@ -45,10 +45,9 @@ h4 {
 }
 
 .like-btn{
-
     cursor: pointer;
     transform: rotate(180deg);
-    transition: all 0.75s 0.25s
+    transition: all 0.75s 0.25s;
 }
 
 .dislike-btn{
