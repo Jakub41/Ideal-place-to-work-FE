@@ -1,4 +1,5 @@
 import React from "react";
+import { Col } from "reactstrap"
 import ReactModalLogin from "react-modal-login";
 import {facebookConfig, googleConfig} from "../login/social-config";
 import SweetAlert from 'sweetalert2-react';
@@ -205,14 +206,16 @@ class LoginModal extends React.Component {
         return (
             <div>
                 <ReactTooltip/>
-                <img data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"} src={User} alt="Home"
-                     onClick={() => this.openModal('login')}/>
+                <Col data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"} 
+                     onClick={() => this.openModal('login')}> LOGIN </Col>
+
                 <SweetAlert
                     show={this.state.greetings}
                     title={this.state.hour < 12 ? `Good Morning ${this.state.username}` : `Good evening ${this.state.username}`}
                     text="Welcome to Ideal Place To Work"
                     onConfirm={() => this.setState({ greetings: false })}
                 />
+
                 <ReactModalLogin
                     visible={this.state.showModal}
                     onCloseModal={this.closeModal.bind(this)}

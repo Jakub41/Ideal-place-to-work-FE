@@ -131,9 +131,10 @@ class LandingPage extends Component {
                 loading: true
             })
             const browserCity = {
-                latitude: this.props.coords.latitude,
-                longitude: this.props.coords.longitude,
-                city: "Milano"
+
+                latitude: 52.520008,
+                longitude: 13.404954,
+                city: "Berlin"
             }
             console.log(browserCity)
             let places = await this.fetchInSpecificPlaces(browserCity)
@@ -142,9 +143,11 @@ class LandingPage extends Component {
                 places: places.places,
                 pageCount: Math.ceil(places.total / this.state.limit),
                 location: {
-                    latitude: this.props.coords.latitude,
-                    longitude: this.props.coords.longitude,
-                    city: "Milano"
+
+                    latitude: 52.520008,
+                    longitude: 13.4049540,
+                    city: "Berlin"
+
                 }
             })
         }, 3000)

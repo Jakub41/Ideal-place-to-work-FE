@@ -351,6 +351,12 @@ img.placeImgs:hover {
   padding: 5px;
 }
 
+.footer-icon img:hover {
+  width: 50px;
+  padding: 5px;
+  opacity: 50%;
+}
+
 .footer-home {
   border-radius: 50px;
   border: 3px solid white;
@@ -389,6 +395,13 @@ img.placeImgs:hover {
   padding-right: 5px;
   padding-top: 10px;
 }
+
+/* .home-text:hover {
+  padding-right: 5px;
+  padding-top: 10px;
+  text-decoration: none;
+} */
+
 /* End fixed footer Component*/
 
 .pagination > li {
