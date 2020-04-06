@@ -32,6 +32,13 @@ const DetailPageCarousel = (props) => {
             header: '',
             key: '4'
         },
+        {
+            src: props.place.Pictures[4],
+            altText: '',
+            caption: '',
+            header: '',
+            key: '5'
+        },
     ];
     return <UncontrolledCarousel items={placeImages} />;
 };

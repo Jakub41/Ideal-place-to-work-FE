@@ -1,21 +1,18 @@
 import React, {Component} from 'react';
-import { Container, Row } from "reactstrap";
 import Pin from "../../../icons/Pin.png";
 import Star from "../../../icons/Star.png";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from "@fortawesome/free-solid-svg-icons"
-import searchIcon from "../../../icons/Search.png";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faDollarSign, faHeart} from "@fortawesome/free-solid-svg-icons"
 import closeIcon from "../../../icons/close.png";
 import {Link} from "react-router-dom";
-import CommentForm from "../../rating& review/reviewComponents/RatingStars";
 import ReviewModal from "../../rating& review/reviewComponents/ReviewModal";
 import UserReview from "../../rating& review/reviewComponents/UserReview";
-import { withRouter } from "react-router";
+import {withRouter} from "react-router";
 import {connect} from "react-redux";
-import { UncontrolledCarousel } from 'reactstrap';
 import Api from "../../../Api"
 import "../Details.css";
 import DetailPageCarousel from "./DetailPageCarousel";
+import {faClock} from "@fortawesome/free-regular-svg-icons";
 
 
 const mapStateToProps = state => state;
@@ -25,17 +22,17 @@ const mapDispatchToProps = dispatch => ({
 
 class DetailsPageLanding extends Component {
     state = {
-        place : null,
+        place: null,
         liked: false,
-        rotate180: false 
+        rotate180: false
     };
 
     toggleRotation = async () => {
-        if(this.state.rotate180 === false) {
+        if (this.state.rotate180 === false) {
             this.setState({
                 rotate180: true
             })
-        } else if(this.state.rotate180 === true){
+        } else if (this.state.rotate180 === true) {
             this.setState({
                 rotate180: false
             })
@@ -43,17 +40,17 @@ class DetailsPageLanding extends Component {
     };
 
     toggleLike = async () => {
-        if(this.state.liked === false) {
+        if (this.state.liked === false) {
             this.setState({
                 liked: true
             })
-        } else if(this.state.liked === true) {
+        } else if (this.state.liked === true) {
             this.setState({
                 liked: false
             })
         }
         await Api.fetch(`/places/handlefavourites/${this.props.match.params.id}`, "POST", '',
-        {"Authorization": "Bearer " + localStorage.getItem("access_token")})
+            {"Authorization": "Bearer " + localStorage.getItem("access_token")})
     };
 
     componentDidMount = async () => {
@@ -70,42 +67,74 @@ class DetailsPageLanding extends Component {
     render() {
         return (
             <>
-                {this.state.place && <> <div className={'flex-box cover-image-details'}>
-                    <DetailPageCarousel place={this.state.place}/>
-                    <Link to="/"><img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
-                </div>
-                <div className="container">
-                    <div className="coffee-point">
-                    <div className="row-details">
-                    <h2>{this.state.place.Name}</h2>
+                {this.state.place && <>
+                    <div className={'flex-box cover-image-details'}>
+                        <DetailPageCarousel place={this.state.place}/>
+                        <Link to="/"><img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
                     </div>
-                    </div>
-                    <div className="row-details">
-                    <img className="location-pin-icon" src={Pin} alt="Home"/>
-                    <h4>{this.state.place.Location}</h4>
+                    <div className="container">
+                        <div className="coffee-point flex-box">
+                            <div className="row-details">
+                                <h2 className="place-title">{this.state.place.Name}</h2>
+                            </div>
+                            <div className="spacer"/>
+                            <div className="click-to-like" style={{fontSize: "40px"}}>
+                                <FontAwesomeIcon
+                                    className={this.state.rotate180 ? "dislike-btn" : "like-btn"}
+                                    icon={faHeart}
+                                    onClick={() => {
+                                        this.toggleLike();
+                                        this.toggleRotation()
+                                    }}/>
+                            </div>
+                        </div>
+                        <div className="flex-box">
+                            <div><img className="location-pin-icon" src={Pin} alt="Home"/></div>
+                            <div className="location-text"><h4>{this.state.place.Location}</h4></div>
+                        </div>
+                        <div>
+                            <div className="row-details-rate-place">
+                                <div className="rating-container">
+                                    <img className="rating-star-icon" src={Star} alt="rating"/>
+                                </div>
+                                <div>
+                                    <div>
+                                        <ReviewModal placeId={this.props.match.params.id}/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row-details">
 
-                    <div className="click-to-like" style={{fontSize: "40px"}}>
-                        <FontAwesomeIcon
-                        className={this.state.rotate180 ? "dislike-btn" : "like-btn"}
-                        icon={ faHeart }
-                        onClick={() => {this.toggleLike(); this.toggleRotation()}}/>
+                                <div className="opening-hours"><h4 className="open-hours-text">Open
+                                    Hours</h4>{this.state.place.OpenHours.map(hour => <div>
+                                    <FontAwesomeIcon icon={faClock}/> {hour}</div>)}</div>
+                                <div className="flex-box web-site">
+                                    <div>
+                                        <div><h4 className="website-title">Website:</h4></div>
+                                        <div className="web-site-link"><p>{this.state.place.Website}</p></div>
+                                        <div>
+                                            {this.state.place.PriceToEnter !== -1 && <div className="flex-box">
+                                                <div>
+                                                    <h4>Price to enter:</h4>
+                                                    <div className="flex-box">
+                                                        <div><FontAwesomeIcon icon={faDollarSign}/></div>
+                                                        <div
+                                                            className="price-to-enter">{this.state.place.PriceToEnter}</div>
+                                                    </div>
+                                                </div>
+                                            </div>}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                        <div>
+                            <UserReview placeId={this.props.match.params.id}/>
+                        </div>
                     </div>
-
-
-                    </div>
-                    <div className="row-details-rate-place">
-                    <div className="rating-container">
-                        <img className="rating-star-icon" src={Star} alt="rating"/>
-                    </div>
-                    <div>
-                    <ReviewModal placeId={this.props.match.params.id}/>
-                    </div>
-
-                    </div>
-                    <div>
-                        <UserReview placeId={this.props.match.params.id} />
-                    </div>
-                    </div> </>}
+                </>}
             </>
         );
     }

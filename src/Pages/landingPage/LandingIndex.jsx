@@ -105,7 +105,9 @@ class LandingPage extends Component {
 
     getAddress = async (latitude, longitude) => {
         const resp = await fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true&key=AIzaSyDlkDftixlz_nvsxuPi0flAOP_0Cc6poBE')
+        console.log(resp)
         const respJson = await resp.json()
+        console.log(respJson)
         for(var i = 0; i < respJson.results[0].address_components.length; i++) {
             for(var j = 0; j < respJson.results[0].address_components[i].types.length; j++) {
                 if(respJson.results[0].address_components[i].types[j] == "administrative_area_level_2"){
@@ -123,24 +125,29 @@ class LandingPage extends Component {
 
     componentDidMount = async() => {
         setTimeout(async() => {
+            console.log(this.props.coords.latitude, this.props.coords.longitude)
             const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
             this.setState({
                 loading: true
             })
             const browserCity = {
+
                 latitude: 52.520008,
                 longitude: 13.404954,
                 city: "Berlin"
             }
+            console.log(browserCity)
             let places = await this.fetchInSpecificPlaces(browserCity)
             this.setState({
                 loading: false,
                 places: places.places,
                 pageCount: Math.ceil(places.total / this.state.limit),
                 location: {
+
                     latitude: 52.520008,
                     longitude: 13.4049540,
                     city: "Berlin"
+
                 }
             })
         }, 3000)
@@ -159,9 +166,9 @@ class LandingPage extends Component {
                         </h1>
                     </div>
                 </div>
-                    <LandingSearch 
-                    skip={this.skip} 
-                    toggleLoading={this.toggleLoading} 
+                    <LandingSearch
+                    skip={this.skip}
+                    toggleLoading={this.toggleLoading}
                     fetchResults={this.fetchResults}
                     location={this.state.location}
                     />
@@ -169,15 +176,15 @@ class LandingPage extends Component {
                     <div>Your browser does not support Geolocation</div>
                     ) : !this.props.isGeolocationEnabled ? (
                     <div>Geolocation is not enabled</div>
-                    ) : 
-                    <LandingAPI 
-                        pageCount={this.state.pageCount} 
-                        city={this.state.location.city} 
-                        loading={this.state.loading} 
-                        togleFilter={this.togleFilter} 
-                        WifiRate={this.state.WifiRate} 
-                        QuitePlace={this.state.QuitePlace} 
-                        GoodService={this.state.GoodService} 
+                    ) :
+                    <LandingAPI
+                        pageCount={this.state.pageCount}
+                        city={this.state.location.city}
+                        loading={this.state.loading}
+                        togleFilter={this.togleFilter}
+                        WifiRate={this.state.WifiRate}
+                        QuitePlace={this.state.QuitePlace}
+                        GoodService={this.state.GoodService}
                         places={this.state.places}
                         handlePageClick={this.handlePageClick}
                     />}
