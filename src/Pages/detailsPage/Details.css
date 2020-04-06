@@ -21,11 +21,15 @@
     padding-bottom: 5px;
     margin-bottom: 20px;
 }
+.place-title {
+    font-weight: bolder !important;
+}
 
 h4 {
     padding-top: 5px;
-    color: darkgrey;
+    color: #9200e6 !important;
     flex: 1;
+    font-weight: bold !important;
 }
 
 .row-details{
@@ -36,19 +40,20 @@ h4 {
 .click-to-like{
     display: flex;
     align-self: end;
-    
+    color: #9200e6;
+
 }
 
 .like-btn{
-    
+
     cursor: pointer;
     transform: rotate(180deg);
-    transition: all 0.75s 0.25s  
+    transition: all 0.75s 0.25s
 }
 
-.dislike-btn{ 
+.dislike-btn{
     cursor: pointer;
-   
+
 }
 
 
@@ -70,7 +75,7 @@ h2 {
 }
 
 .rate-place {
-    color: purple;
+    color: #9200e6;
     align-self: flex-end;
     margin-top: 10px;
     padding: 5px;
@@ -85,6 +90,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     margin-bottom: 10px;
+    border-bottom: #b7adb4 2px solid;
 }
 
 .rating-container {
@@ -96,6 +102,7 @@ h2 {
 
 .row-details {
     display: flex;
+    width: 100%;
 }
 
 .coffee-point {
@@ -118,6 +125,41 @@ h2 {
     padding: 10px;
     z-index: 1;
 }
+.price-to-enter {
+    color: #9200e6;
+    font-weight: bolder;
+    margin-left: 5px;
+}
+.spacer {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+.opening-hours {
+    margin-bottom: 20px;
+    flex-basis: 80%;
+    font-weight: bold;
+}
+.open-hours-text {
+    color: #9200e6;
+    font-weight: bold;
+}
+.web-site-link {
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    cursor: pointer;
+    text-underline: #9200e6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width:300px;
+}
+.web-site {
+    margin-top: 5px;
+    flex-basis: 20%;
 
+}
 
-
+.website-title {
+    font-weight: bold;
+}
