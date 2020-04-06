@@ -1,4 +1,5 @@
 import React from "react";
+import { Col } from "reactstrap"
 import ReactModalLogin from "react-modal-login";
 import {facebookConfig, googleConfig} from "../login/social-config";
 import Api from "../../Api"
@@ -189,8 +190,8 @@ class LoginModal extends React.Component {
         return (
             <div>
                 <ReactTooltip/>
-                <img data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"} src={User} alt="Home"
-                     onClick={() => this.openModal('login')}/>
+                <Col data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"} 
+                     onClick={() => this.openModal('login')}> LOGIN </Col>
 
                 <ReactModalLogin
                     visible={this.state.showModal}

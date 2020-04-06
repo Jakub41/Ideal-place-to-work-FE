@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LandingPage from "./Pages/landingPage/LandingIndex";
 import Api from './Api'
-import Footer from "./Pages/landingPage/landingComponents/Footer";
+import NewFooter from "./Pages/landingPage/landingComponents/NewFooter";
 import Map from './Pages/landingPage/Map';
 import DetailsPageLanding from './Pages/detailsPage/DetailsPageIndex';
-import FavoritesPageIndex from './Pages/favoritesPage/FavoritesPageIndex'
+import FavoritesPageIndex from './Pages/favoritesPage/FavoritesPageIndex';
+
 
 
 
@@ -25,7 +26,7 @@ class Main extends Component {
                 <Route path="/favs"><FavoritesPageIndex/></Route>
                 <Route path="/map/:search/:latitude/:longitude"><Map/></Route>
                 </Switch>
-                <Footer/>
+                <NewFooter/>
             </Router>
             </>
         );
