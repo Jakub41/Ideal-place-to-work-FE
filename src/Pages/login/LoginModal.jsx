@@ -1,6 +1,7 @@
 import React from "react";
 import ReactModalLogin from "react-modal-login";
 import {facebookConfig, googleConfig} from "../login/social-config";
+import SweetAlert from 'sweetalert2-react';
 import Api from "../../Api"
 import {connect} from "react-redux";
 import User from "../../icons/User.png";
@@ -28,6 +29,9 @@ class LoginModal extends React.Component {
             initialTab: null,
             errorText: "",
             recoverPasswordSuccess: null,
+            greetings: false,
+            username: undefined,
+            hour: undefined,
         };
 
     }
@@ -56,6 +60,10 @@ class LoginModal extends React.Component {
                         localStorage.setItem("access_token", res.accessToken);
                         this.props.setUserToken(base64usernameAndPassword);
                         this.props.fetchUser()
+                        this.setState({
+                            username: res.user.firstname + " " + res.user.lastname,
+                            greetings: true
+                        })
                         // TODO: redirect to home
                     }
                 }).catch((error) => {
@@ -182,6 +190,14 @@ class LoginModal extends React.Component {
         });
     }
 
+    componentDidMount = () => {
+        const date = new Date();
+        const hour = date.getHours()
+        this.setState({
+            hour: hour
+        })
+    }
+
     render() {
 
         const isLoading = this.state.loading;
@@ -191,7 +207,12 @@ class LoginModal extends React.Component {
                 <ReactTooltip/>
                 <img data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"} src={User} alt="Home"
                      onClick={() => this.openModal('login')}/>
-
+                <SweetAlert
+                    show={this.state.greetings}
+                    title={this.state.hour < 12 ? `Good Morning ${this.state.username}` : `Good evening ${this.state.username}`}
+                    text="Welcome to Ideal Place To Work"
+                    onConfirm={() => this.setState({ greetings: false })}
+                />
                 <ReactModalLogin
                     visible={this.state.showModal}
                     onCloseModal={this.closeModal.bind(this)}
