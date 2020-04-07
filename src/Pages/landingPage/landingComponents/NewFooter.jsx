@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row, Col, Modal } from 'reactstrap'
 import Api from '../../../Api';
 import LoginModal from "../../login/LoginModal";
 import {Link} from "react-router-dom";
@@ -15,7 +15,8 @@ const NewFooter = (props) => {
 
     const fetchUser = async() => {
         if(localStorage.getItem('access_token') !== undefined) {
-            const me = await Api.fetch('/users/me', "GET", "", {"Authorization": "Bearer " + localStorage.getItem('access_token')})
+            const me = await Api.fetch('/users/me', "GET", "", {"Authorization": "Bearer " + 
+            localStorage.getItem('access_token')})
             console.log(me)
             setProfilePic(me.picture)
         } 
@@ -37,8 +38,9 @@ const NewFooter = (props) => {
                     {profilePic ? <Col
                         onClick={() => {
                         localStorage.setItem('access_token', undefined)
-                        setProfilePic(undefined)}} id="user-profile-pic" /> :
+                        setProfilePic(undefined)}} ><img src={profilePic} id="user-profile-pic"/></Col>:
                         <LoginModal fetchUser={fetchUser} />}
+                      
 
                     <Col onClick={() => {
                         localStorage.setItem('access_token', undefined)

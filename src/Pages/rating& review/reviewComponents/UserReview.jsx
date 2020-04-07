@@ -47,10 +47,10 @@ class UserReview extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     this.interval = setInterval(() => this.refreshData(), 10000);
-    //     this.refreshData();
-    // }
+    componentDidMount() {
+        // this.interval = setInterval(() => this.refreshData(), 10000);
+        this.refreshData();
+    }
 
     componentWillUnmount() {
         clearInterval(this.interval);

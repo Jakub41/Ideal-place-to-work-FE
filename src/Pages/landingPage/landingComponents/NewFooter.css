@@ -4,9 +4,10 @@
 #new-footer{
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-around;
-    background-color: rgb(217, 192, 240);
+    justify-content: space-evenly;
+    background-color: transparent;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
     
 }
 
