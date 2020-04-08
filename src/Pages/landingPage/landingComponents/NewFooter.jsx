@@ -41,7 +41,7 @@ const NewFooter = (props) => {
                     {profilePic ? <Col
                         onClick={() => {
                         localStorage.setItem('access_token', undefined)
-                        setProfilePic(undefined)}} ><img src={profilePic} id="user-profile-pic"/></Col>:
+                        setProfilePic(undefined)}} ><span className="footer-options"> / </span><img src={profilePic} id="user-profile-pic"/></Col>:
                         <LoginModal fetchUser={fetchUser} />}
                 
                     <Col onClick={() => {
