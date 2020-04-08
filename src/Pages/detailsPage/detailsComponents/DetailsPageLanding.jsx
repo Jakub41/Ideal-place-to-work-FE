@@ -4,6 +4,7 @@ import Star from "../../../icons/Star.png";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faDollarSign, faHeart} from "@fortawesome/free-solid-svg-icons"
 import closeIcon from "../../../icons/close.png";
+import { Row } from 'reactstrap'
 import {Link} from "react-router-dom";
 import ReviewModal from "../../rating& review/reviewComponents/ReviewModal";
 import UserReview from "../../rating& review/reviewComponents/UserReview";
@@ -27,6 +28,33 @@ class DetailsPageLanding extends Component {
         rotate180: false
     };
 
+    calculateWidth = (x) => {
+        const width = 400*x/100
+        return width === 0 ? 5 : width
+    }
+
+    ratingFetch = async() => {
+        let resp = await Api.fetch(`/places/ratings/${this.props.match.params.id}`)
+        console.log(resp)
+        this.setState({
+            WifiRate: [
+                ["#8DD794", this.calculateWidth(resp.WifiRate.RatingPercentages.positive), resp.WifiRate[1] + resp.WifiRate[2], "perfect"], 
+                ["#FEFC84", this.calculateWidth(resp.WifiRate.RatingPercentages.intermediate), resp.WifiRate[3], "good"], 
+                ["#FF7284", this.calculateWidth(resp.WifiRate.RatingPercentages.negative), resp.WifiRate[4] + resp.WifiRate[5], "bad"],
+            ],
+            GoodService: [
+                ["#8DD794", this.calculateWidth(resp.GoodService.RatingPercentages.positive), resp.GoodService[1] + resp.GoodService[2], "perfect"], 
+                ["#FEFC84", this.calculateWidth(resp.GoodService.RatingPercentages.intermediate), resp.GoodService[3], "good"], 
+                ["#FF7284", this.calculateWidth(resp.GoodService.RatingPercentages.negative), resp.GoodService[4] + resp.GoodService[5], "bad"],
+            ],
+            QuitePlace: [
+                ["#8DD794", this.calculateWidth(resp.QuitePlace.RatingPercentages.positive), resp.QuitePlace[1] + resp.QuitePlace[2], "perfect"], 
+                ["#FEFC84", this.calculateWidth(resp.QuitePlace.RatingPercentages.intermediate), resp.QuitePlace[3], "good"], 
+                ["#FF7284", this.calculateWidth(resp.QuitePlace.RatingPercentages.negative), resp.QuitePlace[4] + resp.QuitePlace[5], "bad"],
+            ]
+        });
+        console.log(this.state)
+    }
     toggleRotation = async () => {
         if (this.state.rotate180 === false) {
             this.setState({
@@ -57,6 +85,7 @@ class DetailsPageLanding extends Component {
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             const id = this.props.match.params.id;
             const place = await Api.fetch("/places/" + id);
+            this.ratingFetch()
             console.log(place);
             this.setState({
                 place: place
@@ -126,6 +155,34 @@ class DetailsPageLanding extends Component {
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div>
+                                <Row>
+                                    <div className='col-4'>
+                                        <h2>Good WiFi</h2>
+                                        {this.state.WifiRate && this.state.WifiRate.map((g, i) => (<>
+                                            <div key={i} style={{backgroundColor: `${g[0]}`, height: "40px", borderRadius: "10px", width: `${g[1]}px`}}></div>
+                                            <p>{g[2]} people rated this field as {g[3]} </p>
+                                            </>
+                                        ))}
+                                    </div>
+                                    <div className='col-4'>
+                                        <h2>Quiet Place</h2>
+                                        {this.state.QuitePlace && this.state.QuitePlace.map((q, i) => (<>
+                                            <div key={i} style={{backgroundColor: `${q[0]}`, height: "40px", borderRadius: "10px", width: `${q[1]}px`}}></div>
+                                            <p>{q[2]} people rated this field as {q[3]} </p>
+                                            </>
+                                        ))}
+                                    </div>
+                                    <div className='col-4'>
+                                        <h2>Good Service</h2>
+                                        {this.state.GoodService && this.state.GoodService.map((g, i) => (<>
+                                            <div key={i} style={{backgroundColor: `${g[0]}`, height: "40px", borderRadius: "10px", width: `${g[1]}px`}}></div>
+                                            <p>{g[2]} people rated this field as {g[3]} </p>
+                                            </>
+                                        ))}
+                                    </div>
+                                </Row>
                             </div>
                             <div>
                             </div>
