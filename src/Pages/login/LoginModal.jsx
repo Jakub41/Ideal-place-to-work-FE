@@ -219,7 +219,7 @@ class LoginModal extends React.Component {
             <div>
                 <ReactTooltip/>
                 <Col data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"}
-                     onClick={() => this.openModal('login')}> LOGIN </Col>
+                     onClick={() => this.openModal('login')}> <span className="footer-options"> / </span><span className="footer-options">LOGIN</span> </Col>
 
                 <SweetAlert
                     show={this.state.greetings}
