@@ -94,7 +94,15 @@ h2 {
     cursor: pointer;
 }
 
-.container {
+/* .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-bottom: #b7adb4 2px solid;
+} */
+
+.container.details {
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,22 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
+/* //impact? */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 
 #new-footer{
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-evenly;
-    background-color: transparent;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    
-    
+    justify-content: space-between;
+    background-color:#b874df;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
+
 }
 
 .footer-items{
     display: flex;
     flex-flow: row;
-    font-size: 55px;
-    font-family: 'Roboto Slab', serif;
+    font-size: 35px;
+    font-family: 'Archivo Black', sans-serif;
     padding: 1rem;
+    align-items: center;
 }
 
 #home{
@@ -31,6 +33,10 @@
 #favs{
     color: black;
     text-decoration: none;
+}
+
+.col > img {
+    width: 50%;
 }
 
 #favs:hover{
@@ -51,18 +57,10 @@
     padding: 5px;
 }
 
-#user-profile-pic:hover{
-    opacity: 50%
-}
-
 #logout:hover{
     cursor: pointer;
     text-decoration: underline black;
 }
-
-/* .copyright-items{
-    
-} */
 
 #copyright{
     font-weight: lighter;
@@ -72,4 +70,23 @@
 #copyright-img{
     height: 80px;
     object-fit: cover;
+}
+
+/* media queries */
+@media (max-width: 575px) {
+    .footer-options{
+        font-size: 15px;
+    }
+    .copyright-items{
+        text-align: center;
+    }
+}
+
+@media (max-width: 993px) {
+    .footer-options{
+        font-size: 24px;
+    }
+    /* .copyright-items{
+        text-align: center;
+    } */
 }
