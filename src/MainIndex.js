@@ -20,12 +20,14 @@ class Main extends Component {
         return (
             <>
             <Router >
+                <div className="main-container">
                 <Switch>
                 <Route exact path="/"><LandingPage/></Route>
                 <Route path="/details/:id"><DetailsPageLanding /></Route>
                 <Route path="/favs"><FavoritesPageIndex/></Route>
                 <Route path="/map/:search/:latitude/:longitude"><Map/></Route>
                 </Switch>
+                </div>
                 <NewFooter/>
             </Router>
             </>
