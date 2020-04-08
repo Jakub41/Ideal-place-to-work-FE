@@ -93,6 +93,7 @@ class LandingPage extends Component {
             loading: !this.state.loading,
         })
     }
+
     togleFilter = (filterProperty) => {
         this.setState({
           [filterProperty]: !this.state[filterProperty],
@@ -122,6 +123,10 @@ class LandingPage extends Component {
         })
     }
 
+    specificCity = async(city) => {
+
+    }
+
     componentDidMount = async() => {
         setTimeout(async() => {
             if(this.props.latitude === "null" || !this.props.latitude || !this.props.coords.latitude || this.props.coords.latitude === "null" || !this.props.isGeolocationAvailable || !this.props.isGeolocationEnabled) {
@@ -138,7 +143,7 @@ class LandingPage extends Component {
                 console.log(places)
                 this.setState({
                     loading: false,
-                    places: places.places,
+                    places: places,
                     pageCount: Math.ceil(places.total / this.state.limit),
                     location: {
                         latitude: 52.520008,

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Container } from "reactstrap";
+import { Row, Col, Container, Input, Button } from "reactstrap";
 import SingleCardForPlace from './SingleCardForPlace';
 import Loader from 'react-loader-spinner';
 import ReactPaginate from 'react-paginate';
@@ -110,6 +110,10 @@ class LandingAPI extends Component {
                   subContainerClassName={'pages pagination'} 
                   activeClassName={'active'} 
                 />
+          </div> 
+          <div className="div-select-city">
+            <h3 className="select-city-landing-page">Or Select City</h3>
+            <Input className='landing-input' type="text"/> <Button>Select</Button>
           </div> 
           <Row>
                {this.props.places && this.props.places.map((place, index) => (

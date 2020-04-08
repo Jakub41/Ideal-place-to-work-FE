@@ -217,6 +217,22 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 900;
 }
+.landing-input {
+  width: 150px !important;
+  border: 0px !important;
+  background-color: rgb(192, 211, 222) !important;
+}
+.div-select-city{
+  display: flex;
+  justify-content: space-evenly;
+  width: 400px;
+  align-items: flex-end;
+}
+.select-city-landing-page{
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
 .near-your-filter-div {
   margin-top: 100px;
 }
