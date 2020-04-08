@@ -152,14 +152,15 @@ class LoginModal extends React.Component {
     onLoginSuccess(method, response) {
         console.log(method, response);
         if (method === "facebook") {
-            window.FB.api("/me", {fields: 'lastname,firstname,email,picture'}, (res) => {
+            window.FB.api("/me", {fields: 'last_name,first_name,email,picture'}, (res) => {
                 console.log(res);
                 Api.fetch("/auth/facebook", "POST", {auth: response.authResponse, profile: res})
                     .then(userdata => {
+                        console.log(res);
                         localStorage.setItem("access_token", userdata.accessToken);
                         this.props.fetchUser();
                         this.setState({
-                            username: res.user.firstname + " " + res.user.lastname,
+                            username: userdata.user.firstname + " " + userdata.user.lastname,
                             greetings: true
                         })
                     })
