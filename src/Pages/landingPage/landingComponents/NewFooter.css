@@ -8,7 +8,7 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     background-color:#b874df;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
 }
 
