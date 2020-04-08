@@ -35,6 +35,10 @@
     text-decoration: none;
 }
 
+.col > img {
+    width: 50%;
+}
+
 #favs:hover{
     color: black;
     text-decoration: underline black;
@@ -85,6 +89,24 @@
 @media (max-width: 993px) {
     .footer-options{
         font-size: 32px;
+    }
+    /* .copyright-items{
+        text-align: center;
+    } */
+}
+/* media queries */
+@media (max-width: 575px) {
+    .footer-options{
+        font-size: 15px;
+    }
+    .copyright-items{
+        text-align: center;
+    }
+}
+
+@media (max-width: 993px) {
+    .footer-options{
+        font-size: 24px;
     }
     /* .copyright-items{
         text-align: center;

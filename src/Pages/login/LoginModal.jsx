@@ -110,7 +110,6 @@ class LoginModal extends React.Component {
                 this.setState({
                     error: true,
                     errorText: err.response.msg ? err.response.msg : null
-
                 })
             })
         }
