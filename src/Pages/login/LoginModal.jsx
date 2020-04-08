@@ -105,15 +105,12 @@ class LoginModal extends React.Component {
                         this.props.setUserToken(base64usernameAndPassword);
                         this.props.fetchUser()
                     }
-
                 }).catch((err) => {
                 console.log(err);
                 this.setState({
                     error: true,
                     errorText: err.response.msg ? err.response.msg : null
-
                 })
-
             })
         }
     }
