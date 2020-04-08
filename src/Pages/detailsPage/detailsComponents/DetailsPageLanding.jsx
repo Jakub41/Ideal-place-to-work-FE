@@ -29,7 +29,7 @@ class DetailsPageLanding extends Component {
     };
 
     calculateWidth = (x) => {
-        const width = 400*x/100
+        const width = 250*x/100
         return width === 0 ? 5 : width
     }
 
