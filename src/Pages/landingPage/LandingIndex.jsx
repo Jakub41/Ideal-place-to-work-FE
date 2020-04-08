@@ -133,7 +133,7 @@ class LandingPage extends Component {
             const browserCity = {
                 latitude: this.props.coords.latitude,
                 longitude: this.props.coords.longitude,
-                city: "Milan"
+                city: city
             }
             console.log(browserCity)
             let places = await this.fetchInSpecificPlaces(browserCity)
@@ -144,7 +144,7 @@ class LandingPage extends Component {
                 location: {
                     latitude: this.props.coords.latitude,
                     longitude: this.props.coords.longitude,
-                    city: "Milan"
+                    city:"city"
                 }
             })
         }, 3000)
