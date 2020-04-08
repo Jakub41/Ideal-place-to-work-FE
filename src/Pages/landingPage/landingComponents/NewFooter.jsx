@@ -37,20 +37,23 @@ const NewFooter = (props) => {
 
                     <Link to="/favs"><Col id="favs"> <span className="footer-options">FAVS</span>  </Col></Link>
 
-<div className="login-logout-area">
+<Row className="login-logout-area">
+    
+                    <span className="divider"> / </span>
                     {profilePic ? <Col
                         onClick={() => {
                         localStorage.setItem('access_token', undefined)
-
-                        setProfilePic(undefined)}} ><span className="footer-options"> / </span><img src={profilePic} id="user-profile-pic"/></Col>:
+                        setProfilePic(undefined)}} >
+                        <img src={profilePic} id="user-profile-pic"/></Col> :
                         <LoginModal fetchUser={fetchUser} />}
                 
                     <Col onClick={() => {
                         localStorage.setItem('access_token', undefined)
                         setProfilePic(undefined)}} id="logout"> 
                         <span className="footer-options">LOGOUT </span>
-                        <span className="footer-options"> / </span></Col>
-</div>
+                        </Col>
+                        <span className="divider"> / </span>
+</Row>
                     <Col className="copyright-items"> 
                     <img src={alpha} id="copyright-img"/> 
                     <p id="copyright"> © Alpha Nomad Team 2020 </p>  </Col>
