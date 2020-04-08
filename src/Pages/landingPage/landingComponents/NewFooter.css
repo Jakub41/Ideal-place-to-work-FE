@@ -2,16 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
 /* //impact? */
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
-
 #new-footer{
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     background-color:#b874df;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
 }
-
 .footer-items{
     display: flex;
     flex-flow: row;
@@ -20,30 +17,24 @@
     padding: 1rem;
     align-items: center;
 }
-
 #home{
     color: black;
     text-decoration: none;
 }
-
 #home:hover{
     text-decoration: underline black;
 }
-
 #favs{
     color: black;
     text-decoration: none;
 }
-
-.col > img {
-    width: 50%;
-}
-
 #favs:hover{
     color: black;
     text-decoration: underline black;
 }
-
+#divider{
+    font-size: 115px;
+}
 #login{
     text-decoration: none;
 }
@@ -51,31 +42,26 @@
     cursor: pointer;
     text-decoration: underline black;
 }
-
 .login-logout-area{
     justify-content: flex-end;
 }
-
 #user-profile-pic{
-    width: 50px;
-    padding: 5px;
+    width: 75px;
+    margin-left: 55px;
+    margin-top: 25px;
 }
-
 #logout:hover{
     cursor: pointer;
     text-decoration: underline black;
 }
-
 #copyright{
     font-weight: lighter;
     font-size: 13px;
 }
-
 #copyright-img{
     height: 80px;
     object-fit: contain;
 }
-
 /* media queries */
 @media (max-width: 575px) {
     .footer-options{
@@ -84,31 +70,19 @@
     .copyright-items{
         text-align: center;
     }
+    #user-profile-pic{
+        width: 60px;
+        margin-left: 30px;
+        margin-top: 25px;
+    }
 }
-
 @media (max-width: 993px) {
     .footer-options{
         font-size: 32px;
     }
-    /* .copyright-items{
-        text-align: center;
-    } */
-}
-/* media queries */
-@media (max-width: 575px) {
-    .footer-options{
-        font-size: 15px;
+    #user-profile-pic{
+        width: 60px;
+        margin-left: 30px;
+        margin-top: 25px;
     }
-    .copyright-items{
-        text-align: center;
-    }
-}
-
-@media (max-width: 993px) {
-    .footer-options{
-        font-size: 24px;
-    }
-    /* .copyright-items{
-        text-align: center;
-    } */
 }
