@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Roboto:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+
 .d-block {
     width: unset;
     object-fit: cover;
@@ -52,7 +55,6 @@ h4 {
 
 .dislike-btn{
     cursor: pointer;
-
 }
 
 
@@ -171,4 +173,21 @@ h2 {
 
 .website-title {
     font-weight: bold;
+}
+
+.graph-paragraph{
+    font-family: "Roboto", sans-serif;
+}
+
+.graph-header{
+    font-family: 'Poppins', sans-serif;
+    color: #8306BC;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.div-graphs {
+    border-top: 2px solid #b7adb4;
+    padding: 30px 0px;
+    border-bottom: 2px solid #b7adb4;
 }

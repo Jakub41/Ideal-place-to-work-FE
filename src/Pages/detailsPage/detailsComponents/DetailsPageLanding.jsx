@@ -156,29 +156,29 @@ class DetailsPageLanding extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div>
+                            <div className="div-graphs">
                                 <Row>
                                     <div className='col-4'>
-                                        <h2>Good WiFi</h2>
+                                        <h2 className="graph-header">Good WiFi:</h2>
                                         {this.state.WifiRate && this.state.WifiRate.map((g, i) => (<>
-                                            <div key={i} style={{backgroundColor: `${g[0]}`, height: "40px", borderRadius: "10px", width: `${g[1]}px`}}></div>
-                                            <p>{g[2]} people rated this field as {g[3]} </p>
+                                            <div key={i} style={{backgroundColor: `${g[0]}`, height: "25px", borderRadius: "10px", width: `${g[1]}px`}}></div>
+                                            <p className="graph-paragraph">{g[2]} people rated this field as {g[3]} </p>
                                             </>
                                         ))}
                                     </div>
                                     <div className='col-4'>
-                                        <h2>Quiet Place</h2>
+                                        <h2 className="graph-header">Quiet Place:</h2>
                                         {this.state.QuitePlace && this.state.QuitePlace.map((q, i) => (<>
-                                            <div key={i} style={{backgroundColor: `${q[0]}`, height: "40px", borderRadius: "10px", width: `${q[1]}px`}}></div>
-                                            <p>{q[2]} people rated this field as {q[3]} </p>
+                                            <div key={i} style={{backgroundColor: `${q[0]}`, height: "25px", borderRadius: "10px", width: `${q[1]}px`}}></div>
+                                            <p className="graph-paragraph">{q[2]} people rated this field as {q[3]} </p>
                                             </>
                                         ))}
                                     </div>
                                     <div className='col-4'>
-                                        <h2>Good Service</h2>
+                                        <h2 className="graph-header">Good Service:</h2>
                                         {this.state.GoodService && this.state.GoodService.map((g, i) => (<>
-                                            <div key={i} style={{backgroundColor: `${g[0]}`, height: "40px", borderRadius: "10px", width: `${g[1]}px`}}></div>
-                                            <p>{g[2]} people rated this field as {g[3]} </p>
+                                            <div key={i} style={{backgroundColor: `${g[0]}`, height: "25px", borderRadius: "10px", width: `${g[1]}px`}}></div>
+                                            <p className="graph-paragraph">{g[2]} people rated this field as {g[3]} </p>
                                             </>
                                         ))}
                                     </div>
