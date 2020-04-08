@@ -2,8 +2,7 @@ import React, {Component} from "react";
 import "./Landing.css";
 import Api from '../../Api'
 import { geolocated } from "react-geolocated";
-import image from "../../images/shutterstock_610938071.jpg";
-import {Row, Container, Col} from "reactstrap";
+import {Container} from "reactstrap";
 import LandingSearch from "./landingComponents/LandingSearch";
 import LandingAPI from "./landingComponents/LandingAPI";
 
@@ -110,7 +109,7 @@ class LandingPage extends Component {
         console.log(respJson)
         for(var i = 0; i < respJson.results[0].address_components.length; i++) {
             for(var j = 0; j < respJson.results[0].address_components[i].types.length; j++) {
-                if(respJson.results[0].address_components[i].types[j] == "administrative_area_level_2"){
+                if(respJson.results[0].address_components[i].types[j] === "locality"){
                     return respJson.results[0].address_components[i].long_name
                 }
             }
@@ -125,28 +124,51 @@ class LandingPage extends Component {
 
     componentDidMount = async() => {
         setTimeout(async() => {
-            console.log(this.props.coords.latitude, this.props.coords.longitude)
-            const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
-            this.setState({
-                loading: true
-            })
-            const browserCity = {
-                latitude: this.props.coords.latitude,
-                longitude: this.props.coords.longitude,
-                city: "Milan"
-            }
-            console.log(browserCity)
-            let places = await this.fetchInSpecificPlaces(browserCity)
-            this.setState({
-                loading: false,
-                places: places.places,
-                pageCount: Math.ceil(places.total / this.state.limit),
-                location: {
+            if(this.props.latitude === "null" || !this.props.latitude || !this.props.coords.latitude || this.props.coords.latitude === "null" || !this.props.isGeolocationAvailable || !this.props.isGeolocationEnabled) {
+                this.setState({
+                    loading: true
+                })
+                const browserCity = {
+                    latitude: 52.520008,
+                    longitude: 13.404954,
+                    city: "Berlin"
+                }
+                console.log(browserCity)
+                let places = await this.fetchInSpecificPlaces(browserCity)
+                console.log(places)
+                this.setState({
+                    loading: false,
+                    places: places.places,
+                    pageCount: Math.ceil(places.total / this.state.limit),
+                    location: {
+                        latitude: 52.520008,
+                        longitude: 13.404954,
+                        city: "Berlin"
+                    }
+                })
+            } else {
+                console.log(this.props.coords.latitude, this.props.coords.longitude)
+                const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
+                this.setState({
+                    loading: true
+                })
+                const browserCity = {
                     latitude: this.props.coords.latitude,
                     longitude: this.props.coords.longitude,
-                    city: "Milan"
+                    city: city
                 }
-            })
+                let places = await this.fetchInSpecificPlaces(browserCity)
+                this.setState({
+                    loading: false,
+                    places: places.places,
+                    pageCount: Math.ceil(places.total / this.state.limit),
+                    location: {
+                        latitude: this.props.coords.latitude,
+                        longitude: this.props.coords.longitude,
+                        city: city
+                    }
+                })
+            }
         }, 3000)
       };
 
@@ -169,11 +191,6 @@ class LandingPage extends Component {
                     fetchResults={this.fetchResults}
                     location={this.state.location}
                     />
-                    {!this.props.isGeolocationAvailable ? (
-                    <div>Your browser does not support Geolocation</div>
-                    ) : !this.props.isGeolocationEnabled ? (
-                    <div>Geolocation is not enabled</div>
-                    ) :
                     <LandingAPI
                         pageCount={this.state.pageCount}
                         city={this.state.location.city}
@@ -184,7 +201,7 @@ class LandingPage extends Component {
                         GoodService={this.state.GoodService}
                         places={this.state.places}
                         handlePageClick={this.handlePageClick}
-                    />}
+                    />
 
                 </Container>
             </>

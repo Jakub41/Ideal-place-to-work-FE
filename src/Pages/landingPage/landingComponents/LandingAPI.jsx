@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Row, Col, Container, CardImg, CardBody, CardTitle } from "reactstrap";
+import { Row, Col, Container } from "reactstrap";
 import SingleCardForPlace from './SingleCardForPlace';
 import Loader from 'react-loader-spinner';
-import { Link } from "react-router-dom";
-import Star from "../../../icons/Star.png";
 import ReactPaginate from 'react-paginate';
 import cupIcon from "../../../icons/bars01.png";
 import workIcon from "../../../icons/cowos01.png";
@@ -29,11 +27,11 @@ class LandingAPI extends Component {
   
 
   render() {
-    console.log(this.props)
+    console.log('props',this.props)
     return (
       <>
         <Container fluid style={{ padding: "0px 40px", minHeight:'100vh' }}>
-        {this.props.places && <><Row className='near-your-filter-div'>
+        <Row className='near-your-filter-div'>
             <Col xs="6">
               <h3 className="near-you-filter-landing-page">In Your City <span style={{color: "#9200E6"}}>{this.props.city}</span></h3>
             </Col>
@@ -114,11 +112,10 @@ class LandingAPI extends Component {
                 />
           </div> 
           <Row>
-               {this.props.places.map((place, index) => (
+               {this.props.places && this.props.places.map((place, index) => (
                 <SingleCardForPlace place={place} key={index} />
               ))}
           </Row>
-          </>}
           {this.props.loading && <div><Loader
                 type="Oval"
                 color="#9200E6"

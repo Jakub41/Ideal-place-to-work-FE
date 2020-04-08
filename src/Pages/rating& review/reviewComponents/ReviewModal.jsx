@@ -54,7 +54,7 @@ class CommentModal extends React.Component {
     submitComment = async() => {
         console.log(this.state.comment)
         let req = await Api.fetch(`/reviews/${this.props.match.params.id}`, "POST", JSON.stringify(this.state.comment), {"Authorization": "Bearer " + localStorage.getItem("access_token")})
-        console.log(req);
+        this.toggleModalOrAlert()
     }
 
     toggleModalOrAlert = async () => {
