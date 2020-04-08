@@ -15,7 +15,7 @@
 .footer-items{
     display: flex;
     flex-flow: row;
-    font-size: 55px;
+    font-size: 43px;
     font-family: 'Archivo Black', sans-serif;
     padding: 1rem;
     align-items: center;
@@ -40,6 +40,10 @@
     text-decoration: underline black;
 }
 
+.divider{
+    font-size: 65px;
+}
+
 #login{
     text-decoration: none;
 }
@@ -49,17 +53,25 @@
 }
 
 .login-logout-area{
-    justify-content: flex-end;
+    margin-left: 65px !important;
+    
 }
 
 #user-profile-pic{
-    width: 50px;
-    padding: 5px;
+    width: 60px;
+    margin-bottom: 5px;
+    margin-left: 10px;
 }
 
 #logout:hover{
     cursor: pointer;
     text-decoration: underline black;
+}
+
+.copyright-items{
+    margin-left: 100px;
+    margin-right: 0px;
+    margin-top: 20px;
 }
 
 #copyright{
@@ -80,13 +92,20 @@
     .copyright-items{
         text-align: center;
     }
+    #user-profile-pic{
+        width: 60px;
+        margin-left: 30px;
+        margin-top: 25px;
+    }
 }
 
 @media (max-width: 993px) {
     .footer-options{
         font-size: 32px;
     }
-    /* .copyright-items{
-        text-align: center;
-    } */
+    #user-profile-pic{
+        width: 60px;
+        margin-left: 30px;
+        margin-top: 25px;
+    }
 }
