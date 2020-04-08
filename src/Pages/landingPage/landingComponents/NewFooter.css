@@ -15,7 +15,7 @@
 .footer-items{
     display: flex;
     flex-flow: row;
-    font-size: 35px;
+    font-size: 55px;
     font-family: 'Archivo Black', sans-serif;
     padding: 1rem;
     align-items: center;
@@ -35,10 +35,6 @@
     text-decoration: none;
 }
 
-.col > img {
-    width: 50%;
-}
-
 #favs:hover{
     color: black;
     text-decoration: underline black;
@@ -50,6 +46,10 @@
 #login:hover{
     cursor: pointer;
     text-decoration: underline black;
+}
+
+.login-logout-area{
+    justify-content: flex-end;
 }
 
 #user-profile-pic{
@@ -69,13 +69,13 @@
 
 #copyright-img{
     height: 80px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /* media queries */
 @media (max-width: 575px) {
     .footer-options{
-        font-size: 15px;
+        font-size: 20px;
     }
     .copyright-items{
         text-align: center;
@@ -84,7 +84,7 @@
 
 @media (max-width: 993px) {
     .footer-options{
-        font-size: 24px;
+        font-size: 32px;
     }
     /* .copyright-items{
         text-align: center;
