@@ -15,7 +15,7 @@
 .footer-items{
     display: flex;
     flex-flow: row;
-    font-size: 35px;
+    font-size: 55px;
     font-family: 'Archivo Black', sans-serif;
     padding: 1rem;
     align-items: center;
@@ -52,6 +52,10 @@
     text-decoration: underline black;
 }
 
+.login-logout-area{
+    justify-content: flex-end;
+}
+
 #user-profile-pic{
     width: 50px;
     padding: 5px;
@@ -69,7 +73,26 @@
 
 #copyright-img{
     height: 80px;
-    object-fit: cover;
+    object-fit: contain;
+}
+
+/* media queries */
+@media (max-width: 575px) {
+    .footer-options{
+        font-size: 20px;
+    }
+    .copyright-items{
+        text-align: center;
+    }
+}
+
+@media (max-width: 993px) {
+    .footer-options{
+        font-size: 32px;
+    }
+    /* .copyright-items{
+        text-align: center;
+    } */
 }
 /* media queries */
 @media (max-width: 575px) {
