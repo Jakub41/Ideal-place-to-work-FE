@@ -127,7 +127,8 @@ class UserReview extends Component {
                             'border': 'solid 2px black',
                             'border-radius': '5px',
                             flex: "0 1 100%",
-                            "margin": '5px'
+                            "margin": '5px',
+                            marginBottom: '20px'
                         }}>
                             <div key={comment._id} className="user-review-header-container" style={{'display': 'flex'}}>
                                 <div><img className="user-review-image"

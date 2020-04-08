@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
 
-#new-footer{
+#new-footer {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-around;
     background-color: rgb(217, 192, 240);
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    
+    position: fixed;
+    bottom: 0;
 }
 
 .footer-items{
@@ -60,7 +61,7 @@
 }
 
 /* .copyright-items{
-    
+
 } */
 
 #copyright{
