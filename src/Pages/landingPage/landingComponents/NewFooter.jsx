@@ -28,18 +28,18 @@ const NewFooter = (props) => {
 
         return (
             <div id="new-footer">
-            <Container >
+            <Container fluid>
                 {/* //not have a max width - fluid bs  */}
 
                 <Row className="footer-items">
 
                     <Link id="home-link" to="/"><Col id="home"> <span className="footer-options">HOME</span> </Col></Link>
 
-                    <Link to="/favs"><Col id="favs"> <span className="footer-options">FAVS</span>  </Col></Link>
+                    <Link to="/favs"><Col id="favs"> <span className="footer-options">FAVES</span>  </Col></Link>
 
-<Row className="login-logout-area">
-    
-                    <span className="divider"> / </span>
+
+    <div className="login-logout-area">
+                    <span className="login-logout-divider"> / </span>
                     {profilePic ? <Col
                         onClick={() => {
                         localStorage.setItem('access_token', undefined)
@@ -52,8 +52,9 @@ const NewFooter = (props) => {
                         setProfilePic(undefined)}} id="logout"> 
                         <span className="footer-options">LOGOUT </span>
                         </Col>
-                        <span className="divider"> / </span>
-</Row>
+                        <span className="login-logout-divider"> / </span>
+    </div>
+
                     <Col className="copyright-items"> 
                     <img src={alpha} id="copyright-img"/> 
                     <p id="copyright"> © Alpha Nomad Team 2020 </p>  </Col>
