@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "./Landing.css";
-import Api from '../../Api'
+import Api from '../../Api';
+import Geocode from "react-geocode";
 import { geolocated } from "react-geolocated";
 import {Container} from "reactstrap";
 import LandingSearch from "./landingComponents/LandingSearch";
@@ -123,11 +124,28 @@ class LandingPage extends Component {
         })
     }
 
-    specificCity = async(city) => {
-
+    customCitySearch = async(city) => {
+        Geocode.fromAddress(city).then(
+            response => {
+              const { lat, lng } = response.results[0].geometry.location;
+              console.log(lat, lng);
+              this.setState({
+                  location: {
+                    latitude: lat,
+                    longitude: lng,
+                    city: city 
+                  }
+              })
+              return this.fetchInSpecificPlaces(this.state.location)
+            },
+            error => {
+              console.error(error);
+            }
+        );
     }
 
     componentDidMount = async() => {
+        Geocode.setApiKey("AIzaSyDlkDftixlz_nvsxuPi0flAOP_0Cc6poBE");
         setTimeout(async() => {
             if(this.props.latitude === "null" || !this.props.latitude || !this.props.coords.latitude || this.props.coords.latitude === "null" || !this.props.isGeolocationAvailable || !this.props.isGeolocationEnabled) {
                 this.setState({
@@ -143,7 +161,7 @@ class LandingPage extends Component {
                 console.log(places)
                 this.setState({
                     loading: false,
-                    places: places,
+                    places: places.places,
                     pageCount: Math.ceil(places.total / this.state.limit),
                     location: {
                         latitude: 52.520008,
@@ -197,6 +215,7 @@ class LandingPage extends Component {
                     location={this.state.location}
                     />
                     <LandingAPI
+                        customCitySearch={this.customCitySearch}
                         pageCount={this.state.pageCount}
                         city={this.state.location.city}
                         loading={this.state.loading}
