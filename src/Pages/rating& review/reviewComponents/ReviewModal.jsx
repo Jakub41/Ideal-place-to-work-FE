@@ -51,20 +51,24 @@ class CommentModal extends React.Component {
         }))
     }
 
-    submitComment = async() => {
-        console.log(this.state.comment)
-        let req = await Api.fetch(`/reviews/${this.props.match.params.id}`, "POST", JSON.stringify(this.state.comment), {"Authorization": "Bearer " + localStorage.getItem("access_token")})
-        console.log(req);
+    submitComment = () => {
+        Api.fetch(`/reviews/${this.props.match.params.id}`, "POST", JSON.stringify(this.state.comment), {"Authorization": "Bearer " + localStorage.getItem("access_token")})
+        this.setState({
+            modal: false
+        })
     }
 
-    toggleModalOrAlert = async () => {
+    toggleModalOrAlert = () => {
         const token = localStorage.getItem("access_token")
         if (token !== "undefined" && token !== "" && token) {
             console.log("token")
+            console.log(this.state.modal)
             this.setState({ modal: !this.state.modal })
+            console.log(this.state.modal)
         } else {
             console.log("no token")
             this.setState({ alertMsgDiv: !this.state.alertMsgDiv })
+            console.log(this.state.alertMsgDiv)
         }
     };
 
