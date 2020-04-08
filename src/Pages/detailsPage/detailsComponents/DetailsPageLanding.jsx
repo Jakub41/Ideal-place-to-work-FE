@@ -38,19 +38,19 @@ class DetailsPageLanding extends Component {
         console.log(resp)
         this.setState({
             WifiRate: [
-                ["#8DD794", this.calculateWidth(resp.WifiRate.RatingPercentages.positive), resp.WifiRate[1] + resp.WifiRate[2], "perfect"], 
+                ["#8DD794", this.calculateWidth(resp.WifiRate.RatingPercentages.positive), resp.WifiRate[4] + resp.WifiRate[5], "perfect"], 
                 ["#FEFC84", this.calculateWidth(resp.WifiRate.RatingPercentages.intermediate), resp.WifiRate[3], "good"], 
-                ["#FF7284", this.calculateWidth(resp.WifiRate.RatingPercentages.negative), resp.WifiRate[4] + resp.WifiRate[5], "bad"],
+                ["#FF7284", this.calculateWidth(resp.WifiRate.RatingPercentages.negative), resp.WifiRate[2] + resp.WifiRate[1], "bad"],
             ],
             GoodService: [
-                ["#8DD794", this.calculateWidth(resp.GoodService.RatingPercentages.positive), resp.GoodService[1] + resp.GoodService[2], "perfect"], 
+                ["#8DD794", this.calculateWidth(resp.GoodService.RatingPercentages.positive), resp.GoodService[4] + resp.GoodService[5], "perfect"], 
                 ["#FEFC84", this.calculateWidth(resp.GoodService.RatingPercentages.intermediate), resp.GoodService[3], "good"], 
-                ["#FF7284", this.calculateWidth(resp.GoodService.RatingPercentages.negative), resp.GoodService[4] + resp.GoodService[5], "bad"],
+                ["#FF7284", this.calculateWidth(resp.GoodService.RatingPercentages.negative), resp.GoodService[2] + resp.GoodService[1], "bad"],
             ],
             QuitePlace: [
-                ["#8DD794", this.calculateWidth(resp.QuitePlace.RatingPercentages.positive), resp.QuitePlace[1] + resp.QuitePlace[2], "perfect"], 
+                ["#8DD794", this.calculateWidth(resp.QuitePlace.RatingPercentages.positive), resp.QuitePlace[4] + resp.QuitePlace[5], "perfect"], 
                 ["#FEFC84", this.calculateWidth(resp.QuitePlace.RatingPercentages.intermediate), resp.QuitePlace[3], "good"], 
-                ["#FF7284", this.calculateWidth(resp.QuitePlace.RatingPercentages.negative), resp.QuitePlace[4] + resp.QuitePlace[5], "bad"],
+                ["#FF7284", this.calculateWidth(resp.QuitePlace.RatingPercentages.negative), resp.QuitePlace[1] + resp.QuitePlace[2], "bad"],
             ]
         });
         console.log(this.state)
