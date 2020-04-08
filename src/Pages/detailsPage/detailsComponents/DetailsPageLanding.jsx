@@ -101,7 +101,7 @@ class DetailsPageLanding extends Component {
                         <DetailPageCarousel place={this.state.place}/>
                         <Link to="/"><img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
                     </div>
-                    <div className="container">
+                    <div className="container details">
                         <div className="coffee-point flex-box">
                             <div className="row-details">
                                 <h2 className="place-title">{this.state.place.Name}</h2>

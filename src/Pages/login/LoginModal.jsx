@@ -105,11 +105,12 @@ class LoginModal extends React.Component {
                         this.props.setUserToken(base64usernameAndPassword);
                         this.props.fetchUser()
                     }
-                }).catch((res) => {
-                console.log(res);
+
+                }).catch((err) => {
+                console.log(err);
                 this.setState({
                     error: true,
-                    errorText: res.response.msg ? res.response.msg : null
+                    errorText: err.response.msg ? err.response.msg : null
                 })
             })
         }
@@ -147,19 +148,21 @@ class LoginModal extends React.Component {
     }
 
     onLoginSuccess(method, response) {
-        console.log(response);
-        window.FB.api("/me", {fields: 'last_name,first_name,email,picture'},  (res) => {
-            console.log(res);
-            Api.fetch("/auth/facebook", "POST", {auth: response.authResponse, profile: res})
-                .then(userdata => {
-                    localStorage.setItem("access_token", userdata.accessToken);
-                    this.props.fetchUser();
-                    this.setState({
-                        username: res.user.firstname + " " + res.user.lastname,
-                        greetings: true
+        console.log(method, response);
+        if (method === "facebook") {
+            window.FB.api("/me", {fields: 'lastname,firstname,email,picture'}, (res) => {
+                console.log(res);
+                Api.fetch("/auth/facebook", "POST", {auth: response.authResponse, profile: res})
+                    .then(userdata => {
+                        localStorage.setItem("access_token", userdata.accessToken);
+                        this.props.fetchUser();
+                        this.setState({
+                            username: res.user.firstname + " " + res.user.lastname,
+                            greetings: true
+                        })
                     })
-                })
-        });
+            });
+        }
         this.closeModal();
         this.setState({
             loggedIn: method,
@@ -217,7 +220,7 @@ class LoginModal extends React.Component {
             <div>
                 <ReactTooltip/>
                 <Col data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"}
-                     onClick={() => this.openModal('login')}> LOGIN </Col>
+                     onClick={() => this.openModal('login')}> <span className="footer-options"> / </span><span className="footer-options">LOGIN</span> </Col>
 
                 <SweetAlert
                     show={this.state.greetings}
