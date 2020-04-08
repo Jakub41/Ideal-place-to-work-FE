@@ -137,14 +137,15 @@ class LandingPage extends Component {
             }
             console.log(browserCity)
             let places = await this.fetchInSpecificPlaces(browserCity)
+            console.log(places)
             this.setState({
                 loading: false,
-                places: places,
+                places: places.places,
                 pageCount: Math.ceil(places.total / this.state.limit),
                 location: {
                     latitude: this.props.coords.latitude,
                     longitude: this.props.coords.longitude,
-                    city:"city"
+                    city: city
                 }
             })
         }, 3000)
