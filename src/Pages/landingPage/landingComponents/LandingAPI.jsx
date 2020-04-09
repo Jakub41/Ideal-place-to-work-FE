@@ -14,20 +14,19 @@ import "../Landing.css";
 
 class LandingAPI extends Component {
   state = {
-    filterBox: false
+    filterBox: false,
+    city: undefined
   };
 
   filterBlockOpen = () => {
     this.setState({
       filterBox: !this.state.filterBox
     });
-    console.log(this.state.filterBox);
   };
 
   
 
   render() {
-    console.log('props',this.props)
     return (
       <>
         <Container fluid style={{ padding: "0px 40px", minHeight:'100vh' }}>
@@ -96,6 +95,10 @@ class LandingAPI extends Component {
               </div>
             </Col>
           </Row>
+          <div className="div-select-city">
+            <h3 className="select-city-landing-page">Or Select City</h3>
+            <Input className='landing-input' onChange={(e) => this.setState({city: e.target.value})} type="text"/> <Button onClick={() => this.props.customCitySearch(this.state.city)}>Select</Button>
+          </div> 
           <div>
                <ReactPaginate
                   previousLabel={'previous'}
@@ -111,14 +114,10 @@ class LandingAPI extends Component {
                   activeClassName={'active'} 
                 />
           </div> 
-          <div className="div-select-city">
-            <h3 className="select-city-landing-page">Or Select City</h3>
-            <Input className='landing-input' type="text"/> <Button>Select</Button>
-          </div> 
           <Row>
-               {this.props.places && this.props.places.map((place, index) => (
+               {this.props.places ? this.props.places.map((place, index) => (
                 <SingleCardForPlace place={place} key={index} />
-              ))}
+              )) : <h1>Nothing was found</h1>}
           </Row>
           {this.props.loading && <div><Loader
                 type="Oval"

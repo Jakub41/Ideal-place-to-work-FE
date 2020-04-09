@@ -31,7 +31,6 @@ class LandingPage extends Component {
     handlePageClick = data => {
         this.setState({
             loading: true,
-            places: []
         })
         let selected = data.selected;
         let offset = Math.ceil(selected * this.state.limit);
@@ -60,14 +59,11 @@ class LandingPage extends Component {
             WifiRate: false,
         })
         const placeToSearch = {
-            latitude: this.props.coords.latitude,
-            longitude: this.props.coords.longitude,
+            latitude: this.state.location.latitude,
+            longitude: this.state.location.longitude,
             searchQuery: searchPlace,
-            placeToSearch: searchPlace
         }
         let places = await Api.fetch(`/placesSearch?limit=${this.state.limit}&skip=${this.state.skip}`, "POST", JSON.stringify(placeToSearch), "");
-        console.log(searchPlace, places.places)
-        console.log(places.total, this.state.limit, places.total / this.state.limit)
         if(places) {
             this.setState({
                 places: places.places,
@@ -78,14 +74,16 @@ class LandingPage extends Component {
 
     filterResults = async(filter) => {
         const resp = await Api.fetch(`/places?limit=6&sortBy=${filter}&OrderBy=desc&skip=${this.state.skip}`)
+        console.log(resp)
         this.setState({
-            places: resp.places,
+            places: resp.result,
             pageCount: Math.ceil(resp.total / this.state.limit),
         })
     }
 
     fetchInSpecificPlaces = async(browserCity) => {
         let resp = await Api.fetch(`/placesInSpecificCity?limit=${this.state.limit}&skip=${this.state.skip}`,"POST", JSON.stringify(browserCity), "");
+        console.log(resp)
         return resp;
     }
 
@@ -105,10 +103,8 @@ class LandingPage extends Component {
       };
 
     getAddress = async (latitude, longitude) => {
-        const resp = await fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true&key=AIzaSyDlkDftixlz_nvsxuPi0flAOP_0Cc6poBE')
-        console.log(resp)
+        const resp = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true&key=${process.env.REACT_APP_GOOGLE_API}`)
         const respJson = await resp.json()
-        console.log(respJson)
         for(var i = 0; i < respJson.results[0].address_components.length; i++) {
             for(var j = 0; j < respJson.results[0].address_components[i].types.length; j++) {
                 if(respJson.results[0].address_components[i].types[j] === "locality"){
@@ -125,29 +121,68 @@ class LandingPage extends Component {
     }
 
     customCitySearch = async(city) => {
+        this.setState({
+            loading: true,
+            places: []
+        })
         Geocode.fromAddress(city).then(
             response => {
-              const { lat, lng } = response.results[0].geometry.location;
-              console.log(lat, lng);
-              this.setState({
-                  location: {
-                    latitude: lat,
-                    longitude: lng,
-                    city: city 
-                  }
-              })
-              return this.fetchInSpecificPlaces(this.state.location)
+                const { lat, lng } = response.results[0].geometry.location;
+                console.log(lat, lng);
+                this.setState({
+                    location: {
+                        latitude: lat,
+                        longitude: lng,
+                        city: city 
+                    }
+                })
             },
             error => {
-              console.error(error);
+                console.error(error);
+                this.setState({
+                    loading: false
+                })
             }
-        );
+        )
+        setTimeout(async () => {
+            console.log(this.state.location)
+            this.fetchInSpecificPlaces(this.state.location).then(resp => {
+                console.log(resp)
+                this.setState({
+                    pageCount: Math.ceil(resp.total ? resp.total : 0 / this.state.limit),
+                    places: resp.places ? resp.places : undefined,
+                    loading: false
+                })
+                console.log(this.state)
+            })
+        },1000)
     }
 
     componentDidMount = async() => {
-        Geocode.setApiKey("AIzaSyDlkDftixlz_nvsxuPi0flAOP_0Cc6poBE");
+        Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API);
         setTimeout(async() => {
-            if(this.props.latitude === "null" || !this.props.latitude || !this.props.coords.latitude || this.props.coords.latitude === "null" || !this.props.isGeolocationAvailable || !this.props.isGeolocationEnabled) {
+            if(this.props.latitude !== "null" || this.props.latitude || this.props.coords.latitude || this.props.coords.latitude !== "null" || this.props.isGeolocationAvailable || this.props.isGeolocationEnabled) {
+                const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
+                this.setState({
+                    loading: true
+                })
+                const browserCity = {
+                    latitude: this.props.coords.latitude,
+                    longitude: this.props.coords.longitude,
+                    city: city
+                }
+                let places = await this.fetchInSpecificPlaces(browserCity)
+                this.setState({
+                    loading: false,
+                    places: places.places,
+                    pageCount: Math.ceil(places.total / this.state.limit),
+                    location: {
+                        latitude: this.props.coords.latitude,
+                        longitude: this.props.coords.longitude,
+                        city: city
+                    }
+                })
+            } else {
                 this.setState({
                     loading: true
                 })
@@ -167,28 +202,6 @@ class LandingPage extends Component {
                         latitude: 52.520008,
                         longitude: 13.404954,
                         city: "Berlin"
-                    }
-                })
-            } else {
-                console.log(this.props.coords.latitude, this.props.coords.longitude)
-                const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
-                this.setState({
-                    loading: true
-                })
-                const browserCity = {
-                    latitude: this.props.coords.latitude,
-                    longitude: this.props.coords.longitude,
-                    city: city
-                }
-                let places = await this.fetchInSpecificPlaces(browserCity)
-                this.setState({
-                    loading: false,
-                    places: places.places,
-                    pageCount: Math.ceil(places.total / this.state.limit),
-                    location: {
-                        latitude: this.props.coords.latitude,
-                        longitude: this.props.coords.longitude,
-                        city: city
                     }
                 })
             }

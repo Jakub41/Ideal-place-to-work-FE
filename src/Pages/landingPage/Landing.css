@@ -223,6 +223,7 @@ body {
   background-color: rgb(192, 211, 222) !important;
 }
 .div-select-city{
+  padding: 30px 0px;
   display: flex;
   justify-content: space-evenly;
   width: 400px;
