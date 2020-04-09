@@ -163,6 +163,21 @@ class LoginModal extends React.Component {
                     })
             });
         }
+        if (method === "google") {
+            window.FB.api("/me", {fields: 'ID,Name,Image URL,Email'}, (res) => {
+                console.log(res);
+                Api.fetch("/auth/google", "POST", {auth: response.authResponse, profile: res})
+                    .then(userdata => {
+                        console.log(res);
+                        localStorage.setItem("access_token", userdata.accessToken);
+                        this.props.fetchUser();
+                        this.setState({
+                            username: userdata.user.firstname + " " + userdata.user.lastname,
+                            greetings: true
+                        })
+                    })
+            });
+        }
         this.closeModal();
         this.setState({
             loggedIn: method,
@@ -220,7 +235,7 @@ class LoginModal extends React.Component {
             <div>
                 <ReactTooltip/>
                 <Col data-tip={this.state.loggedIn ? "You are signed in" : "You are signed out"}
-                     onClick={() => this.openModal('login')}> <span className="footer-options"> / </span><span className="footer-options">LOGIN</span> </Col>
+                     onClick={() => this.openModal('login')}> <span className="footer-options">LOGIN</span> </Col>
 
                 <SweetAlert
                     show={this.state.greetings}

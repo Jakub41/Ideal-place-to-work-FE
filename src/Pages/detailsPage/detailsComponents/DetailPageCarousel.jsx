@@ -1,5 +1,6 @@
 import React from 'react';
 import { UncontrolledCarousel } from 'reactstrap';
+//import { Carousel } from 'react-responsive-carousel';
 
 
 const DetailPageCarousel = (props) => {

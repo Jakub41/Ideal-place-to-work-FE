@@ -28,29 +28,33 @@ const NewFooter = (props) => {
 
         return (
             <div id="new-footer">
-            <Container >
+            <Container fluid>
                 {/* //not have a max width - fluid bs  */}
 
                 <Row className="footer-items">
 
                     <Link id="home-link" to="/"><Col id="home"> <span className="footer-options">HOME</span> </Col></Link>
 
-                    <Link to="/favs"><Col id="favs"> <span className="footer-options">FAVS</span>  </Col></Link>
+                    <Link to="/favs"><Col id="favs"> <span className="footer-options">FAVES</span>  </Col></Link>
 
-<div className="login-logout-area">
+
+    <div className="login-logout-area">
+                    <span className="login-logout-divider"> / </span>
                     {profilePic ? <Col
                         onClick={() => {
                         localStorage.setItem('access_token', undefined)
-
-                        setProfilePic(undefined)}} ><span className="footer-options"> / </span><img src={profilePic} id="user-profile-pic"/></Col>:
+                        setProfilePic(undefined)}} >
+                        <img src={profilePic} id="user-profile-pic"/></Col> :
                         <LoginModal fetchUser={fetchUser} />}
                 
                     <Col onClick={() => {
                         localStorage.setItem('access_token', undefined)
                         setProfilePic(undefined)}} id="logout"> 
                         <span className="footer-options">LOGOUT </span>
-                        <span className="footer-options"> / </span></Col>
-</div>
+                        </Col>
+                        <span className="login-logout-divider"> / </span>
+    </div>
+
                     <Col className="copyright-items"> 
                     <img src={alpha} id="copyright-img"/> 
                     <p id="copyright"> © Alpha Nomad Team 2020 </p>  </Col>

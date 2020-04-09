@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import "./Landing.css";
-import Api from '../../Api'
+import Api from '../../Api';
+import Geocode from "react-geocode";
 import { geolocated } from "react-geolocated";
-import image from "../../images/shutterstock_610938071.jpg";
-import {Row, Container, Col} from "reactstrap";
+import {Container} from "reactstrap";
 import LandingSearch from "./landingComponents/LandingSearch";
 import LandingAPI from "./landingComponents/LandingAPI";
+import {css} from "@emotion/core";
+import {GridLoader, HashLoader} from "react-spinners";
 
 
 class LandingPage extends Component {
@@ -31,16 +33,15 @@ class LandingPage extends Component {
     handlePageClick = data => {
         this.setState({
             loading: true,
-            places: []
         })
         let selected = data.selected;
         let offset = Math.ceil(selected * this.state.limit);
 
         setTimeout(() => {
-            this.setState({ skip: offset }, async() => {
-                if(this.state.GoodService === true || this.state.QuitePlace === true || this.state.WifiRate === true) {
+            this.setState({skip: offset}, async () => {
+                if (this.state.GoodService === true || this.state.QuitePlace === true || this.state.WifiRate === true) {
                     await this.filterResults(this.state.toFilter)
-                } else if(this.state.placeToSearch) {
+                } else if (this.state.placeToSearch) {
                     await this.fetchResults(this.state.placeToSearch)
                 } else {
                     const resp = await this.fetchInSpecificPlaces(this.state.location)
@@ -53,22 +54,19 @@ class LandingPage extends Component {
         }, 1000);
     };
 
-    fetchResults = async(searchPlace) => {
+    fetchResults = async (searchPlace) => {
         this.setState({
             GoodService: false,
             QuitePlace: false,
             WifiRate: false,
         })
         const placeToSearch = {
-            latitude: this.props.coords.latitude,
-            longitude: this.props.coords.longitude,
+            latitude: this.state.location.latitude,
+            longitude: this.state.location.longitude,
             searchQuery: searchPlace,
-            placeToSearch: searchPlace
         }
         let places = await Api.fetch(`/placesSearch?limit=${this.state.limit}&skip=${this.state.skip}`, "POST", JSON.stringify(placeToSearch), "");
-        console.log(searchPlace, places.places)
-        console.log(places.total, this.state.limit, places.total / this.state.limit)
-        if(places) {
+        if (places) {
             this.setState({
                 places: places.places,
                 pageCount: Math.ceil(places.total / this.state.limit),
@@ -76,16 +74,18 @@ class LandingPage extends Component {
         }
     }
 
-    filterResults = async(filter) => {
+    filterResults = async (filter) => {
         const resp = await Api.fetch(`/places?limit=6&sortBy=${filter}&OrderBy=desc&skip=${this.state.skip}`)
+        console.log(resp)
         this.setState({
-            places: resp.places,
+            places: resp.result,
             pageCount: Math.ceil(resp.total / this.state.limit),
         })
     }
 
-    fetchInSpecificPlaces = async(browserCity) => {
-        let resp = await Api.fetch(`/placesInSpecificCity?limit=${this.state.limit}&skip=${this.state.skip}`,"POST", JSON.stringify(browserCity), "");
+
+    fetchInSpecificPlaces = async (browserCity) => {
+        let resp = await Api.fetch(`/placesInSpecificCity?limit=${this.state.limit}&skip=${this.state.skip}`, "POST", JSON.stringify(browserCity), "");
         return resp;
     }
 
@@ -94,88 +94,164 @@ class LandingPage extends Component {
             loading: !this.state.loading,
         })
     }
+
     togleFilter = (filterProperty) => {
         this.setState({
-          [filterProperty]: !this.state[filterProperty],
-          toFilter: filterProperty,
-          skip:0,
+            [filterProperty]: !this.state[filterProperty],
+            toFilter: filterProperty,
+            skip: 0,
         });
         this.filterResults(filterProperty)
-      };
+    };
 
     getAddress = async (latitude, longitude) => {
-        const resp = await fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true&key=AIzaSyDlkDftixlz_nvsxuPi0flAOP_0Cc6poBE')
-        console.log(resp)
+        const resp = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true&key=${process.env.REACT_APP_GOOGLE_API}`)
         const respJson = await resp.json()
-        console.log(respJson)
         for(var i = 0; i < respJson.results[0].address_components.length; i++) {
             for(var j = 0; j < respJson.results[0].address_components[i].types.length; j++) {
-                if(respJson.results[0].address_components[i].types[j] == "administrative_area_level_2"){
+                if(respJson.results[0].address_components[i].types[j] === "locality"){
                     return respJson.results[0].address_components[i].long_name
                 }
             }
         }
     };
 
-    skip= () => {
+    skip = () => {
         this.setState({
             skip: 0
         })
     }
 
-    componentDidMount = async() => {
-        setTimeout(async() => {
-            console.log(this.props.coords.latitude, this.props.coords.longitude)
-            const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
-            this.setState({
-                loading: true
-            })
-            const browserCity = {
-                latitude: this.props.coords.latitude,
-                longitude: this.props.coords.longitude,
-                city: city
+
+    customCitySearch = async(city) => {
+        this.setState({
+            loading: true,
+            places: []
+        })
+        Geocode.fromAddress(city).then(
+            response => {
+                const { lat, lng } = response.results[0].geometry.location;
+                console.log(lat, lng);
+                this.setState({
+                    location: {
+                        latitude: lat,
+                        longitude: lng,
+                        city: city 
+                    }
+                })
+            },
+            error => {
+                console.error(error);
+                this.setState({
+                    loading: false
+                })
             }
-            console.log(browserCity)
-            let places = await this.fetchInSpecificPlaces(browserCity)
-            console.log(places)
-            this.setState({
-                loading: false,
-                places: places.places,
-                pageCount: Math.ceil(places.total / this.state.limit),
-                location: {
+        )
+        setTimeout(async () => {
+            console.log(this.state.location)
+            this.fetchInSpecificPlaces(this.state.location).then(resp => {
+                console.log(resp)
+                this.setState({
+                    pageCount: Math.ceil(resp.total ? resp.total : 0 / this.state.limit),
+                    places: resp.places ? resp.places : undefined,
+                    loading: false
+                })
+                console.log(this.state)
+            })
+        },1000)
+    }
+
+    componentDidMount = async() => {
+        Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API);
+        setTimeout(async() => {
+            if(this.props.latitude !== "null" || this.props.latitude || this.props.coords.latitude || this.props.coords.latitude !== "null" || this.props.isGeolocationAvailable || this.props.isGeolocationEnabled) {
+                const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
+                this.setState({
+                    loading: true
+                })
+                const browserCity = {
                     latitude: this.props.coords.latitude,
                     longitude: this.props.coords.longitude,
                     city: city
                 }
-            })
+                let places = await this.fetchInSpecificPlaces(browserCity)
+                this.setState({
+                    loading: false,
+                    places: places.places,
+                    pageCount: Math.ceil(places.total / this.state.limit),
+                    location: {
+                        latitude: this.props.coords.latitude,
+                        longitude: this.props.coords.longitude,
+                        city: city
+                    }
+                })
+            } else {
+                this.setState({
+                    loading: true
+                })
+                const browserCity = {
+                    latitude: 52.520008,
+                    longitude: 13.404954,
+                    city: "Berlin"
+                }
+                console.log(browserCity)
+                let places = await this.fetchInSpecificPlaces(browserCity)
+                console.log(places)
+                this.setState({
+                    loading: false,
+                    places: places.places,
+                    pageCount: Math.ceil(places.total / this.state.limit),
+                    location: {
+                        latitude: 52.520008,
+                        longitude: 13.404954,
+                        city: "Berlin"
+                    }
+                })
+            }
         }, 3000)
-      };
+    };
 
     render() {
+        const override = css`
+          display: block;
+          margin:  auto;
+          border-color: red;
+`;
+        if (this.state.loading) {
+            return (
+                <div style={{display: 'flex', height: '100vh'}}>
+                    {/*<div className="sweet-loading">*/}
+                    <GridLoader
+                        css={override}
+                        size={75}
+                        color={"#b230f1"}
+                        loading={this.state.loading}
+                    />
+                    {/*</div>*/}
+                </div>
+            )
+        }
         return (
             <>
-            <Container fluid style={{padding: '0px', width: '100vw'}}>
-                <div className={'flex-box'}>
-                    <div className="flex-row cover-image-bg">
-                        <h1 className={'landing-page-title'}>
-                            Your next
-                            <br/> perfect place <br/>
-                            to work.
-                        </h1>
+
+                <Container fluid style={{padding: '0px', width: '100vw'}}>
+                    <div className={'flex-box'}>
+                        <div className="flex-row cover-image-bg">
+                            <h1 className={'landing-page-title'}>
+                                Your next
+                                <br/> perfect place <br/>
+                                to work.
+                            </h1>
+                        </div>
                     </div>
-                </div>
                     <LandingSearch
-                    skip={this.skip}
-                    toggleLoading={this.toggleLoading}
-                    fetchResults={this.fetchResults}
-                    location={this.state.location}
+                        skip={this.skip}
+                        toggleLoading={this.toggleLoading}
+                        fetchResults={this.fetchResults}
+                        location={this.state.location}
                     />
-                    {!this.props.isGeolocationAvailable ? (
-                    <div>Your browser does not support Geolocation</div>
-                    ) : !this.props.isGeolocationEnabled ? (
-                    <div>Geolocation is not enabled</div>
-                    ) :
                     <LandingAPI
+                        customCitySearch={this.customCitySearch}
                         pageCount={this.state.pageCount}
                         city={this.state.location.city}
                         loading={this.state.loading}
@@ -185,7 +261,7 @@ class LandingPage extends Component {
                         GoodService={this.state.GoodService}
                         places={this.state.places}
                         handlePageClick={this.handlePageClick}
-                    />}
+                    />
 
                 </Container>
             </>

@@ -3,20 +3,21 @@ import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Login from "../../login/LoginModal";
 import "../detailsComponents/NotLoggedIn.css";
+import close from "../../../icons/close.png"
 
 class NotLoggedInMsgDivBox extends Component {
-  // state = {
-  //     alertMsgOpen: false
-  // };
+
+
 
   render(props) {
     return (
-        <div
-            className={ this.props.alertMsgOpen ? "please-login-fake-modal" : 
-            "please-login-reg-div" }>
-                <div id="please-login-fake-modal">
-            <h4>Please Login or Signup First!</h4>
-                </div>
+        <div className={ this.props.alertMsgOpen ? "please-login-reg-div" : "please-login-fake-modal"}>
+          <div id="please-login-fake-modal">
+              <img id="close-icon" 
+                  src={close} onClick={this.props.openClose}/>
+                  <h2>To Rate Place,</h2> 
+                  <h4>Please Login or Signup First!</h4>
+          </div>
         </div>
     );
   }

@@ -121,7 +121,7 @@ class UserReview extends Component {
             <div style={{'margin-top': '10px'}}>
                 <div style={{display: 'flex', flexWrap: 'wrap'}}>
                     {this.state.comments &&
-                    this.state.comments.map(comment => (
+                    this.state.comments.reverse().map(comment => (
 
                         <div id="plx-card" className="animated bounce" style={{
                             'border': 'solid 2px black',
