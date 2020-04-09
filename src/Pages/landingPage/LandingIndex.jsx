@@ -1,11 +1,13 @@
 import React, {Component} from "react";
 import "./Landing.css";
 import Api from '../../Api'
-import { geolocated } from "react-geolocated";
+import {geolocated} from "react-geolocated";
 import image from "../../images/shutterstock_610938071.jpg";
 import {Row, Container, Col} from "reactstrap";
 import LandingSearch from "./landingComponents/LandingSearch";
 import LandingAPI from "./landingComponents/LandingAPI";
+import {css} from "@emotion/core";
+import {GridLoader, HashLoader} from "react-spinners";
 
 
 class LandingPage extends Component {
@@ -37,10 +39,10 @@ class LandingPage extends Component {
         let offset = Math.ceil(selected * this.state.limit);
 
         setTimeout(() => {
-            this.setState({ skip: offset }, async() => {
-                if(this.state.GoodService === true || this.state.QuitePlace === true || this.state.WifiRate === true) {
+            this.setState({skip: offset}, async () => {
+                if (this.state.GoodService === true || this.state.QuitePlace === true || this.state.WifiRate === true) {
                     await this.filterResults(this.state.toFilter)
-                } else if(this.state.placeToSearch) {
+                } else if (this.state.placeToSearch) {
                     await this.fetchResults(this.state.placeToSearch)
                 } else {
                     const resp = await this.fetchInSpecificPlaces(this.state.location)
@@ -53,7 +55,7 @@ class LandingPage extends Component {
         }, 1000);
     };
 
-    fetchResults = async(searchPlace) => {
+    fetchResults = async (searchPlace) => {
         this.setState({
             GoodService: false,
             QuitePlace: false,
@@ -68,7 +70,7 @@ class LandingPage extends Component {
         let places = await Api.fetch(`/placesSearch?limit=${this.state.limit}&skip=${this.state.skip}`, "POST", JSON.stringify(placeToSearch), "");
         console.log(searchPlace, places.places)
         console.log(places.total, this.state.limit, places.total / this.state.limit)
-        if(places) {
+        if (places) {
             this.setState({
                 places: places.places,
                 pageCount: Math.ceil(places.total / this.state.limit),
@@ -76,7 +78,7 @@ class LandingPage extends Component {
         }
     }
 
-    filterResults = async(filter) => {
+    filterResults = async (filter) => {
         const resp = await Api.fetch(`/places?limit=6&sortBy=${filter}&OrderBy=desc&skip=${this.state.skip}`)
         this.setState({
             places: resp.places,
@@ -84,8 +86,8 @@ class LandingPage extends Component {
         })
     }
 
-    fetchInSpecificPlaces = async(browserCity) => {
-        let resp = await Api.fetch(`/placesInSpecificCity?limit=${this.state.limit}&skip=${this.state.skip}`,"POST", JSON.stringify(browserCity), "");
+    fetchInSpecificPlaces = async (browserCity) => {
+        let resp = await Api.fetch(`/placesInSpecificCity?limit=${this.state.limit}&skip=${this.state.skip}`, "POST", JSON.stringify(browserCity), "");
         return resp;
     }
 
@@ -96,44 +98,45 @@ class LandingPage extends Component {
     }
     togleFilter = (filterProperty) => {
         this.setState({
-          [filterProperty]: !this.state[filterProperty],
-          toFilter: filterProperty,
-          skip:0,
+            [filterProperty]: !this.state[filterProperty],
+            toFilter: filterProperty,
+            skip: 0,
         });
         this.filterResults(filterProperty)
-      };
+    };
 
     getAddress = async (latitude, longitude) => {
         const resp = await fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude + '&sensor=true&key=AIzaSyDlkDftixlz_nvsxuPi0flAOP_0Cc6poBE')
         console.log(resp)
         const respJson = await resp.json()
         console.log(respJson)
-        for(var i = 0; i < respJson.results[0].address_components.length; i++) {
-            for(var j = 0; j < respJson.results[0].address_components[i].types.length; j++) {
-                if(respJson.results[0].address_components[i].types[j] == "administrative_area_level_2"){
+        for (var i = 0; i < respJson.results[0].address_components.length; i++) {
+            for (var j = 0; j < respJson.results[0].address_components[i].types.length; j++) {
+                if (respJson.results[0].address_components[i].types[j] == "administrative_area_level_2") {
                     return respJson.results[0].address_components[i].long_name
                 }
             }
         }
     };
 
-    skip= () => {
+    skip = () => {
         this.setState({
             skip: 0
         })
     }
 
-    componentDidMount = async() => {
-        setTimeout(async() => {
+    componentDidMount = async () => {
+        this.setState({
+            loading: true
+        });
+        setTimeout(async () => {
             console.log(this.props.coords.latitude, this.props.coords.longitude)
             const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
-            this.setState({
-                loading: true
-            })
+
             const browserCity = {
                 latitude: this.props.coords.latitude,
                 longitude: this.props.coords.longitude,
-                city: city
+                city: "Milan"
             }
             console.log(browserCity)
             let places = await this.fetchInSpecificPlaces(browserCity)
@@ -144,47 +147,67 @@ class LandingPage extends Component {
                 location: {
                     latitude: this.props.coords.latitude,
                     longitude: this.props.coords.longitude,
-                    city:"city"
+                    city: "Milan"
                 }
             })
         }, 3000)
-      };
+    };
 
     render() {
+        const override = css`
+          display: block;
+          margin:  auto;
+          border-color: red;
+`;
+        if (this.state.loading) {
+            return (
+                <div style={{display: 'flex', height: '100vh'}}>
+                    {/*<div className="sweet-loading">*/}
+                    <GridLoader
+                        css={override}
+                        size={75}
+                        color={"#b230f1"}
+                        loading={this.state.loading}
+                    />
+                    {/*</div>*/}
+                </div>
+            )
+        }
         return (
             <>
-            <Container fluid style={{padding: '0px', width: '100vw'}}>
-                <div className={'flex-box'}>
-                    <div className="flex-row cover-image-bg">
-                        <h1 className={'landing-page-title'}>
-                            Your next
-                            <br/> perfect place <br/>
-                            to work.
-                        </h1>
+
+                <Container fluid style={{padding: '0px', width: '100vw'}}>
+                    <div className={'flex-box'}>
+                        <div className="flex-row cover-image-bg">
+                            <h1 className={'landing-page-title'}>
+                                Your next
+                                <br/> perfect place <br/>
+                                to work.
+                            </h1>
+                        </div>
                     </div>
-                </div>
                     <LandingSearch
-                    skip={this.skip}
-                    toggleLoading={this.toggleLoading}
-                    fetchResults={this.fetchResults}
-                    location={this.state.location}
+                        skip={this.skip}
+                        toggleLoading={this.toggleLoading}
+                        fetchResults={this.fetchResults}
+                        location={this.state.location}
                     />
                     {!this.props.isGeolocationAvailable ? (
-                    <div>Your browser does not support Geolocation</div>
+                        <div>Your browser does not support Geolocation</div>
                     ) : !this.props.isGeolocationEnabled ? (
-                    <div>Geolocation is not enabled</div>
-                    ) :
-                    <LandingAPI
-                        pageCount={this.state.pageCount}
-                        city={this.state.location.city}
-                        loading={this.state.loading}
-                        togleFilter={this.togleFilter}
-                        WifiRate={this.state.WifiRate}
-                        QuitePlace={this.state.QuitePlace}
-                        GoodService={this.state.GoodService}
-                        places={this.state.places}
-                        handlePageClick={this.handlePageClick}
-                    />}
+                            <div>Geolocation is not enabled</div>
+                        ) :
+                        <LandingAPI
+                            pageCount={this.state.pageCount}
+                            city={this.state.location.city}
+                            loading={this.state.loading}
+                            togleFilter={this.togleFilter}
+                            WifiRate={this.state.WifiRate}
+                            QuitePlace={this.state.QuitePlace}
+                            GoodService={this.state.GoodService}
+                            places={this.state.places}
+                            handlePageClick={this.handlePageClick}
+                        />}
 
                 </Container>
             </>
