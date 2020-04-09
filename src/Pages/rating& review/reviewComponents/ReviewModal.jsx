@@ -73,7 +73,8 @@ class CommentModal extends React.Component {
     };
 
     toggleShowAlertMsg = (e) => {
-        this.setState({ alertMsgOpen: true })
+        this.setState({ alertMsgOpen: !this.state.alertMsgOpen })
+        console.log(this.state.alertMsgOpen)
     };
 
     render() {
@@ -82,7 +83,7 @@ class CommentModal extends React.Component {
                 <h2 className={this.state.alertMsgDiv ? 'rate-place-alert' : 'rate-place'}>Rate Place</h2>
             </div>
 
-            {this.state.alertMsgDiv && <NotLoggedIn alertMsgOpen={this.alertMsgOpen} />}
+            {this.state.alertMsgDiv && <NotLoggedIn alertMsgOpen={this.alertMsgOpen} openClose={this.toggleModalOrAlert}/>}
             {this.state.modal && <div className={this.state.modal ? "review-modal-open" : "review-modal-close"}>
             <div>
                 <h2 className="modal-rev-header">
