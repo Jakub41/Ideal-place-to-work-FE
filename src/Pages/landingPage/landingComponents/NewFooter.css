@@ -12,10 +12,10 @@
 .footer-items{
     display: flex;
     flex-flow: row;
-    font-size: 43px;
+    font-size: 53px;
     font-family: 'Archivo Black', sans-serif;
     padding: 1rem;
-    align-items: center;
+    align-items: center
 }
 #home{
     color: black;
@@ -33,7 +33,7 @@
     text-decoration: underline black;
 }
 
-.divider{
+.login-logout-divider{
     font-size: 65px;
 }
 
@@ -44,8 +44,10 @@
     cursor: pointer;
     text-decoration: underline black;
 }
+/* footer-items::before {} */
 .login-logout-area{
-    margin-left: 65px !important;
+    display: flex;
+    align-items: center;
     
 }
 #user-profile-pic{
@@ -60,21 +62,48 @@
 }
 
 .copyright-items{
-    margin-left: 100px;
-    margin-right: 0px;
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center
 }
 
 #copyright{
     font-weight: lighter;
     font-size: 13px;
+    white-space: nowrap;
 }
 #copyright-img{
     height: 80px;
     object-fit: contain;
 }
 /* media queries */
+
+@media (max-width: 992px) {
+    .footer-options{
+        font-size: 40px;
+    }
+    #user-profile-pic{
+        width: 60px;
+        margin-left: 30px;
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 767px){
+    .footer-options{
+        font-size: 14px;
+    
+    }
+    .login-logout-divider{
+        display: none;
+    }
+}
+
 @media (max-width: 575px) {
+    .footer-items{
+        justify-content: center;
+    }
+    
     .footer-options{
         font-size: 20px;
     }
@@ -86,16 +115,14 @@
         margin-left: 30px;
         margin-top: 25px;
     }
+    
 }
-@media (max-width: 993px) {
+
+@media (min-width:993px){
     .footer-options{
-        font-size: 32px;
-    }
-    #user-profile-pic{
-        width: 60px;
-        margin-left: 30px;
-        margin-top: 25px;
+        font-size: 40px;
     }
 }
+
 
 
