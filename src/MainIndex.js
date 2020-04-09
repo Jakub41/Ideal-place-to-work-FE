@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LandingPage from "./Pages/landingPage/LandingIndex";
 import CallBack from "./Pages/landingPage/landingComponents/CallBack";
 import Api from './Api'
-import NewFooter from "./Pages/landingPage/landingComponents/NewFooter";
+//import NewFooter from "./Pages/landingPage/landingComponents/NewFooter";
 import Map from './Pages/landingPage/Map';
 import DetailsPageLanding from './Pages/detailsPage/DetailsPageIndex';
 import FavoritesPageIndex from './Pages/favoritesPage/FavoritesPageIndex';
@@ -29,7 +29,7 @@ class Main extends Component {
                             <Route path="/map/:search/:latitude/:longitude"><Map/></Route>
                         </Switch>
                     </div>
-                    <NewFooter/>
+
                 </Router>
             </>
         );

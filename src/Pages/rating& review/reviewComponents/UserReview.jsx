@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import moment from "moment";
 import Api from "../../../Api";
 import "../UserReview.css"
+import ReactPaginate from 'react-paginate';
 
 
 class UserReview extends Component {
@@ -28,7 +29,7 @@ class UserReview extends Component {
                 ...this.state.comment,
                 [name]: value
             },
-            comments:[]
+            comments: []
         });
     };
 
@@ -118,37 +119,55 @@ class UserReview extends Component {
 
     render() {
         return (
-            <div style={{'margin-top': '10px'}}>
-                <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                    {this.state.comments &&
-                    this.state.comments.reverse().map(comment => (
-
-                        <div id="plx-card" className="animated bounce" style={{
-                            'border': 'solid 2px black',
-                            'border-radius': '5px',
-                            flex: "0 1 100%",
-                            "margin": '5px',
-                            marginBottom: '20px'
-                        }}>
-                            <div key={comment._id} className="user-review-header-container" style={{'display': 'flex'}}>
-                                <div><img className="user-review-image"
-                                          src={comment.UserId?.picture} alt=""/></div>
-                                <div className="user-review-username">
-                                    {comment.UserId?.firstname} {comment.UserId?.lastname}
-                                </div>
-                                <div className="created-at">| commented {moment(comment.createdAt).fromNow()}</div>
-                            </div>
-                            <div>
-                                <div className="user-review-text">{comment.Text}</div>
-                                {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.editComment}><i*/}
-                                {/*    className="material-icons">edit</i></button>*/}
-                                {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.deleteComment}><i*/}
-                                {/*    className="material-icons">delete</i></button>*/}
-                            </div>
-                        </div>))
-                    }
+            <>
+                <div>
+                    <ReactPaginate
+                        previousLabel={'previous'}
+                        nextLabel={'next'}
+                        breakLabel={'...'}
+                        breakClassName={'break-me'}
+                        pageCount={this.props.pageCount}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={this.props.handlePageClick}
+                        containerClassName={'pagination'}
+                        subContainerClassName={'pages pagination'}
+                        activeClassName={'active'}
+                    />
                 </div>
-            </div>)
+                <div style={{'margin-top': '10px'}}>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                        {this.state.comments &&
+                        this.state.comments.reverse().map(comment => (
+
+                            <div id="plx-card" className="animated bounce" style={{
+                                'border': 'solid 2px black',
+                                'border-radius': '5px',
+                                flex: "0 1 100%",
+                                "margin": '5px',
+                                marginBottom: '20px'
+                            }}>
+                                <div key={comment._id} className="user-review-header-container"
+                                     style={{'display': 'flex'}}>
+                                    <div><img className="user-review-image"
+                                              src={comment.UserId?.picture} alt=""/></div>
+                                    <div className="user-review-username">
+                                        {comment.UserId?.firstname} {comment.UserId?.lastname}
+                                    </div>
+                                    <div className="created-at">| commented {moment(comment.createdAt).fromNow()}</div>
+                                </div>
+                                <div>
+                                    <div className="user-review-text">{comment.Text}</div>
+                                    {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.editComment}><i*/}
+                                    {/*    className="material-icons">edit</i></button>*/}
+                                    {/*<button className={'btn btn-sm'} name={comment._id} onClick={this.deleteComment}><i*/}
+                                    {/*    className="material-icons">delete</i></button>*/}
+                                </div>
+                            </div>))
+                        }
+                    </div>
+                </div>
+            </>)
     }
 }
 

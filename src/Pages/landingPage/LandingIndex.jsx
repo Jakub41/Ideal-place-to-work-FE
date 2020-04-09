@@ -2,12 +2,12 @@ import React, {Component} from "react";
 import "./Landing.css";
 import Api from '../../Api'
 import {geolocated} from "react-geolocated";
-import image from "../../images/shutterstock_610938071.jpg";
 import {Row, Container, Col} from "reactstrap";
 import LandingSearch from "./landingComponents/LandingSearch";
 import LandingAPI from "./landingComponents/LandingAPI";
 import {css} from "@emotion/core";
 import {GridLoader, HashLoader} from "react-spinners";
+import NewFooter from "./landingComponents/NewFooter";
 
 
 class LandingPage extends Component {
@@ -210,6 +210,7 @@ class LandingPage extends Component {
                         />}
 
                 </Container>
+                <NewFooter/>
             </>
         );
     }

@@ -230,7 +230,7 @@ class DetailsPageLanding extends Component {
                             <div>
                             </div>
                         </div>
-                        <div>
+                        <div className="user-review">
                             <UserReview placeId={this.props.match.params.id}/>
                         </div>
                     </div>
