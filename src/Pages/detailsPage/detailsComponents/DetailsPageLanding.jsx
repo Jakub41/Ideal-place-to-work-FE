@@ -4,6 +4,7 @@ import Star from "../../../icons/Star.png";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faDollarSign, faHeart} from "@fortawesome/free-solid-svg-icons"
 import closeIcon from "../../../icons/close.png";
+import emptyHeart from "../../../icons/Faves.png";
 import {Row} from 'reactstrap'
 import {Link} from "react-router-dom";
 import ReviewModal from "../../rating& review/reviewComponents/ReviewModal";
@@ -58,17 +59,17 @@ class DetailsPageLanding extends Component {
         });
         console.log(this.state)
     }
-    toggleRotation = async () => {
-        if (this.state.rotate180 === false) {
-            this.setState({
-                rotate180: true
-            })
-        } else if (this.state.rotate180 === true) {
-            this.setState({
-                rotate180: false
-            })
-        }
-    };
+    // toggleRotation = async () => {
+    //     if (this.state.rotate180 === false) {
+    //         this.setState({
+    //             rotate180: true
+    //         })
+    //     } else if (this.state.rotate180 === true) {
+    //         this.setState({
+    //             rotate180: false
+    //         })
+    //     }
+    // };
 
     toggleLike = async () => {
         if (this.state.liked === false) {
@@ -95,8 +96,22 @@ class DetailsPageLanding extends Component {
             this.setState({
                 place: place
             })
+            this.checkPlaceId()
         }
     };
+
+    checkPlaceId = async () => {
+        const token = localStorage.getItem("access_token");
+        console.log(token);
+        const user = await Api.fetch("/users/me", "GET", "", {
+        Authorization: "Bearer " + localStorage.getItem("access_token")
+    });
+        if(user) {
+            const place = user.favouritePlaces.find(you => you._id === this.props.match.params.id)
+            console.log(user, place)
+        }
+    
+    }
 
     render() {
         const override = css`
@@ -132,14 +147,19 @@ class DetailsPageLanding extends Component {
                                 <h2 className="place-title">{this.state.place.Name}</h2>
                             </div>
                             <div className="spacer"/>
+                            
                             <div className="click-to-like" style={{fontSize: "40px"}}>
-                                <FontAwesomeIcon
-                                    className={this.state.rotate180 ? "dislike-btn" : "like-btn"}
+
+                            {/* className={this.state.rotate180 ? "dislike-btn" : "like-btn"} */}
+
+                            {!this.state.liked ? <img className="like-btn" src={emptyHeart} onClick={() => {
+                                        this.toggleLike();   
+                                    }}/> : 
+                            <FontAwesomeIcon
                                     icon={faHeart}
                                     onClick={() => {
-                                        this.toggleLike();
-                                        this.toggleRotation()
-                                    }}/>
+                                        this.toggleLike();   
+                                    }} />}
                             </div>
                         </div>
                         <div className="flex-box">
