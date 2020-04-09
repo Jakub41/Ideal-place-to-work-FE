@@ -1,40 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
-
+/* //impact? */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 #new-footer{
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-around;
-    background-color: rgb(217, 192, 240);
+    justify-content: space-between;
+    background-color:#b874df;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    
 }
-
 .footer-items{
     display: flex;
     flex-flow: row;
-    font-size: 55px;
-    font-family: 'Roboto Slab', serif;
+    font-size: 53px;
+    font-family: 'Archivo Black', sans-serif;
     padding: 1rem;
+    align-items: center
 }
-
 #home{
     color: black;
     text-decoration: none;
 }
-
 #home:hover{
     text-decoration: underline black;
 }
-
 #favs{
     color: black;
     text-decoration: none;
 }
-
 #favs:hover{
     color: black;
     text-decoration: underline black;
+}
+
+.login-logout-divider{
+    font-size: 65px;
 }
 
 #login{
@@ -44,14 +44,16 @@
     cursor: pointer;
     text-decoration: underline black;
 }
-
-#user-profile-pic{
-    width: 50px;
-    padding: 5px;
+/* footer-items::before {} */
+.login-logout-area{
+    display: flex;
+    align-items: center;
+    
 }
-
-#user-profile-pic:hover{
-    opacity: 50%
+#user-profile-pic{
+    width: 60px;
+    margin-bottom: 5px;
+    margin-left: 10px;
 }
 
 #logout:hover{
@@ -59,16 +61,68 @@
     text-decoration: underline black;
 }
 
-/* .copyright-items{
-    
-} */
+.copyright-items{
+    display: flex;
+    flex-direction: column;
+    text-align: center
+}
 
 #copyright{
     font-weight: lighter;
     font-size: 13px;
+    white-space: nowrap;
 }
-
 #copyright-img{
     height: 80px;
-    object-fit: cover;
+    object-fit: contain;
 }
+/* media queries */
+
+@media (max-width: 992px) {
+    .footer-options{
+        font-size: 40px;
+    }
+    #user-profile-pic{
+        width: 60px;
+        margin-left: 30px;
+        margin-top: 25px;
+    }
+}
+
+@media (max-width: 767px){
+    .footer-options{
+        font-size: 14px;
+    
+    }
+    .login-logout-divider{
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    .footer-items{
+        justify-content: center;
+    }
+    
+    .footer-options{
+        font-size: 20px;
+    }
+    .copyright-items{
+        text-align: center;
+    }
+    #user-profile-pic{
+        width: 60px;
+        margin-left: 30px;
+        margin-top: 25px;
+    }
+    
+}
+
+@media (min-width:993px){
+    .footer-options{
+        font-size: 40px;
+    }
+}
+
+
+

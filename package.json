@@ -24,9 +24,11 @@
     "react-modal-login": "^1.4.5",
     "react-native-geolocation-service": "^4.0.0",
     "react-paginate": "^6.3.2",
+    "react-responsive-carousel": "^3.1.57",
     "react-router": "latest",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "react-spinners": "^0.8.1",
     "react-star-rating-component": "^1.4.1",
     "react-star-ratings": "^2.3.0",
     "react-toggle": "^4.1.1",
@@ -34,7 +36,8 @@
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "rxjs": "latest",
-    "sweetalert2-react": "^0.8.3"
+    "sweetalert2-react": "^0.8.3",
+    "@emotion/core": "^10.0.15"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -59,7 +62,8 @@
   },
   "devDependencies": {
     "@material-ui/icons": "^4.9.1",
-    "dotenv": "^8.2.0",
-    "react-redux": "^7.2.0"
+    "react-redux": "^7.2.0",
+    "react-window": "^1.8.5",
+    "babel-plugin-emotion": "^10.0.15"
   }
 }

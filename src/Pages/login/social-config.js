@@ -9,8 +9,8 @@ const facebook = {
 export const facebookConfig = facebook;
 
 const google = {
-    client_id: "YOUR_CLIENT_ID.apps.googleusercontent.com",
-    scope: "profile email "
+    client_id: "785246175841-rmtr4vgp7p3g5ekdl6a750p4sqg3ucim.apps.googleusercontent.com",
+    scope: "profile email"
 };
 
 export const googleConfig = google;

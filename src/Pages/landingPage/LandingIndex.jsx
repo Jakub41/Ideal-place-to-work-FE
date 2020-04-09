@@ -6,6 +6,8 @@ import { geolocated } from "react-geolocated";
 import {Container} from "reactstrap";
 import LandingSearch from "./landingComponents/LandingSearch";
 import LandingAPI from "./landingComponents/LandingAPI";
+import {css} from "@emotion/core";
+import {GridLoader, HashLoader} from "react-spinners";
 
 
 class LandingPage extends Component {
@@ -36,10 +38,10 @@ class LandingPage extends Component {
         let offset = Math.ceil(selected * this.state.limit);
 
         setTimeout(() => {
-            this.setState({ skip: offset }, async() => {
-                if(this.state.GoodService === true || this.state.QuitePlace === true || this.state.WifiRate === true) {
+            this.setState({skip: offset}, async () => {
+                if (this.state.GoodService === true || this.state.QuitePlace === true || this.state.WifiRate === true) {
                     await this.filterResults(this.state.toFilter)
-                } else if(this.state.placeToSearch) {
+                } else if (this.state.placeToSearch) {
                     await this.fetchResults(this.state.placeToSearch)
                 } else {
                     const resp = await this.fetchInSpecificPlaces(this.state.location)
@@ -52,7 +54,7 @@ class LandingPage extends Component {
         }, 1000);
     };
 
-    fetchResults = async(searchPlace) => {
+    fetchResults = async (searchPlace) => {
         this.setState({
             GoodService: false,
             QuitePlace: false,
@@ -64,7 +66,7 @@ class LandingPage extends Component {
             searchQuery: searchPlace,
         }
         let places = await Api.fetch(`/placesSearch?limit=${this.state.limit}&skip=${this.state.skip}`, "POST", JSON.stringify(placeToSearch), "");
-        if(places) {
+        if (places) {
             this.setState({
                 places: places.places,
                 pageCount: Math.ceil(places.total / this.state.limit),
@@ -72,7 +74,7 @@ class LandingPage extends Component {
         }
     }
 
-    filterResults = async(filter) => {
+    filterResults = async (filter) => {
         const resp = await Api.fetch(`/places?limit=6&sortBy=${filter}&OrderBy=desc&skip=${this.state.skip}`)
         console.log(resp)
         this.setState({
@@ -81,9 +83,9 @@ class LandingPage extends Component {
         })
     }
 
-    fetchInSpecificPlaces = async(browserCity) => {
-        let resp = await Api.fetch(`/placesInSpecificCity?limit=${this.state.limit}&skip=${this.state.skip}`,"POST", JSON.stringify(browserCity), "");
-        console.log(resp)
+
+    fetchInSpecificPlaces = async (browserCity) => {
+        let resp = await Api.fetch(`/placesInSpecificCity?limit=${this.state.limit}&skip=${this.state.skip}`, "POST", JSON.stringify(browserCity), "");
         return resp;
     }
 
@@ -95,12 +97,12 @@ class LandingPage extends Component {
 
     togleFilter = (filterProperty) => {
         this.setState({
-          [filterProperty]: !this.state[filterProperty],
-          toFilter: filterProperty,
-          skip:0,
+            [filterProperty]: !this.state[filterProperty],
+            toFilter: filterProperty,
+            skip: 0,
         });
         this.filterResults(filterProperty)
-      };
+    };
 
     getAddress = async (latitude, longitude) => {
         const resp = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&sensor=true&key=${process.env.REACT_APP_GOOGLE_API}`)
@@ -114,11 +116,12 @@ class LandingPage extends Component {
         }
     };
 
-    skip= () => {
+    skip = () => {
         this.setState({
             skip: 0
         })
     }
+
 
     customCitySearch = async(city) => {
         this.setState({
@@ -206,26 +209,46 @@ class LandingPage extends Component {
                 })
             }
         }, 3000)
-      };
+    };
 
     render() {
+        const override = css`
+          display: block;
+          margin:  auto;
+          border-color: red;
+`;
+        if (this.state.loading) {
+            return (
+                <div style={{display: 'flex', height: '100vh'}}>
+                    {/*<div className="sweet-loading">*/}
+                    <GridLoader
+                        css={override}
+                        size={75}
+                        color={"#b230f1"}
+                        loading={this.state.loading}
+                    />
+                    {/*</div>*/}
+                </div>
+            )
+        }
         return (
             <>
-            <Container fluid style={{padding: '0px', width: '100vw'}}>
-                <div className={'flex-box'}>
-                    <div className="flex-row cover-image-bg">
-                        <h1 className={'landing-page-title'}>
-                            Your next
-                            <br/> perfect place <br/>
-                            to work.
-                        </h1>
+
+                <Container fluid style={{padding: '0px', width: '100vw'}}>
+                    <div className={'flex-box'}>
+                        <div className="flex-row cover-image-bg">
+                            <h1 className={'landing-page-title'}>
+                                Your next
+                                <br/> perfect place <br/>
+                                to work.
+                            </h1>
+                        </div>
                     </div>
-                </div>
                     <LandingSearch
-                    skip={this.skip}
-                    toggleLoading={this.toggleLoading}
-                    fetchResults={this.fetchResults}
-                    location={this.state.location}
+                        skip={this.skip}
+                        toggleLoading={this.toggleLoading}
+                        fetchResults={this.fetchResults}
+                        location={this.state.location}
                     />
                     <LandingAPI
                         customCitySearch={this.customCitySearch}

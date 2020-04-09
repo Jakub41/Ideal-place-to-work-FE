@@ -288,7 +288,7 @@ h3#filterBy:hover {
   margin: 80px 40px;
 }
 .rating-star-icon-landing-page {
-  width: 24px;
+  width: 24px !important;
   padding-bottom: 5px;
   margin-left: 5px;
 }
