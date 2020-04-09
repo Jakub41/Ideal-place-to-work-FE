@@ -24,7 +24,10 @@ class Map extends React.Component {
 
     handleSearch = () => {
         const { placesService, mapsApi } = this.state;
-        const geo = new mapsApi.LatLng(parseInt(this.props.match.params.latitude) + "," + parseInt(this.props.match.params.longitude))
+        const lat = parseFloat(this.props.match.params.latitude);
+        const lng = parseFloat(this.props.match.params.longitude)
+        const geo = new mapsApi.LatLng(lat, lng)
+        console.log(geo)
         // Search only if there is a string
         if (this.props.match.params.search) {
             var request = {
@@ -32,13 +35,14 @@ class Map extends React.Component {
                 radius: '10000',
                 query: this.props.match.params.search
             };
+            console.log(request)
             placesService.textSearch(request, (results, status) => {
                 if (status === window.google.maps.places.PlacesServiceStatus.OK) {
                     console.log(results)
                     this.setState({
                         markers: results
                     })
-                    console.log(this.state.markers)
+                    console.log('markers', this.state.markers)
                 }
             })
         }
@@ -56,19 +60,21 @@ class Map extends React.Component {
             <Link to="/"><img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
             <GoogleMapReact
               bootstrapURLKeys={{
-                key: 'AIzaSyDlkDftixlz_nvsxuPi0flAOP_0Cc6poBE',
+                key: process.env.REACT_APP_GOOGLE_API,
                 libraries: ['places']
               }}
-              id="map"
               defaultZoom={13} // Supports DP, e.g 11.5
-              defaultCenter={{ lat: parseInt(this.props.match.params.latitude), lng: parseInt(this.props.match.params.longitude) }}
+              defaultCenter={{ 
+                    lat: parseFloat(this.props.match.params.latitude), 
+                    lng: parseFloat(this.props.match.params.longitude) 
+                }}
               yesIWantToUseGoogleMapApiInternals={true}
               onGoogleApiLoaded={({ map, maps }) => this.apiHasLoaded(map, maps)}
             >
                 {this.state.markers.length > 0 && this.state.markers.map((marker, i) => 
                     <Marker 
                         key={i} 
-                        onClick={() => console.log(marker.geometry.location.lat, marker.geometry.location.lng)}
+                        onClick={() => console.log(marker.geometry.location.lat(), marker.geometry.location.lng())}
                         lat={marker.geometry.location.lat()} 
                         lng={marker.geometry.location.lng()}
                     />

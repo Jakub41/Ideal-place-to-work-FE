@@ -28,17 +28,23 @@ const LandingSearch = (props) => {
   const handleSearch = (e) => {
     if((e.key === 'Enter')) {
       const places = [];
-      if(localStorage.getItem('places')) {
-        const placesFromLocalStorage = localStorage.getItem('places');
-        const arrayFromLS = placesFromLocalStorage.split(',')
+      let plFromLC = localStorage.getItem('places')
+      if(plFromLC) {
+        console.log('hello in if')
+        const arrayFromLS = plFromLC.split(',')
+        console.log(arrayFromLS)
         places.push(searchPlace)
-        for(var i = 0; i < arrayFromLS.length - 1; i++) {
+        console.log(places)
+        // eslint-disable-next-line no-mixed-operators
+        for(var i = 0; i < 4; i++) {
+          console.log('hello')
           places.push(arrayFromLS[i])
         }
       } else {
         places.push(searchPlace)
       }
       localStorage.setItem('places', places);
+      setRecentSearches(places);
       setTimeout(() => {
         props.skip()
         props.fetchResults(searchPlace)
@@ -77,7 +83,11 @@ const LandingSearch = (props) => {
           {searchOpen && <div className='recent-searches-div'>
             <h2>Recent Searches</h2>
             {recentSearches ? recentSearches.map((search, i) => 
-              <h2 style={{paddingLeft: '10px', fontFamily: 'Roboto', fontWeight: '400'}} key={i}>{search}</h2>
+              <h2 onClick={(e) => {
+                console.log('yo')
+                console.log(search)
+                setSearchPlace(search)
+            }} style={{paddingLeft: '10px', fontFamily: 'Roboto', fontWeight: '400'}} key={i}>{search}</h2>
             ) : <h2 style={{paddingLeft: '10px', fontFamily: 'Roboto', fontWeight: '400'}}>No recent searches</h2>}
           </div>}
         </div>
