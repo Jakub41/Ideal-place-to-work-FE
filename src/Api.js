@@ -3,7 +3,7 @@ import {ajax} from "rxjs/ajax";
 export class Api {
     static URL = "https://ideal-place-to-work.herokuapp.com/api/v1";
     static fetch = (url, method = "GET", body, headers) => {
-        return ajax( {
+        return ajax({
             url: Api.URL + url,
             method: method,
             headers: {
