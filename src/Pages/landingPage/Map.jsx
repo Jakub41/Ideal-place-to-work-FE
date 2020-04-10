@@ -81,7 +81,7 @@ class Map extends React.Component {
                         />
                     )}
                 </GoogleMapReact>
-                {/*<div><NewFooter/></div>*/}
+               {/* <NewFooter/> */}
           </section>
 
         )
