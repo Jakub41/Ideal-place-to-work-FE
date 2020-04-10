@@ -169,7 +169,7 @@ class LandingPage extends Component {
     componentDidMount = async() => {
         Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API);
         setTimeout(async() => {
-            if(this.props.latitude !== "null" || this.props.latitude || this.props.coords.latitude || this.props.coords.latitude !== "null" || this.props.isGeolocationAvailable || this.props.isGeolocationEnabled) {
+            if( this.props.isGeolocationAvailable && this.props.isGeolocationEnabled) {
                 console.log(this.props.coords.latitude);
                 const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
                 this.setState({
