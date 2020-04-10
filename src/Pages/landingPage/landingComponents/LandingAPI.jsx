@@ -59,7 +59,7 @@ class LandingAPI extends Component {
                       alt="service-icon"
                     />
                     <div className='description-for-filters'>
-                      <h4>Goog Service</h4>
+                      <h4>Good Service</h4>
                     </div>
                   </Col>
                   <Col className="col-4">
@@ -71,7 +71,7 @@ class LandingAPI extends Component {
                       alt="working-icon"
                     />
                     <div className='description-for-filters'>
-                      <h4>Quite Place</h4>
+                      <h4>Quiet Place</h4>
                     </div>
                   </Col>
 
