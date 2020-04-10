@@ -120,7 +120,7 @@ class LandingAPI extends Component {
                     <SingleCardForPlace place={place} key={index}/>
                 )) : <h1>Nothing was found</h1>}
             </Row>
-          {this.props.loading && <div><Loader
+          {this.props.loader && <div><Loader
                 type="Oval"
                 color="#9200E6"
                 height={70}

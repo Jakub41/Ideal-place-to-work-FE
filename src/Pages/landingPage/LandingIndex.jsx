@@ -22,7 +22,7 @@ class LandingPage extends Component {
         QuitePlace: false,
         WifiRate: false,
         places: [],
-        loading: true,
+        loader: true,
         nothingFound: false,
         location: {
             latitude: undefined,
@@ -33,7 +33,7 @@ class LandingPage extends Component {
 
     handlePageClick = data => {
         this.setState({
-            loading: true,
+            loader: false,
             places: []
         })
         let selected = data.selected;
@@ -49,7 +49,7 @@ class LandingPage extends Component {
                     const resp = await this.fetchInSpecificPlaces(this.state.location)
                     this.setState({
                         places: resp.places,
-                        loading: false
+                        loader: false
                     })
                 }
             })
@@ -96,7 +96,7 @@ class LandingPage extends Component {
 
     toggleLoading = () => {
         this.setState({
-            loading: !this.state.loading,
+            loader: !this.state.loader,
         })
     }
 
@@ -130,7 +130,7 @@ class LandingPage extends Component {
 
     customCitySearch = async(city) => {
         this.setState({
-            loading: true,
+            loader: true,
             places: []
         })
         Geocode.fromAddress(city).then(
@@ -148,7 +148,7 @@ class LandingPage extends Component {
             error => {
                 console.error(error);
                 this.setState({
-                    loading: false
+                    loader: false
                 })
             }
         )
@@ -157,7 +157,7 @@ class LandingPage extends Component {
             this.fetchInSpecificPlaces(this.state.location).then(resp => {
                 console.log(resp)
                 this.setState({
-                    pageCount: Math.ceil(resp.total ? resp.total : 0 / this.state.limit),
+                    pageCount: Math.ceil(resp.total ? resp.total / this.state.limit : 0 / this.state.limit),
                     places: resp.places ? resp.places : undefined,
                     loading: false
                 })
@@ -264,7 +264,7 @@ class LandingPage extends Component {
                         customCitySearch={this.customCitySearch}
                         pageCount={this.state.pageCount}
                         city={this.state.location.city}
-                        loading={this.state.loading}
+                        loader={this.state.loader}
                         togleFilter={this.togleFilter}
                         WifiRate={this.state.WifiRate}
                         QuitePlace={this.state.QuitePlace}
