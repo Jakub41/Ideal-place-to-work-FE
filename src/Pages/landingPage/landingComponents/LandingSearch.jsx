@@ -30,14 +30,12 @@ const LandingSearch = (props) => {
       const places = [];
       let plFromLC = localStorage.getItem('places')
       if(plFromLC) {
-        console.log('hello in if')
         const arrayFromLS = plFromLC.split(',')
         console.log(arrayFromLS)
         places.push(searchPlace)
         console.log(places)
         // eslint-disable-next-line no-mixed-operators
         for(var i = 0; i < 4; i++) {
-          console.log('hello')
           places.push(arrayFromLS[i])
         }
       } else {
@@ -63,14 +61,14 @@ const LandingSearch = (props) => {
             <Input
               id={searchOpen ? 'searchInput-toggled' : "searchInput"}
               type="text"
-              placeholder="example: wifi cafe near me"
+              placeholder="example: Costa Coffee"
               value={searchPlace}
               onClick={(e) => openSearch(e)}
               onKeyPress={handleSearch}
               onChange={(e) => setSearchPlace(e.target.value)} />
           </div>
           <div>
-            <img src={closeIcon} onClick={() => setSearchOpen(false)}className={searchOpen ? "close-icon" : "results-map"} alt="searchIcon" />
+            <img src={closeIcon} onClick={() => setSearchOpen(false)} className={searchOpen ? "close-icon" : "results-map"} alt="searchIcon" />
           </div>
           <div className={searchOpen ? "results-map-toggled" : "results-map"}>
             <Link to={"/map/" + searchPlace + "/" + props.location.latitude + "/" + props.location.longitude} style={{color: 'black'}}>
