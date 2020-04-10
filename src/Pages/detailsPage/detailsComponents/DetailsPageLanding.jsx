@@ -4,7 +4,7 @@ import Star from "../../../icons/Star.png";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faDollarSign, faHeart} from "@fortawesome/free-solid-svg-icons"
 import closeIcon from "../../../icons/close.png";
-import emptyHeart from "../../../icons/Faves.png";
+import emptyHeart from "../../../icons/emptyHeart.png";
 import {Row} from 'reactstrap'
 import {Link} from "react-router-dom";
 import ReviewModal from "../../rating& review/reviewComponents/ReviewModal";
@@ -110,6 +110,11 @@ class DetailsPageLanding extends Component {
         if(user) {
             const place = user.favouritePlaces.find(you => you._id === this.props.match.params.id)
             console.log(user, place)
+            if(place) {
+                this.setState({
+                    liked: true
+                })
+            }
         }
 
     }

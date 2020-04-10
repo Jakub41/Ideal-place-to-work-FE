@@ -44,13 +44,13 @@ h4 {
     display: flex;
     align-self: end;
     color: #9200e6;
+    width: 50px;
 
 }
 
 .like-btn{
     cursor: pointer;
-    background-color: lightcoral;
-    width: 50%;
+    width: 50px;
     /* transform: rotate(180deg);
     transition: all 0.75s 0.25s; */
 }
@@ -112,6 +112,7 @@ h2 {
     justify-content: center;
     padding-top: 20px;
     border-bottom: #b7adb4 2px solid;
+    margin-bottom: 20px;
 }
 
 .rating-container {

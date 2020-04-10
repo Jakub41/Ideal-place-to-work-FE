@@ -10,6 +10,7 @@ class UserReview extends Component {
         loading: false,
         error: "",
         rating: 5,
+        shownComments: [],
         comment: {
             rate: "",
             message: ""
@@ -45,7 +46,11 @@ class UserReview extends Component {
         if (this.props.placeId) {
             Api.fetch(
                 "/reviewsForPlace/" + this.props.placeId,
-                "GET").then(res => this.setState({comments: res.reviews}));
+                "GET").then(res => {
+                const pages = Math.ceil(res.total / 5);
+                this.setState({comments: res.reviews.reverse(), total: res.total, pages: pages});
+                this.handlePageClick({selected: 0});
+            });
         }
     }
 
@@ -57,6 +62,7 @@ class UserReview extends Component {
     componentWillUnmount() {
         clearInterval(this.interval);
     }
+
 
     onSubmit(e) {
         // prevent default form submission
@@ -117,6 +123,12 @@ class UserReview extends Component {
         }
     }
 
+    handlePageClick = (select) => {
+        const {selected} = select;
+        this.setState({shownComments: this.state.comments.slice(selected * 5, (selected * 5) + 5)});
+        console.log(selected);
+    }
+
     render() {
         return (
             <>
@@ -126,10 +138,10 @@ class UserReview extends Component {
                         nextLabel={'next'}
                         breakLabel={'...'}
                         breakClassName={'break-me'}
-                        pageCount={this.props.pageCount}
+                        pageCount={this.state.pages}
                         marginPagesDisplayed={2}
                         pageRangeDisplayed={5}
-                        onPageChange={this.props.handlePageClick}
+                        onPageChange={this.handlePageClick}
                         containerClassName={'pagination'}
                         subContainerClassName={'pages pagination'}
                         activeClassName={'active'}
@@ -137,8 +149,8 @@ class UserReview extends Component {
                 </div>
                 <div style={{'margin-top': '10px'}}>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                        {this.state.comments &&
-                        this.state.comments.reverse().map(comment => (
+                        {this.state.shownComments &&
+                        this.state.shownComments.map(comment => (
 
                             <div id="plx-card" className="animated bounce" style={{
                                 'border': 'solid 2px black',

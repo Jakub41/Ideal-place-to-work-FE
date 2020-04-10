@@ -9,7 +9,6 @@ import closeIcon from "../../icons/close.png";
 import "./Landing.css";
 
 const Marker = () => <img className="marker-map" src={marker} alt="marker" />;
-// const Popover = ReactAwesomePopover;
 
 class Map extends React.Component {
   state = {
@@ -60,6 +59,7 @@ class Map extends React.Component {
       this.handleSearch();
     }, 3000);
   };
+
 
   render() {
     return (

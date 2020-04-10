@@ -8,6 +8,7 @@
     justify-content: space-between;
     background-color:#b874df;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
 }
 .footer-items{
     display: flex;
@@ -15,7 +16,9 @@
     font-size: 53px;
     font-family: 'Archivo Black', sans-serif;
     padding: 1rem;
-    align-items: center
+    align-items: center;
+    padding-left: 55px;
+    padding-right: 0px;
 }
 #home{
     color: black;
@@ -35,6 +38,7 @@
 
 .login-logout-divider{
     font-size: 65px;
+    
 }
 
 #login{
@@ -48,6 +52,8 @@
 .login-logout-area{
     display: flex;
     align-items: center;
+    padding-left: 50px;
+    
     
 }
 #user-profile-pic{
@@ -75,6 +81,7 @@
 #copyright-img{
     height: 80px;
     object-fit: contain;
+    padding-top: 10px;
 }
 /* media queries */
 
