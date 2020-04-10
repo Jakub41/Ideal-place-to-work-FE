@@ -32,7 +32,7 @@ class Map extends React.Component {
     const { placesService, mapsApi } = this.state;
     const lat = parseFloat(this.props.match.params.latitude);
     const lng = parseFloat(this.props.match.params.longitude);
-    const geo = new mapsApi.LatLng(52.240589, 21.0835641);
+    const geo = new mapsApi.LatLng(lat, lng);
     console.log(geo);
     // Search only if there is a string
     if (this.props.match.params.search) {
