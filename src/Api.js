@@ -1,5 +1,5 @@
 import {ajax} from "rxjs/ajax";
-
+//This returning a promise that will be resolved with the data
 export class Api {
     static URL = "http://localhost:9100/api/v1";
     static fetch = (url, method = "GET", body, headers) => {

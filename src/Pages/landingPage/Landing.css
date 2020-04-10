@@ -301,6 +301,14 @@ h3#filterBy:hover {
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
   transition: all 1s ease;
+  border-radius: 20px !important;
+}
+
+.placeImgs:hover {
+  -ms-transform: scale(1.8);
+  -webkit-transform: scale(1.8);
+  transform: scale(1.1);
+  /*transform: scale(.9);*/
 }
 
 img.placeImgs:hover {
@@ -389,7 +397,7 @@ img.placeImgs:hover {
 }
 
 .h-lg {
-  height: 39rem; 
+  height: 39rem;
 }
 
 .footer-heart {
@@ -466,7 +474,7 @@ img.placeImgs:hover {
   padding: 0px !important;
   border-top-right-radius: 4px;
   display: none !important;
-} 
+}
 
 a:not([href]) {
     color: inherit;

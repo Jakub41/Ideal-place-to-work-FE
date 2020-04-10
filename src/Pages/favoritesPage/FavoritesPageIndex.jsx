@@ -14,6 +14,7 @@ import Api from "../../Api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "../favoritesPage/Favorites.css";
+import NewFooter from "../landingPage/landingComponents/NewFooter";
 
 class FavoritesPageIndex extends Component {
   state = {
@@ -78,16 +79,18 @@ class FavoritesPageIndex extends Component {
                           onClick={() => this.toggleLike(favedPlaces._id)}/>
                       </div>
                     </CardText>
-                    <CardText>
-                      {/* <small className="addedAt">{this.props.user.createdAt()}</small> */}
-                    </CardText>
+                      <CardText>
+                          {/* <small className="addedAt">{this.props.user.createdAt()}</small> */}
+                      </CardText>
                   </CardBody>
                   </Container>
                 </Card>
               </Col>
             ))}
         </Row>
+          <NewFooter/>
       </div>
+
     );
   }
 

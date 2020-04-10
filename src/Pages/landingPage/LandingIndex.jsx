@@ -8,6 +8,7 @@ import LandingSearch from "./landingComponents/LandingSearch";
 import LandingAPI from "./landingComponents/LandingAPI";
 import {css} from "@emotion/core";
 import {GridLoader, HashLoader} from "react-spinners";
+import NewFooter from "./landingComponents/NewFooter";
 
 
 class LandingPage extends Component {
@@ -21,7 +22,7 @@ class LandingPage extends Component {
         QuitePlace: false,
         WifiRate: false,
         places: [],
-        loading: false,
+        loading: true,
         nothingFound: false,
         location: {
             latitude: undefined,
@@ -169,6 +170,7 @@ class LandingPage extends Component {
         Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API);
         setTimeout(async() => {
             if(this.props.latitude !== "null" || this.props.latitude || this.props.coords.latitude || this.props.coords.latitude !== "null" || this.props.isGeolocationAvailable || this.props.isGeolocationEnabled) {
+                console.log(this.props.coords.latitude);
                 const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
                 this.setState({
                     loading: true
@@ -224,14 +226,18 @@ class LandingPage extends Component {
         if (this.state.loading) {
             return (
                 <div style={{display: 'flex', height: '100vh'}}>
-                    {/*<div className="sweet-loading">*/}
-                    <GridLoader
+                    {/*<GridLoader*/}
+                    {/*    css={override}*/}
+                    {/*    size={75}*/}
+                    {/*    color={"#b230f1"}*/}
+                    {/*    loading={this.state.loading}*/}
+                    {/*/>*/}
+                    <HashLoader
                         css={override}
-                        size={75}
-                        color={"#b230f1"}
+                        size={100}
+                        color={"#9200E6"}
                         loading={this.state.loading}
                     />
-                    {/*</div>*/}
                 </div>
             )
         }
@@ -266,7 +272,7 @@ class LandingPage extends Component {
                         places={this.state.places}
                         handlePageClick={this.handlePageClick}
                     />
-
+                    <NewFooter/>
                 </Container>
             </>
         );

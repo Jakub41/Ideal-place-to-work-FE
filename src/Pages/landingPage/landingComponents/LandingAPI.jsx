@@ -24,7 +24,7 @@ class LandingAPI extends Component {
     });
   };
 
-  
+
 
   render() {
     return (
@@ -88,37 +88,38 @@ class LandingAPI extends Component {
                     </div>
                   </Col>
                 </Row>
-                <hr/>
-                <div className='filter-descrp-bottom'>
-                  <h3>Choose by filters. <strong>Unselect them for ALL results.</strong></h3>
-                </div>
+                  <hr/>
+                  <div className='filter-descrp-bottom'>
+                      <h3>Choose by filters. <strong>Unselect them for ALL results.</strong></h3>
+                  </div>
               </div>
             </Col>
-          </Row>
-          <div className="div-select-city">
-            <h3 className="select-city-landing-page">Or Select City</h3>
-            <Input className='landing-input' onChange={(e) => this.setState({city: e.target.value})} type="text"/> <Button onClick={() => this.props.customCitySearch(this.state.city)}>Select</Button>
-          </div> 
-          <div>
-               <ReactPaginate
-                  previousLabel={'previous'}
-                  nextLabel={'next'}
-                  breakLabel={'...'}
-                  breakClassName={'break-me'}
-                  pageCount={this.props.pageCount}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={5}
-                  onPageChange={this.props.handlePageClick}
-                  containerClassName={'pagination'} 
-                  subContainerClassName={'pages pagination'} 
-                  activeClassName={'active'} 
+        </Row>
+            <div className="div-select-city">
+                <h3 className="select-city-landing-page">Or Select City</h3>
+                <Input className='landing-input' onChange={(e) => this.setState({city: e.target.value})} type="text"/>
+                <Button onClick={() => this.props.customCitySearch(this.state.city)}>Search</Button>
+            </div>
+            <div>
+                <ReactPaginate
+                    previousLabel={'previous'}
+                    nextLabel={'next'}
+                    breakLabel={'...'}
+                    breakClassName={'break-me'}
+                    pageCount={this.props.pageCount}
+                    marginPagesDisplayed={2}
+                    pageRangeDisplayed={5}
+                    onPageChange={this.props.handlePageClick}
+                    containerClassName={'pagination'}
+                    subContainerClassName={'pages pagination'}
+                    activeClassName={'active'}
                 />
-          </div> 
-          <Row>
-               {this.props.places ? this.props.places.map((place, index) => (
-                <SingleCardForPlace place={place} key={index} />
-              )) : <h1>Nothing was found</h1>}
-          </Row>
+            </div>
+            <Row>
+                {this.props.places ? this.props.places.map((place, index) => (
+                    <SingleCardForPlace place={place} key={index}/>
+                )) : <h1>Nothing was found</h1>}
+            </Row>
           {this.props.loading && <div><Loader
                 type="Oval"
                 color="#9200E6"

@@ -16,7 +16,7 @@ import "../Details.css";
 import DetailPageCarousel from "./DetailPageCarousel";
 import {faClock} from "@fortawesome/free-regular-svg-icons";
 import {css} from "@emotion/core";
-import {GridLoader, RiseLoader} from "react-spinners";
+import {GridLoader, PacmanLoader, RiseLoader} from "react-spinners";
 
 
 const mapStateToProps = state => state;
@@ -86,14 +86,15 @@ class DetailsPageLanding extends Component {
     };
 
     componentDidMount = async () => {
+        window.scroll(0, 0); //For the loader to remain on the top
         this.setState({loading: true});
         if (this.props.match && this.props.match.params && this.props.match.params.id) {
             const id = this.props.match.params.id;
-            const place = await Api.fetch("/places/" + id);
+            const place = await Api.fetch("/places/" + id); //Fetching the particular place with the id
             this.ratingFetch()
             this.setState({loading: false});
             console.log(place);
-            this.setState({
+            this.setState({ //setting to the state
                 place: place
             })
             this.checkPlaceId()
@@ -110,7 +111,7 @@ class DetailsPageLanding extends Component {
             const place = user.favouritePlaces.find(you => you._id === this.props.match.params.id)
             console.log(user, place)
         }
-    
+
     }
 
     render() {
@@ -122,14 +123,19 @@ class DetailsPageLanding extends Component {
         if (this.state.loading) {
             return (
                 <div style={{display: 'flex', height: '100vh'}}>
-                    {/*<div className="sweet-loading">*/}
-                    <RiseLoader
+                    {/*<RiseLoader*/}
+                    {/*    css={override}*/}
+                    {/*    size={25}*/}
+                    {/*    color={"#b230f1"}*/}
+                    {/*    loading={this.state.loading}*/}
+                    {/*/>*/}
+                    <PacmanLoader
                         css={override}
                         size={25}
                         color={"#b230f1"}
                         loading={this.state.loading}
                     />
-                    {/*</div>*/}
+
                 </div>
             )
         }
@@ -147,19 +153,19 @@ class DetailsPageLanding extends Component {
                                 <h2 className="place-title">{this.state.place.Name}</h2>
                             </div>
                             <div className="spacer"/>
-                            
+
                             <div className="click-to-like" style={{fontSize: "40px"}}>
 
                             {/* className={this.state.rotate180 ? "dislike-btn" : "like-btn"} */}
 
                             {!this.state.liked ? <img className="like-btn" src={emptyHeart} onClick={() => {
-                                        this.toggleLike();   
-                                    }}/> : 
-                            <FontAwesomeIcon
+                                    this.toggleLike();
+                                }}/> :
+                                <FontAwesomeIcon
                                     icon={faHeart}
                                     onClick={() => {
-                                        this.toggleLike();   
-                                    }} />}
+                                        this.toggleLike();
+                                    }}/>}
                             </div>
                         </div>
                         <div className="flex-box">
