@@ -63,8 +63,8 @@
   },
   "devDependencies": {
     "@material-ui/icons": "^4.9.1",
+    "babel-plugin-emotion": "^10.0.15",
     "react-redux": "^7.2.0",
-    "react-window": "^1.8.5",
-    "babel-plugin-emotion": "^10.0.15"
+    "react-window": "^1.8.5"
   }
 }
