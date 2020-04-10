@@ -5,6 +5,7 @@ import marker from "../../icons/Pin02.png";
 import GoogleMapReact from 'google-map-react';
 import closeIcon from "../../icons/close.png";
 import './Landing.css';
+import NewFooter from "./landingComponents/NewFooter";
 
 const Marker = () => <img className='marker-map' src={marker} alt="marker"/>;
 
@@ -57,30 +58,32 @@ class Map extends React.Component {
     render() {
         return (
             <section className="col-12 h-lg">
-            <Link to="/"><img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
-            <GoogleMapReact
-              bootstrapURLKeys={{
-                key: process.env.REACT_APP_GOOGLE_API,
-                libraries: ['places']
-              }}
-              defaultZoom={13} // Supports DP, e.g 11.5
-              defaultCenter={{ 
-                    lat: parseFloat(this.props.match.params.latitude), 
-                    lng: parseFloat(this.props.match.params.longitude) 
-                }}
-              yesIWantToUseGoogleMapApiInternals={true}
-              onGoogleApiLoaded={({ map, maps }) => this.apiHasLoaded(map, maps)}
-            >
-                {this.state.markers.length > 0 && this.state.markers.map((marker, i) => 
-                    <Marker 
-                        key={i} 
-                        onClick={() => console.log(marker.geometry.location.lat(), marker.geometry.location.lng())}
-                        lat={marker.geometry.location.lat()} 
-                        lng={marker.geometry.location.lng()}
-                    />
-                )}
-            </GoogleMapReact>
+                <Link to="/"><img className="location-close-icon" src={closeIcon} alt="Close"/></Link>
+                <GoogleMapReact
+                    bootstrapURLKeys={{
+                        key: process.env.REACT_APP_GOOGLE_API,
+                        libraries: ['places']
+                    }}
+                    defaultZoom={13} // Supports DP, e.g 11.5
+                    defaultCenter={{
+                        lat: parseFloat(this.props.match.params.latitude),
+                        lng: parseFloat(this.props.match.params.longitude)
+                    }}
+                    yesIWantToUseGoogleMapApiInternals={true}
+                    onGoogleApiLoaded={({map, maps}) => this.apiHasLoaded(map, maps)}
+                >
+                    {this.state.markers.length > 0 && this.state.markers.map((marker, i) =>
+                        <Marker
+                            key={i}
+                            onClick={() => console.log(marker.geometry.location.lat(), marker.geometry.location.lng())}
+                            lat={marker.geometry.location.lat()}
+                            lng={marker.geometry.location.lng()}
+                        />
+                    )}
+                </GoogleMapReact>
+                {/*<div><NewFooter/></div>*/}
           </section>
+
         )
     }
 }

@@ -34,16 +34,16 @@ class DetailsPageIndex extends Component {
                 <div>
                     <DetailsPageLanding/>
                 </div>
-                <div>
-                    <UserReview
-                        pageCount={this.props.pageCount}
-                        comment={this.props.comment}
-                        loading={this.state.loading}
-                        togleFilter={this.toggleFilter}
-                        places={this.props.places}
-                        handlePageClick={this.handlePageClick}
-                    />
-                </div>
+                {/*<div>*/}
+                {/*    <UserReview*/}
+                {/*        pageCount={this.props.pageCount}*/}
+                {/*        comment={this.props.comment}*/}
+                {/*        loading={this.state.loading}*/}
+                {/*        togleFilter={this.toggleFilter}*/}
+                {/*        places={this.props.places}*/}
+                {/*        handlePageClick={this.handlePageClick}*/}
+                {/*    />*/}
+                {/*</div>*/}
                 <NewFooter/>
             </div>
 
