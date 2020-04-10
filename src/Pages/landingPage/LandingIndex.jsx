@@ -22,7 +22,8 @@ class LandingPage extends Component {
         QuitePlace: false,
         WifiRate: false,
         places: [],
-        loader: true,
+        loader: false,
+        loading: true,
         nothingFound: false,
         location: {
             latitude: undefined,
@@ -33,7 +34,7 @@ class LandingPage extends Component {
 
     handlePageClick = data => {
         this.setState({
-            loader: false,
+            loader: true,
             places: []
         })
         let selected = data.selected;
@@ -63,8 +64,8 @@ class LandingPage extends Component {
             WifiRate: false,
         })
         const placeToSearch = {
-            latitude: this.props.coords.latitude,
-            longitude: this.props.coords.longitude,
+            latitude: this.state.location.latitude,
+            longitude: this.state.location.longitude,
             searchQuery: searchPlace,
             placeToSearch: searchPlace
         }
@@ -130,13 +131,11 @@ class LandingPage extends Component {
 
     customCitySearch = async(city) => {
         this.setState({
-            loader: true,
-            places: []
+            loader: true
         })
         Geocode.fromAddress(city).then(
             response => {
                 const { lat, lng } = response.results[0].geometry.location;
-                console.log(lat, lng);
                 this.setState({
                     location: {
                         latitude: lat,
@@ -152,16 +151,14 @@ class LandingPage extends Component {
                 })
             }
         )
-        setTimeout(async () => {
-            console.log(this.state.location)
+        setTimeout(() => {
             this.fetchInSpecificPlaces(this.state.location).then(resp => {
-                console.log(resp)
                 this.setState({
                     pageCount: Math.ceil(resp.total ? resp.total / this.state.limit : 0 / this.state.limit),
                     places: resp.places ? resp.places : undefined,
-                    loading: false
+                    loader: false
                 })
-                console.log(this.state)
+                console.log('yo' + this.state)
             })
         },1000)
     }
@@ -172,9 +169,6 @@ class LandingPage extends Component {
             if( this.props.isGeolocationAvailable && this.props.isGeolocationEnabled) {
                 console.log(this.props.coords.latitude);
                 const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
-                this.setState({
-                    loading: true
-                })
                 const browserCity = {
                     latitude: this.props.coords.latitude,
                     longitude: this.props.coords.longitude,
@@ -183,6 +177,7 @@ class LandingPage extends Component {
                 let places = await this.fetchInSpecificPlaces(browserCity)
                 this.setState({
                     loading: false,
+                    loader: false,
                     places: places.places,
                     pageCount: Math.ceil(places.total / this.state.limit),
                     location: {
@@ -192,19 +187,15 @@ class LandingPage extends Component {
                     }
                 })
             } else {
-                this.setState({
-                    loading: true
-                })
                 const browserCity = {
                     latitude: 52.520008,
                     longitude: 13.404954,
                     city: "Berlin"
                 }
-                console.log(browserCity)
                 let places = await this.fetchInSpecificPlaces(browserCity)
-                console.log(places)
                 this.setState({
                     loading: false,
+                    loader: false,
                     places: places.places,
                     pageCount: Math.ceil(places.total / this.state.limit),
                     location: {
