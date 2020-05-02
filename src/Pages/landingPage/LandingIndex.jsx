@@ -166,7 +166,7 @@ class LandingPage extends Component {
     componentDidMount = async() => {
         Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API);
         setTimeout(async() => {
-            if( this.props.isGeolocationAvailable && this.props.isGeolocationEnabled) {
+            if( this.props.isGeolocationAvailable && this.props.isGeolocationEnabled && this.props.coords) {
                 console.log(this.props.coords.latitude);
                 const city = await this.getAddress(this.props.coords.latitude, this.props.coords.longitude)
                 const browserCity = {
